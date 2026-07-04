@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>お問い合わせ｜秋葉原の猫カフェ「僕と猫。」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Imagetoolbar" content="no" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link type="text/css" rel="stylesheet" href="../assets/css/common/default.css" />
+    <link type="text/css" rel="stylesheet" href="../assets/css/layout.css" />
+    <script src="../assets/js/jquery-1.11.3.min.js"></script>
+    <script>
+      $(function() {
+        var topBtn = $('.pageTop a');
+        //ページトップへスクロール
+        topBtn.click(function () {
+          $('body,html').animate({
+              scrollTop: 0
+          }, 500);
+          return false;
+        });
+      });
+    </script>
+
+    <script>
+      $(function(){
+        $('.navButton').click(function(e) {
+          e.preventDefault();
+
+          $(this).next().slideToggle();// 開閉の指示
+
+          if ($(this).hasClass("open")) {
+            $(this).removeClass("open");
+          } else {
+            $(this).addClass("open");
+          }
+        });
+      });
+    </script>
+    <link rel="stylesheet" href="../assets/css/common/remodal.css">
+    <link rel="stylesheet" href="../assets/css/common/remodal-default-theme.css">
+    <script src="../assets/js/remodal.min.js"></script>
+
+    <link rel="stylesheet" href="../assets/css/common/animate.css">
+    <script src="../assets/js/wow.min.js"></script>
+  </head>
+
+  <body id="pageTop" class="under">
+    <header class="header pc-only">
+      <div class="header__wrap">
+        <h1>
+          <a href="../">
+            <img class="logo" src="../assets/images/pc/common/header/logo.png" alt="猫カフェ【僕と猫。】" />
+          </a>
+        </h1>
+
+        <div class="headerNav">
+          <ul class="headerNav__wrap">
+            <li class="headerNav__item headerNav__item--concept">
+              <a href="../#concept">
+                <img src="../assets/images/pc/common/header/nav/concept_off.png" alt="コンセプト" />
+              </a>
+            </li>
+            <li class="headerNav__item headerNav__item--cat">
+              <a href="../#cat">
+                <img src="../assets/images/pc/common/header/nav/cat_off.png" alt="猫紹介" />
+              </a>
+            </li>
+            <li class="headerNav__item headerNav__item--system">
+              <a href="../#system">
+                <img src="../assets/images/pc/common/header/nav/system_off.png" alt="システム" />
+              </a>
+            </li>
+            <li class="headerNav__item headerNav__item--rule">
+              <a href="../#rule">
+                <img src="../assets/images/pc/common/header/nav/rule_off.png" alt="ルール" />
+              </a>
+            </li>
+            <li class="headerNav__item headerNav__item--access">
+              <a href="../#access">
+                <img src="../assets/images/pc/common/header/nav/access_off.png" alt="アクセス" />
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <aside class="headerSNS">
+          <ul class="headerSNS__wrap">
+            <li class="headerSNS__item">
+              <a href="https://twitter.com/bokuneko_stuff" target="_blank">
+                <img src="../assets/images/pc/common/header/twitter.png" alt="Twitter" />
+              </a>
+            </li>
+            <li class="headerSNS__item">
+              <a href="https://lin.ee/tn2yxq5" target="_blank">
+                <img src="../assets/images/pc/common/header/line.png" alt="LINE" />
+              </a>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </header>
+
+    <header class="header sp-only">
+      <h1>
+        <a href="../">
+          <img class="logo" src="../assets/images/sp/common/header/logo.png" alt="猫カフェ【僕と猫。】" />
+        </a>
+      </h1>
+      <p class="navButton">
+        <a href="#">
+          <img src="../assets/images/sp/common/header/navButton.png" alt="メニューを開く" />
+        </a>
+      </p>
+      <div class="panel">
+        <aside class="headerSNS">
+          <ul>
+            <li class="headerSNS__item">
+              <a href="https://twitter.com/bokunekoakb" target="_blank">
+                <img src="../assets/images/sp/common/header/twitter.png" alt="Twitter" />
+              </a>
+            </li>
+            <li class="headerSNS__item">
+              <a href="https://lin.ee/tn2yxq5" target="_blank">
+                <img src="../assets/images/sp/common/header/line.png" alt="LINE" />
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <div class="headerNav">
+          <ul>
+            <li class="headerNav__item headerNav__item--concept">
+              <a href="../#concept">
+                <img src="../assets/images/sp/common/header/nav/concept.png" alt="コンセプト" />
+              </a>
+            </li>
+            <li class="headerNav__item headerNav__item--cat">
+              <a href="../#cat">
+                <img src="../assets/images/sp/common/header/nav/cat.png" alt="猫紹介" />
+              </a>
+            </li>
+            <li class="headerNav__item headerNav__item--system">
+              <a href="../#system">
+                <img src="../assets/images/sp/common/header/nav/system.png" alt="システム" />
+              </a>
+            </li>
+            <li class="headerNav__item headerNav__item--rule">
+              <a href="../#rule">
+                <img src="../assets/images/sp/common/header/nav/rule.png" alt="ルール" />
+              </a>
+            </li>
+            <li class="headerNav__item headerNav__item--access">
+              <a href="../#access">
+                <img src="../assets/images/sp/common/header/nav/access.png" alt="アクセス" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div id="container">
+      <div id="contents">
+        <main>
+          <div class="frame">
+            <h2 class="frameTitle">
+              お問い合わせ
+            </h2>
+
+            <!-- エラーメッセージ表示 -->
+            <!--
+            <div class="error">
+              <ul>
+                <li class="error__item">お名前を入力してください</li>
+                <li class="error__item">E-mailを入力してください</li>
+                <li class="error__item">E-mailとE-mail（確認）が一致しません</li>
+                <li class="error__item">お問い合わせの種類を入力してください</li>
+                <li class="error__item">お問い合わせ内容を入力してください</li>
+              </ul>
+            </div>
+            -->
+
+            <div class="messageBox">
+              <p>
+                下記の内容をご確認いただき、お問い合わせフォームの入力へお進みください。
+              </p>
+              <p>
+                当社は、お客様の個人情報の流出・漏洩の防止、その他個人情報の安全管理のために必要かつ適切な措置を講じるものとし、法令などに正当な理由がある場合を除き、お客様の同意なく目的外での利用および第三者への提供は行いません。
+              </p>
+            </div>
+
+            <form action="confirm.html" method="post" enctype="multipart/form-data">
+              <table class="form">
+                <tbody>
+                  <tr>
+                    <th>会社名</th>
+                    <td>
+                      <input type="text" name="company_name" value="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>お名前<span>※</span></th>
+                    <td>
+                      <input type="text" name="name" value="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>電話番号</th>
+                    <td>
+                      <input type="text" name="telephone" value="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>E-mail<span>※</span></th>
+                    <td>
+                      <input type="text" name="email" value="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>E-mail（確認）<span>※</span></th>
+                    <td>
+                      <input type="text" name="email2" value="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>お問い合わせの種類<span>※</span></th>
+                    <td>
+                      <ul>
+                        <li>
+                          <label for="catesystem">
+                            <input type="radio" name="category" id="catesystem" value="system">
+                            システム・ルールについてのご質問
+                          </label>
+                        </li>
+                        <li>
+                          <label for="caterecruit">
+                            <input type="radio" name="category" id="caterecruit" value="recruit">
+                            採用・求人について
+                          </label>
+                        </li>
+                        <li>
+                          <label for="catemedia">
+                            <input type="radio" name="category" id="catemedia" value="media">
+                            取材・メディア掲載について
+                          </label>
+                        </li>
+                        <li>
+                          <label for="caterequest">
+                            <input type="radio" name="category" id="caterequest" value="request">
+                            ご意見・ご要望等
+                          </label>
+                        </li>
+                        <li>
+                          <label for="cateothers">
+                            <input type="radio" name="category" id="cateothers" value="others">
+                            その他
+                          </label>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>お問い合わせ内容<span>※</span></th>
+                    <td>
+                      <textarea name="comment"></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>添付ファイル</th>
+                    <td>
+                      <input name="attach_file" type="file">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="submit">
+                <input type="hidden" name="shop" value="akihabara">
+                <button type="submit">確認画面へ</button>
+              </p>
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <footer class="pc-only">
+      <div class="wow fadeIn" data-wow-duration="2.5s">
+        <aside>
+          <ul class="footerSNS">
+            <li class="footerSNS__item">
+              <a href="https://twitter.com/bokunekoakb" target="_blank">
+                <img src="../assets/images/pc/common/footer/twitter.png" alt="Twitter" />
+              </a>
+            </li>
+            <li class="footerSNS__item">
+              <a href="https://lin.ee/tn2yxq5" target="_blank">
+                <img src="../assets/images/pc/common/footer/line.png" alt="LINE" />
+              </a>
+            </li>
+          </ul>
+        </aside>
+
+        <ul class="footerNav">
+          <li class="footerNav__item">
+            <a href="#law">
+              第１種動物取扱業者標識
+            </a>
+          </li>
+          <li class="footerNav__item">
+            <a href="../recruit/">
+              採用情報
+            </a>
+          </li>
+          <li class="footerNav__item">
+            <a href="../contact/">
+              お問い合わせ
+            </a>
+          </li>
+        </ul>
+
+        <p>
+          <small>
+            <img src="../assets/images/pc/common/footer/copy.png" alt="(c)2016 Boku to neko. All Rights Reserved." />
+          </small>
+        </p>
+      </div>
+
+      <p class="pageTop">
+        <a href="#pageTop">
+          <img src="../assets/images/pc/common/footer/top.png" alt="ページTOPへ" />
+        </a>
+      </p>
+    </footer>
+
+    <footer class="sp-only">
+      <div class="wow fadeIn" data-wow-duration="2.5s">
+        <ul class="footerNav">
+          <li class="footerNav__item">
+            <a href="#law">
+              第１種動物取扱業者標識
+            </a>
+          </li>
+          <li class="footerNav__item">
+            <a href="../recruit/">
+              採用情報
+            </a>
+          </li>
+          <li class="footerNav__item">
+            <a href="../contact/">
+              お問い合わせ
+            </a>
+          </li>
+        </ul>
+
+        <p class="copy">
+          <small>
+            <img src="../assets/images/sp/common/footer/copy.png" alt="(c)2016 Boku to neko. All Rights Reserved." />
+          </small>
+        </p>
+
+        <aside>
+          <div class="footerSNS">
+            <ul class="footerSNS__inner">
+              <li class="footerSNS__item">
+                <a href="https://twitter.com/bokunekoakb" target="_blank">
+                  <img src="../assets/images/sp/common/footer/twitter.png" alt="Twitter" />
+                </a>
+              </li>
+              <li class="footerSNS__item">
+                <a href="https://lin.ee/tn2yxq5" target="_blank">
+                  <img src="../assets/images/sp/common/footer/line.png" alt="LINE" />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+
+      <p class="pageTop">
+        <a href="#pageTop">
+          <img src="../assets/images/sp/common/footer/top.png" alt="ページTOPへ" />
+        </a>
+      </p>
+    </footer>
+
+    <div class="remodal" data-remodal-id="law" data-remodal-options="hashTracking:false">
+      <section class="window">
+        <h3 class="windowTitle">
+          第１種動物取扱業者標識
+        </h3>
+        <dl class="lawList">
+          <dt>
+            事業所の名称
+          </dt>
+          <dd>
+            僕と猫。秋葉原店
+          </dd>
+          <dt>
+            事業所の所在地
+          </dt>
+          <dd>
+            東京都千代田区外神田四丁目4番3号<br>
+            小木曽ビル5階
+          </dd>
+          <dt>
+            第一種動物取扱業の種別
+          </dt>
+          <dd>
+            展示
+          </dd>
+          <dt>
+            登録番号
+          </dt>
+          <dd>
+            18東京都展第005975号
+          </dd>
+          <dt>
+            登録年月日
+          </dt>
+          <dd>
+            平成30年 7月26日
+          </dd>
+          <dt>
+            有効期間の末日
+          </dt>
+          <dd>
+            平成35年 7月25日
+          </dd>
+          <dt>
+            動物取扱責任者
+          </dt>
+          <dd>
+            池川航一
+          </dd>
+        </dl>
+
+        <button data-remodal-action="close" class="remodalClose">
+          <img src="../assets/images/common/close.png" alt="閉じる" />
+        </button>
+      </section>
+    </div>
+  </body>
+</html>
+
+<script>
+  $('[data-remodal-id=law]').remodal({
+    modifier: 'modalBg'
+  });
+
+  new WOW().init();
+</script>

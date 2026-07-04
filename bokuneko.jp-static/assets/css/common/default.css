@@ -1,0 +1,168 @@
+@charset "utf-8";
+
+/** --------------------------------------------------------------------------------
+ * html5doctor.com Reset Stylesheet
+ * v1.6.1
+ * Last Updated: 2010-09-17
+ * Author: Richard Clark - http://richclarkdesign.com
+ * Twitter: @rich_clark
+ */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, main, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+main {
+  display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+body {
+  line-height: 1.43;
+  font-family: ArialMT, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", メイリオ, sans-serif;
+  font-size: 87.5%;/* 14px相当 */
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/** ----------------------------------------
+ * フォントサイズ調整
+ */
+html {
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+/** ----------------------------------------
+ * リスト
+ */
+ol,
+ul {
+  list-style-type: none;
+}
+
+
+/** --------------------------------------------------------------------------------
+ * change colours to suit your needs
+ */
+ins {
+  color: #000;
+  background-color: none;
+  text-decoration: none;
+}
+
+/** --------------------------------------------------------------------------------
+ * change colours to suit your needs
+ */
+mark {
+  color: #000;
+  background-color: #ff9;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+/** ----------------------------------------
+ *  table
+ */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+th {
+  vertical-align: middle;
+  font-weight: normal;
+  text-align: center;
+  empty-cells: show;
+}
+
+td {
+  vertical-align: middle;
+  empty-cells: show;
+}
+
+/** --------------------------------------------------------------------------------
+ * change border colour to suit your needs
+ */
+hr {
+  margin: 1em 0;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  display: block;
+  height: 1px;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+/** --------------------------------------------------------------------------------
+ * img
+ */
+img {
+  vertical-align: bottom;
+  border-style: none;
+}
+
+/** ----------------------------------------
+ * お問い合わせリンク非表示
+ */
+.footerNav__item:has(a[href*="contact"]) {
+  display: none;
+}
