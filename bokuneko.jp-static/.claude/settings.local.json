@@ -1,7 +1,45 @@
 {
   "permissions": {
     "allow": [
-      "Bash(powershell -Command \"Get-Process node -ErrorAction SilentlyContinue | Select Id,StartTime,CPU\")"
+      "Bash(powershell -Command \"Get-Process node -ErrorAction SilentlyContinue | Select Id,StartTime,CPU\")",
+      "Bash(python3 -c \"import fontTools; print\\(fontTools.__version__\\)\")",
+      "Bash(python -c \"import fontTools; print\\(fontTools.__version__\\)\")",
+      "Bash(pip show *)",
+      "Bash(pip3 show *)",
+      "PowerShell(Get-Command python -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command py -ErrorAction SilentlyContinue)",
+      "PowerShell(py -3 --version 2>&1)",
+      "PowerShell(pip --version 2>&1)",
+      "Bash(curl -s -o /dev/null -w \"npm registry: %{http_code}\\\\n\" --max-time 5 https://registry.npmjs.org/)",
+      "Bash(curl -s -o /dev/null -w \"fonts.google: %{http_code}\\\\n\" --max-time 5 https://fonts.google.com/)",
+      "Bash(curl -s -o /dev/null -w \"fonts.gstatic: %{http_code}\\\\n\" --max-time 5 https://fonts.gstatic.com/)",
+      "Bash(curl -s -o /dev/null -w \"googleapis: %{http_code} time:%{time_total}\\\\n\" --max-time 15 \"https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap\")",
+      "Bash(curl -s -o /dev/null -w \"npm registry retry: %{http_code} time:%{time_total}\\\\n\" --max-time 15 https://registry.npmjs.org/)",
+      "Bash(curl -s -o /dev/null -w \"google.com: %{http_code} time:%{time_total}\\\\n\" --max-time 15 https://www.google.com/)",
+      "WebFetch(domain:fonts.googleapis.com)",
+      "Bash(mkdir -p /tmp/fonts)",
+      "Bash(curl -sL --max-time 20 -o /tmp/fonts/mplus_900.ttf \"https://fonts.gstatic.com/s/mplusrounded1c/v22/VdGBAYIAV6gnpUpoWwNkYvrugw9RuM0C45sK.ttf\" -w \"HTTP:%{http_code} size:%{size_download}\\\\n\")",
+      "Read(//tmp/fonts/**)",
+      "Bash(xxd)",
+      "Bash(curl -s -o /dev/null -w \"unpkg: %{http_code} time:%{time_total}\\\\n\" --max-time 10 https://unpkg.com/)",
+      "Bash(curl -s -o /dev/null -w \"jsdelivr: %{http_code} time:%{time_total}\\\\n\" --max-time 10 https://cdn.jsdelivr.net/)",
+      "Bash(curl -s -o /dev/null -w \"github: %{http_code} time:%{time_total}\\\\n\" --max-time 10 https://github.com/)",
+      "Bash(curl -s -o /dev/null -w \"raw.githubusercontent: %{http_code} time:%{time_total}\\\\n\" --max-time 10 https://raw.githubusercontent.com/)",
+      "Bash(npm ls *)",
+      "Bash(npm config *)",
+      "Bash(npm cache *)",
+      "Bash(curl -s -o /dev/null -w \"npm registry via disabled sandbox test: %{http_code}\\\\n\" --max-time 10 https://registry.npmjs.org/)",
+      "Bash(curl -v --max-time 8 \"https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@900&text=ABC\")",
+      "Bash(curl -sk --max-time 10 -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" \"https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@900&text=ABC\")",
+      "Bash(curl -sk --max-time 15 -o /tmp/fonts/test_ABC.woff2 -w \"HTTP:%{http_code} size:%{size_download}\\\\n\" \"https://fonts.gstatic.com/l/font?kit=VdGBAYIAV6gnpUpoWwNkYvrugw9RuM0C45sP3e3vjV8&skey=9b834f100e5b77af&v=v22\")",
+      "Read(//tmp/**)",
+      "Bash(powershell -Command ' *)",
+      "Bash(node -e ' *)",
+      "Bash(grep -n \"/SP\\\\|max-width: 1049px\\) {$\\\\|^\\\\.catchCopy\\\\|^\\\\.headerSeal\\\\|^\\\\.headerNav__item a\\\\|^#calendar h2\\\\|^#cat {\\\\|^#system {\\\\|^#rule {\\\\|^\\\\.systemDetail \\\\|^\\\\.systemDetail__title\\\\|^\\\\.systemDetail__body\\\\|^\\\\.ruleList__item\\\\|^\\\\.ruleMessage\\\\|^#access {\\\\|^\\\\.accessTitle\\\\|^footer {\\\\|^\\\\.footerNav {\\\\|^\\\\.copy\\\\b|windowTitle--qa\" assets/css/layout.css)",
+      "Bash(awk 'NR==1521,NR==2948' assets/css/layout.css)",
+      "Bash(awk 'NR>1521' assets/css/layout.css)",
+      "Bash(git ls-tree *)",
+      "Bash(git restore *)"
     ]
   }
 }

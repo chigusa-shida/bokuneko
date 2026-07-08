@@ -23,6 +23,208 @@
 }
 
 /* ==========================================================================
+   テキスト画像をテキスト化したコンポーネント（PC/SP共通のスタイル）
+   サイズや位置などデバイス差分はPC/SPそれぞれのブロックで上書きする
+   ========================================================================== */
+
+/* 見出し（英単語+colored accent文字+日本語サブタイトル） */
+.titleGraphic {
+  font-family: 'M PLUS Rounded 1c', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+  color: #5c370c;
+  line-height: 1.05;
+}
+
+.titleGraphic--concept,
+.titleGraphic--system,
+.titleGraphic--rule,
+.titleGraphic--calendar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titleGraphic__accent {
+  display: inline-block;
+  margin-right: 0.06em;
+  color: inherit;
+  font-size: 2.6em;
+  line-height: 1;
+}
+
+.titleGraphic__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.titleGraphic__en {
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.titleGraphic--concept .titleGraphic__accent {
+  color: #ffc100;
+}
+
+.titleGraphic--system .titleGraphic__body {
+  color: #fff;
+}
+
+.titleGraphic--system .titleGraphic__accent {
+  color: #ff8094;
+}
+
+.titleGraphic--rule .titleGraphic__accent {
+  color: #0d8046;
+}
+
+.titleGraphic--calendar .titleGraphic__accent {
+  color: #0d8046;
+}
+
+.titleGraphic__ja {
+  display: block;
+  font-weight: 700;
+}
+
+.titleGraphic__ja::before {
+  content: "＜ ";
+}
+
+.titleGraphic__ja::after {
+  content: " ＞";
+}
+
+/* キャッチコピー（丸バッジ付きの1文字を強調） */
+.catchCopy__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.6em;
+  min-height: 1.6em;
+  border-radius: 45% 55% 52% 48% / 48% 45% 55% 52%;
+  color: #fff;
+  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-weight: 900;
+}
+
+.catchCopy__badge--brown {
+  background-color: #5c370c;
+}
+
+.catchCopy__badge--pink {
+  background-color: #ff8094;
+}
+
+/* 吹き出し（オーバル型） */
+.speechBubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  color: #5c370c;
+}
+
+.speechBubble strong {
+  display: block;
+  margin: 0.2em 0;
+  color: #ff8094;
+  font-weight: 900;
+  font-size: 1.8em;
+  line-height: 1.2;
+}
+
+.speechBubble__star {
+  display: inline-block;
+  margin-left: 0.15em;
+  color: #ff8094;
+  font-size: 0.7em;
+  vertical-align: super;
+}
+
+/* スタッフTwitter見出し */
+.staffTwitterCaption {
+  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-weight: 700;
+  color: #5c370c;
+  text-align: center;
+}
+
+.staffTwitterCaption strong {
+  font-weight: 900;
+}
+
+/* ルール説明文の装飾カッコ */
+.ruleMessageText {
+  position: relative;
+  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-weight: 700;
+  color: #5c370c;
+  text-align: center;
+}
+
+.ruleMessageText::before,
+.ruleMessageText::after {
+  font-family: Georgia, serif;
+  font-weight: 700;
+  color: #5c370c;
+}
+
+.ruleMessageText::before {
+  content: "(";
+}
+
+.ruleMessageText::after {
+  content: ")";
+}
+
+/* ルールアイコン下のキャプション */
+.ruleCaption {
+  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-weight: 700;
+  color: #5c370c;
+  text-align: center;
+}
+
+/* システム項目ラベル（丸ピル型） */
+.systemLabel {
+  display: inline-block;
+  background-color: #5c370c;
+  color: #fff;
+  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-weight: 700;
+  border-radius: 999px;
+}
+
+/* システムの価格・時間などの数値表記 */
+.systemValue {
+  display: inline-block;
+  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-weight: 900;
+  color: #5c370c;
+}
+
+/* フッターコピーライト */
+.footerCopyText {
+  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-weight: 700;
+  color: inherit;
+}
+
+/* Q&Aモーダルのタイトル（PC/SP共通） */
+.windowTitle--qa .titleGraphic__en {
+  font-size: 28px;
+}
+
+.windowTitle--qa .titleGraphic__ja {
+  font-size: 13px;
+}
+
+/* ==========================================================================
    PC (viewport width >= 1050px)
    旧 assets/css/pc/layout.css をそのまま移植（画像パスのみ調整）
    ========================================================================== */
@@ -181,54 +383,40 @@ img {
   padding: 10px;
   position: relative;
   display: block;
-  background: no-repeat 0 0;
+  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #5c370c;
+  white-space: nowrap;
+  -webkit-transition: color 0.3s ease;
+     -moz-transition: color 0.3s ease;
+      -ms-transition: color 0.3s ease;
+       -o-transition: color 0.3s ease;
+          transition: color 0.3s ease;
 }
 
-.headerNav__item a::before {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: no-repeat 0 0;
-  opacity: 0;
-  -webkit-transition: all 0.4s ease;
-     -moz-transition: all 0.4s ease;
-      -ms-transition: all 0.4s ease;
-       -o-transition: all 0.4s ease;
-          transition: all 0.4s ease;
+.headerNav__item--concept a:hover {
+  color: #ffc100;
 }
 
-.headerNav__item a:hover::before {
-  opacity: 1;
+.headerNav__item--cat a:hover {
+  color: #ff8094;
 }
 
-.headerNav__item a:hover img {
-  opacity: 0;
+.headerNav__item--system a:hover {
+  color: #ff8094;
 }
 
-.headerNav__item--concept a::before {
-  background-image: url("../images/pc/common/header/nav/concept_on.png");
+.headerNav__item--rule a:hover {
+  color: #0d8046;
 }
 
-.headerNav__item--cat a::before {
-  background-image: url("../images/pc/common/header/nav/cat_on.png");
+.headerNav__item--access a:hover {
+  color: #0d8046;
 }
 
-.headerNav__item--system a::before {
-  background-image: url("../images/pc/common/header/nav/system_on.png");
-}
-
-.headerNav__item--rule a::before {
-  background-image: url("../images/pc/common/header/nav/rule_on.png");
-}
-
-.headerNav__item--access a::before {
-  background-image: url("../images/pc/common/header/nav/access_on.png");
-}
-
-.headerNav__item--recruit a::before {
-  background-image: url("../images/pc/common/header/nav/recruit_on.png");
+.headerNav__item--recruit a:hover {
+  color: #ffc100;
 }
 
 /** ------------------------------
@@ -317,6 +505,20 @@ img {
  */
 .conceptTitle {
   padding-top: 63px;
+  position: relative;
+  z-index: 20;
+}
+
+.conceptTitle .titleGraphic__en {
+  font-size: 46px;
+}
+
+.conceptTitle .titleGraphic__accent {
+  font-size: 120px;
+}
+
+.conceptTitle .titleGraphic__ja {
+  font-size: 15px;
 }
 
 .conceptMessage1 {
@@ -326,11 +528,50 @@ img {
   z-index: 3;
 }
 
+.conceptMessage1 .speechBubble {
+  width: 260px;
+  height: 140px;
+  padding: 0 16px;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
 .conceptMessage2 {
   position: absolute;
   right: -64px;
   bottom: 400px;
   z-index: 4;
+  width: 300px;
+  height: 210px;
+}
+
+.conceptMessage2 .speechBubble {
+  position: absolute;
+  font-weight: 700;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.conceptMessage2 .speechBubble--a {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 300px;
+  min-height: 210px;
+  padding: 22px 26px;
+  font-size: 13px;
+}
+
+.conceptMessage2 .speechBubble--b {
+  top: 150px;
+  left: 90px;
+  z-index: 2;
+  width: 250px;
+  min-height: 170px;
+  padding: 18px 22px;
+  font-size: 12px;
 }
 
 /** ------------------------------
@@ -348,6 +589,15 @@ img {
 .staffTwitter__message {
   padding-left: 10px;
   text-align: center;
+}
+
+.staffTwitterCaption {
+  font-size: 15px;
+}
+
+.staffTwitterCaption strong {
+  display: block;
+  font-size: 19px;
 }
 
 .staffTwitter a {
@@ -439,6 +689,18 @@ img {
   margin-bottom: 20px;
 }
 
+#calendar h2 .titleGraphic__en {
+  font-size: 40px;
+}
+
+#calendar h2 .titleGraphic__accent {
+  font-size: 104px;
+}
+
+#calendar h2 .titleGraphic__ja {
+  font-size: 14px;
+}
+
 /** ------------------------------------------------------------
  * #cat
  */
@@ -446,6 +708,11 @@ img {
   padding: 100px 0 0;
   min-width: 1000px;
   background: #faecab url("../images/pc/index/cat/bg.png") repeat 50% 0;
+}
+
+#cat .sectionTitle .titleGraphic__en {
+  font-size: 34px;
+  letter-spacing: 0.1em;
 }
 
 .catList {
@@ -608,6 +875,18 @@ img {
   background: url("../images/pc/index/system/bg2.png") repeat-y 50% 0, url("../images/pc/index/system/bg.png") repeat 50% 0;
 }
 
+#system .sectionTitle .titleGraphic__en {
+  font-size: 40px;
+}
+
+#system .sectionTitle .titleGraphic__accent {
+  font-size: 104px;
+}
+
+#system .sectionTitle .titleGraphic__ja {
+  font-size: 14px;
+}
+
 .systemDetail {
   padding-top: 15px;
   font-size: 18px;
@@ -670,8 +949,22 @@ img {
   font-size: 14px;
 }
 
+.systemLabel {
+  padding: 6px 18px;
+  font-size: 16px;
+}
+
+.systemValue {
+  font-size: 30px;
+}
+
 .systemDetail__itemName {
   margin: 20px 0;
+}
+
+.systemDetail__itemName .systemLabel {
+  padding: 5px 14px;
+  font-size: 15px;
 }
 
 .systemDetail__tax {
@@ -699,6 +992,18 @@ img {
   color: #5c370c;
 }
 
+#rule .sectionTitle .titleGraphic__en {
+  font-size: 40px;
+}
+
+#rule .sectionTitle .titleGraphic__accent {
+  font-size: 104px;
+}
+
+#rule .sectionTitle .titleGraphic__ja {
+  font-size: 14px;
+}
+
 .ruleList {
   padding: 35px 67px 0;
 }
@@ -723,8 +1028,24 @@ img {
   margin-top: -26px;
 }
 
+.ruleCaption {
+  margin-top: 12px;
+  font-size: 15px;
+}
+
 .ruleMessage {
   text-align: center;
+}
+
+.ruleMessageText {
+  font-size: 16px;
+  line-height: 2;
+}
+
+.ruleMessageText::before,
+.ruleMessageText::after {
+  font-size: 40px;
+  vertical-align: middle;
 }
 
 /** ------------------------------------------------------------
@@ -901,6 +1222,14 @@ img {
 
 .accessTitle {
   padding: 0 0 72px;
+}
+
+.accessTitle .titleGraphic__en {
+  font-size: 34px;
+}
+
+.accessTitle .titleGraphic__ja {
+  font-size: 14px;
 }
 
 address {
@@ -1195,6 +1524,11 @@ footer a {
   color: #fff;
 }
 
+.footerCopyText {
+  font-size: 10px;
+  letter-spacing: 0.05em;
+}
+
 /** ------------------------------
  * SNS
  */
@@ -1395,6 +1729,12 @@ img {
 
 .headerNav__item a {
   display: block;
+  padding: 3.5vw 0;
+  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-weight: 700;
+  font-size: 4vw;
+  color: #fff;
+  text-align: center;
 }
 
 .headerNav__item img {
@@ -1433,10 +1773,24 @@ img {
 
 .sectionTitle {
   padding: 36px 0 15px;
+  position: relative;
+  z-index: 20;
 }
 
 #concept .sectionTitle {
   padding-top: 47px;
+}
+
+#concept .sectionTitle .titleGraphic__en {
+  font-size: 9vw;
+}
+
+#concept .sectionTitle .titleGraphic__accent {
+  font-size: 23.4vw;
+}
+
+#concept .sectionTitle .titleGraphic__ja {
+  font-size: 3.4vw;
 }
 
 .sectionTitle img {
@@ -1493,19 +1847,50 @@ img {
   z-index: 10;
 }
 
-.conceptMessage1 img {
+.conceptMessage1 .speechBubble {
   width: 100%;
+  min-height: 34vw;
+  padding: 3vw 4vw;
+  font-size: 3.1vw;
+  line-height: 1.4;
+  font-weight: 700;
+  box-sizing: border-box;
 }
 
 .conceptMessage2 {
   margin-top: 10.2%;
   margin-left: 21.3%;
+  width: 78%;
+  height: 38vw;
   position: relative;
   z-index: 10;
 }
 
-.conceptMessage2 img {
-  width: 90%;
+.conceptMessage2 .speechBubble {
+  position: absolute;
+  font-weight: 700;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.conceptMessage2 .speechBubble--a {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  min-height: 100%;
+  padding: 4vw 5vw;
+  font-size: 2.6vw;
+}
+
+.conceptMessage2 .speechBubble--b {
+  top: 20vw;
+  left: 20%;
+  z-index: 2;
+  width: 84%;
+  min-height: 26vw;
+  padding: 3vw 4.5vw;
+  font-size: 2.1vw;
 }
 
 /** ------------------------------
@@ -1629,6 +2014,15 @@ img {
   width: 34.9vw;
 }
 
+.staffTwitterCaption {
+  font-size: 2.6vw;
+}
+
+.staffTwitterCaption strong {
+  display: block;
+  font-size: 3.4vw;
+}
+
 .staffTwitter a {
   margin-top: -11%;
   margin-left: 11.8%;
@@ -1668,6 +2062,18 @@ img {
   margin-bottom: 20px;
 }
 
+#calendar h2 .titleGraphic__en {
+  font-size: 8vw;
+}
+
+#calendar h2 .titleGraphic__accent {
+  font-size: 20.8vw;
+}
+
+#calendar h2 .titleGraphic__ja {
+  font-size: 3.2vw;
+}
+
 
 /** ------------------------------------------------------------
  * #cat
@@ -1678,6 +2084,11 @@ img {
        -o-background-size: 100% auto;
           background-size: 100% auto;
   overflow: hidden;
+}
+
+#cat .sectionTitle .titleGraphic__en {
+  font-size: 7vw;
+  letter-spacing: 0.1em;
 }
 
 .catList {
@@ -1871,6 +2282,25 @@ img {
           background-size: 100% 100%;
 }
 
+#system .sectionTitle .titleGraphic__en {
+  font-size: 7vw;
+}
+
+#system .sectionTitle .titleGraphic__accent {
+  font-size: 18.2vw;
+}
+
+#system .sectionTitle .titleGraphic__ja {
+  font-size: 3vw;
+}
+
+#system .sectionTitle__sub {
+  margin-top: 2vw;
+  font-size: 3.4vw;
+  font-weight: bold;
+  color: #5c370c;
+}
+
 .systemDetail {
   margin-top: 2vw;
   margin-bottom: 6.6vw;
@@ -1914,6 +2344,20 @@ img {
   width: 100%;
 }
 
+.systemLabel {
+  padding: 1.2vw 4vw;
+  font-size: 3.6vw;
+}
+
+.systemValue {
+  font-size: 7vw;
+}
+
+.systemDetail__itemName .systemLabel {
+  padding: 1vw 3vw;
+  font-size: 3.4vw;
+}
+
 .systemDetail p {
   font-size: 90%;
 }
@@ -1942,7 +2386,22 @@ img {
   overflow: hidden;
 }
 
+#rule .sectionTitle .titleGraphic__en {
+  font-size: 7vw;
+}
+
+#rule .sectionTitle .titleGraphic__accent {
+  font-size: 18.2vw;
+}
+
+#rule .sectionTitle .titleGraphic__ja {
+  font-size: 3vw;
+}
+
 #rule .sectionTitle__sub {
+  margin-top: 2vw;
+  font-size: 3.4vw;
+  font-weight: bold;
   color: #5c370c;
 }
 
@@ -1966,6 +2425,11 @@ img {
   width: 100%;
 }
 
+.ruleCaption {
+  margin-top: 1.5vw;
+  font-size: 3vw;
+}
+
 .ruleMessage {
   padding-top: 6vw;
   text-align: center;
@@ -1974,6 +2438,18 @@ img {
 .ruleMessage img {
   width: auto;
   max-width: 100%;
+}
+
+.ruleMessageText {
+  padding: 0 4vw;
+  font-size: 3.4vw;
+  line-height: 1.8;
+}
+
+.ruleMessageText::before,
+.ruleMessageText::after {
+  font-size: 6vw;
+  vertical-align: middle;
 }
 
 /** ------------------------------------------------------------
@@ -2219,6 +2695,14 @@ img {
 
 .accessTitle img {
   width: 51%;
+}
+
+.accessTitle .titleGraphic__en {
+  font-size: 7vw;
+}
+
+.accessTitle .titleGraphic__ja {
+  font-size: 3vw;
 }
 
 address {
@@ -2622,6 +3106,11 @@ footer a {
 
 .copy img {
   max-width: 100%;
+}
+
+.copy .footerCopyText {
+  font-size: 2.6vw;
+  letter-spacing: 0.02em;
 }
 
 /** ------------------------------

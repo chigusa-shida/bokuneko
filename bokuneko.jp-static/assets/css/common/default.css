@@ -1,6 +1,30 @@
 @charset "utf-8";
 
 /** --------------------------------------------------------------------------------
+ * 見出し・装飾用ウェブフォント（Google Fonts: M PLUS Rounded 1c をサブセット化して自己ホスト）
+ * 元のテキスト画像で使われていた丸ゴシック系の書体に近いものを採用
+ */
+@font-face {
+  font-family: 'M PLUS Rounded 1c';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../../fonts/mplus-rounded-1c-700.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: 'M PLUS Rounded 1c';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("../../fonts/mplus-rounded-1c-900.woff2") format("woff2");
+}
+
+.headingFont {
+  font-family: 'M PLUS Rounded 1c', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+}
+
+/** --------------------------------------------------------------------------------
  * html5doctor.com Reset Stylesheet
  * v1.6.1
  * Last Updated: 2010-09-17
