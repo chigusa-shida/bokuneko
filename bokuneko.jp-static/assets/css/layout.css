@@ -277,7 +277,7 @@ img {
 .header--index {
   height: 100vh;
   min-height: 650px;
-  background: url("../images/pc/index/header/mainImage.jpg") no-repeat 50% 0 fixed;
+  background: url("../images/pc/index/header/fv-pc.webp") no-repeat 50% 0 fixed;
 }
 
 @media only screen and (min-width: 1200px) {

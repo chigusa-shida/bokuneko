@@ -39,7 +39,10 @@
       "Bash(awk 'NR==1521,NR==2948' assets/css/layout.css)",
       "Bash(awk 'NR>1521' assets/css/layout.css)",
       "Bash(git ls-tree *)",
-      "Bash(git restore *)"
+      "Bash(git restore *)",
+      "Bash(find \"C:/Users/chigu/AppData/Local/Temp/claude\" -newermt \"-15 minutes\" -type f \\\\\\( -iname \"*.png\" -o -iname \"*.jpg\" -o -iname \"*.jpeg\" \\\\\\) 2>/dev/null | head -20)",
+      "Bash(find \"C:/Users/chigu/AppData/Local/Temp\" -newermt \"-20 minutes\" -type f \\\\\\( -iname \"*.png\" -o -iname \"*.jpg\" -o -iname \"*.jpeg\" \\\\\\) 2>/dev/null | head -40)",
+      "Bash(grep -v \"node_modules\\\\|AppData\\\\\\\\\\\\\\\\Local\\\\\\\\\\\\\\\\Microsoft\")"
     ]
   }
 }
