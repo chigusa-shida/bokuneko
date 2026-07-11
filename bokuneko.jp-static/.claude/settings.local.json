@@ -42,7 +42,17 @@
       "Bash(git restore *)",
       "Bash(find \"C:/Users/chigu/AppData/Local/Temp/claude\" -newermt \"-15 minutes\" -type f \\\\\\( -iname \"*.png\" -o -iname \"*.jpg\" -o -iname \"*.jpeg\" \\\\\\) 2>/dev/null | head -20)",
       "Bash(find \"C:/Users/chigu/AppData/Local/Temp\" -newermt \"-20 minutes\" -type f \\\\\\( -iname \"*.png\" -o -iname \"*.jpg\" -o -iname \"*.jpeg\" \\\\\\) 2>/dev/null | head -40)",
-      "Bash(grep -v \"node_modules\\\\|AppData\\\\\\\\\\\\\\\\Local\\\\\\\\\\\\\\\\Microsoft\")"
+      "Bash(grep -v \"node_modules\\\\|AppData\\\\\\\\\\\\\\\\Local\\\\\\\\\\\\\\\\Microsoft\")",
+      "Bash(awk 'NR>=180 && NR<=1250' assets/css/layout.css)",
+      "Bash(awk 'NR>=1500 && NR<=1620' assets/css/layout.css)",
+      "Bash(awk 'NR<=1250' assets/css/layout.css)",
+      "Bash(cp assets/images/pc/common/header/logo.png assets/images/logo-header.png)",
+      "Bash(cp assets/images/sp/common/header/twitter.png assets/images/icon-twitter-header.png)",
+      "Bash(cp assets/images/sp/common/header/line.png assets/images/icon-line-header.png)",
+      "Bash(cp assets/images/sp/common/footer/twitter.png assets/images/icon-twitter-footer.png)",
+      "Bash(cp assets/images/sp/common/footer/line.png assets/images/icon-line-footer.png)",
+      "Bash(rm -f assets/images/pc/common/header/logo.png assets/images/sp/common/header/logo.png assets/images/pc/common/header/twitter.png assets/images/sp/common/header/twitter.png assets/images/pc/common/header/line.png assets/images/sp/common/header/line.png assets/images/pc/common/footer/twitter.png assets/images/sp/common/footer/twitter.png assets/images/pc/common/footer/line.png assets/images/sp/common/footer/line.png assets/images/pc/common/under/bg.png assets/images/sp/common/under/bg.png assets/images/pc/common/under/clipboard.png assets/images/sp/common/under/clipboard.png assets/images/pc/index/concept/bg.png assets/images/sp/index/concept/bg.png assets/images/pc/index/system/qa/A.png assets/images/pc/index/system/qa/Q.png assets/images/pc/index/concept/mainSlide/bg.png assets/images/pc/index/concept/subSlide/bg.png assets/images/pc/index/header/catchCopy.png assets/images/sp/index/header/catchCopy.png assets/images/pc/index/system/deco.png assets/images/sp/index/system/deco.png assets/images/pc/index/system/qa/title.png assets/images/sp/index/system/qa/title.png assets/images/pc/index/access/title.png assets/images/sp/index/access/title.png)",
+      "Bash(rmdir assets/images/pc/index/system/qa)"
     ]
   }
 }

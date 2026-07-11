@@ -336,6 +336,7 @@ img {
   top: 40px;
   right: 0;
   left: 0;
+  width: 280px;
 }
 
 .headerSeal {
@@ -437,6 +438,10 @@ img {
   float: left;
 }
 
+.headerSNS img {
+  width: 50px;
+}
+
 .headerSNS__item + .headerSNS__item {
   padding-left: 20px;
 }
@@ -470,7 +475,7 @@ img {
  * #concept
  */
 #concept {
-  background: url("../images/pc/index/concept/bg3.png") no-repeat 50% 0, url("../images/pc/index/concept/bg2.png") no-repeat 50% 0, #9abf42 url("../images/pc/index/concept/bg.png") repeat 50% 0;
+  background: url("../images/pc/index/concept/bg3.png") no-repeat 50% 0, url("../images/pc/index/concept/bg2.png") no-repeat 50% 0, #9abf42 url("../images/bg-stripe-concept.png") repeat 50% 0;
 }
 
 #concept .sectionInner {
@@ -627,7 +632,7 @@ img {
   z-index: 2;
   width: 774px;
   height: 774px;
-  background: url("../images/pc/index/concept/mainSlide/bg.png") no-repeat 50% 0;
+  background: url("../images/concept-mainslide-bg.png") no-repeat 50% 0;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -659,7 +664,7 @@ img {
   z-index: 1;
   width: 567px;
   height: 567px;
-  background: url("../images/pc/index/concept/subSlide/bg.png") no-repeat 50% 0;
+  background: url("../images/concept-subslide-bg.png") no-repeat 50% 0;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -682,7 +687,7 @@ img {
 #calendar {
   padding: 50px 0;
   min-width: 1000px;
-  background: url("../images/pc/common/under/bg.png") repeat 50% 0;
+  background: url("../images/bg-stripe-under.png") repeat 50% 0;
 }
 
 #calendar h2 {
@@ -985,7 +990,7 @@ img {
  */
 #rule {
   padding: 100px 0 440px;
-  background: url("../images/pc/common/under/bg.png") repeat 50% 0;
+  background: url("../images/bg-stripe-under.png") repeat 50% 0;
 }
 
 #rule .sectionTitle__sub {
@@ -1076,6 +1081,10 @@ img {
   font-weight: bold;
 }
 
+.windowTitle--qa img {
+  width: 151px;
+}
+
 .remodalClose {
   border: none;
   position: absolute;
@@ -1112,14 +1121,14 @@ img {
 
 .qaList__a::before {
   margin-right: 10px;
-  content: url("../images/pc/index/system/qa/A.png");
+  content: url("../images/qa-a.png");
   display: inline-block;
   vertical-align: middle;
 }
 
 .qaList__q::before {
   margin-right: 10px;
-  content: url("../images/pc/index/system/qa/Q.png");
+  content: url("../images/qa-q.png");
   display: inline-block;
   vertical-align: middle;
 }
@@ -1224,6 +1233,10 @@ img {
   padding: 0 0 72px;
 }
 
+.accessTitle img {
+  width: 287px;
+}
+
 .accessTitle .titleGraphic__en {
   font-size: 34px;
 }
@@ -1250,7 +1263,7 @@ address {
  * 下層
  */
 .under {
-  background: url("../images/pc/common/under/bg.png") repeat 50% 0;
+  background: url("../images/bg-stripe-under.png") repeat 50% 0;
 }
 
 .frame {
@@ -1280,7 +1293,7 @@ address {
   display: block;
   width: 56.22%;
   height: 65px;
-  background: url("../images/pc/common/under/clipboard.png") no-repeat 50% 0;
+  background: url("../images/clipboard.png") no-repeat 50% 0;
   -webkit-background-size: 100% 100%;
      -moz-background-size: 100% 100%;
           background-size: 100% 100%;
@@ -1539,6 +1552,10 @@ footer a {
 
 .footerSNS__item {
   float: left;
+}
+
+.footerSNS__item img {
+  width: 50px;
 }
 
 .footerSNS__item + .footerSNS__item {
@@ -1818,7 +1835,7 @@ img {
 #concept {
   width: 100%;
   position: relative;
-  background: #9abf42 url("../images/sp/index/concept/bg.png") repeat 50% 0;
+  background: #9abf42 url("../images/bg-stripe-concept.png") repeat 50% 0;
   overflow: hidden;
 }
 
@@ -1905,7 +1922,7 @@ img {
   z-index: 2;
   width: 73.7vw;
   height: 73.7vw;
-  background: url("../images/pc/index/concept/mainSlide/bg.png") no-repeat 50% 0;
+  background: url("../images/concept-mainslide-bg.png") no-repeat 50% 0;
   -webkit-background-size: 100% 100%;
      -moz-background-size: 100% 100%;
           background-size: 100% 100%;
@@ -1936,7 +1953,7 @@ img {
   right: -12%;
   width: 80vw;
   height: 80vw;
-  background: url("../images/pc/index/concept/subSlide/bg.png") no-repeat 50% 0;
+  background: url("../images/concept-subslide-bg.png") no-repeat 50% 0;
   -webkit-background-size: 100% 100%;
      -moz-background-size: 100% 100%;
           background-size: 100% 100%;
@@ -2055,7 +2072,7 @@ img {
  * #calendar
  */
 #calendar {
-  background: url("../images/pc/common/under/bg.png") repeat 50% 0;
+  background: url("../images/bg-stripe-under.png") repeat 50% 0;
 }
 
 #calendar h2 {
@@ -2379,7 +2396,7 @@ img {
  */
 #rule {
   padding-bottom: 130px;
-  background: url("../images/sp/common/under/bg.png") repeat 0 0;
+  background: url("../images/bg-stripe-under.png") repeat 0 0;
   -webkit-background-size: 15% auto;
      -moz-background-size: 15% auto;
           background-size: 15% auto;
@@ -2539,7 +2556,7 @@ img {
   margin-right: 10px;
   width: 10vw;
   height: 8.4vw;
-  background: url("../images/pc/index/system/qa/A.png") no-repeat 0 0;
+  background: url("../images/qa-a.png") no-repeat 0 0;
   -webkit-background-size: 100% 100%;
      -moz-background-size: 100% 100%;
           background-size: 100% 100%;
@@ -2552,7 +2569,7 @@ img {
   margin-right: 10px;
   width: 10vw;
   height: 8.6vw;
-  background: url("../images/pc/index/system/qa/Q.png") no-repeat 0 0;
+  background: url("../images/qa-q.png") no-repeat 0 0;
   -webkit-background-size: 100% 100%;
      -moz-background-size: 100% 100%;
           background-size: 100% 100%;
@@ -2725,7 +2742,7 @@ address {
  * 下層
  */
 .under {
-  background: url("../images/sp/common/under/bg.png") repeat 0 0;
+  background: url("../images/bg-stripe-under.png") repeat 0 0;
   -webkit-background-size: 15% auto;
      -moz-background-size: 15% auto;
           background-size: 15% auto;
@@ -2756,7 +2773,7 @@ address {
   left: 40px;
   display: block;
   height: 60px;
-  background: url("../images/sp/common/under/clipboard.png") no-repeat 50% 0;
+  background: url("../images/clipboard.png") no-repeat 50% 0;
   -webkit-background-size: 100% 100%;
      -moz-background-size: 100% 100%;
           background-size: 100% 100%;
