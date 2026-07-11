@@ -29,7 +29,7 @@
 
 /* 見出し（英単語+colored accent文字+日本語サブタイトル） */
 .titleGraphic {
-  font-family: 'M PLUS Rounded 1c', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
   color: #5c370c;
   line-height: 1.05;
 }
@@ -104,7 +104,7 @@
   min-height: 1.6em;
   border-radius: 45% 55% 52% 48% / 48% 45% 55% 52%;
   color: #fff;
-  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   font-weight: 900;
 }
 
@@ -125,7 +125,7 @@
   text-align: center;
   background-color: #fff;
   border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   color: #5c370c;
 }
 
@@ -148,7 +148,7 @@
 
 /* スタッフTwitter見出し */
 .staffTwitterCaption {
-  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   font-weight: 700;
   color: #5c370c;
   text-align: center;
@@ -161,7 +161,7 @@
 /* ルール説明文の装飾カッコ */
 .ruleMessageText {
   position: relative;
-  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   font-weight: 700;
   color: #5c370c;
   text-align: center;
@@ -186,7 +186,7 @@
 .ruleCaption {
   position: relative;
   z-index: 2;
-  font-family: 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
   font-weight: 700;
   color: #5c370c;
   text-align: center;
@@ -204,7 +204,7 @@
 .ruleCard__number {
   position: absolute;
   z-index: 3;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', sans-serif;
   font-weight: 700;
   color: #5c370c;
   line-height: 1;
@@ -234,7 +234,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4em;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', sans-serif;
   font-weight: 700;
   letter-spacing: 0.2em;
   color: #5c370c;
@@ -268,7 +268,7 @@
   border-radius: 999px;
   background-color: #ff8094;
   color: #fff;
-  font-family: 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -278,7 +278,7 @@
   display: inline-block;
   background-color: #5c370c;
   color: #fff;
-  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   font-weight: 700;
   border-radius: 999px;
 }
@@ -286,14 +286,14 @@
 /* システムの価格・時間などの数値表記 */
 .systemValue {
   display: inline-block;
-  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   font-weight: 900;
   color: #5c370c;
 }
 
 /* フッターコピーライト */
 .footerCopyText {
-  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   font-weight: 700;
   color: inherit;
 }
@@ -323,7 +323,7 @@ body {
   color: #5c370c;
   background-color: #fff;
   font-size: 16px;
-  font-family: "メイリオ","ヒラギノ角ゴ Pro W3","ＭＳ Ｐゴシック",sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ","ヒラギノ角ゴ Pro W3","ＭＳ Ｐゴシック",sans-serif;
   overflow: hidden;
 }
 
@@ -467,7 +467,7 @@ img {
   padding: 10px;
   position: relative;
   display: block;
-  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   font-weight: 700;
   font-size: 15px;
   color: #5c370c;
@@ -1510,7 +1510,7 @@ address {
 .form input[type="file"],
 .form textarea {
   font-size: 16px;
-  font-family: "メイリオ","ヒラギノ角ゴ Pro W3","ＭＳ Ｐゴシック",sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ","ヒラギノ角ゴ Pro W3","ＭＳ Ｐゴシック",sans-serif;
 }
 
 .form input[type="text"],
@@ -1560,7 +1560,7 @@ address {
      -moz-appearance: none;
           appearance: none;
   font-size: 16px;
-  font-family: "メイリオ","ヒラギノ角ゴ Pro W3","ＭＳ Ｐゴシック",sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ","ヒラギノ角ゴ Pro W3","ＭＳ Ｐゴシック",sans-serif;
   letter-spacing: 2px;
   cursor: pointer;
   -webkit-transition: all 0.4s ease;
@@ -1714,7 +1714,7 @@ body {
   color: #5c370c;
   background-color: #fff;
   font-size: 3vw;
-  font-family: Helvetica, Arial, Roboto, "Droid Sans", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', Helvetica, Arial, Roboto, "Droid Sans", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
   letter-spacing: -0.001em;
   overflow: visible;
 }
@@ -1849,7 +1849,7 @@ img {
 .headerNav__item a {
   display: block;
   padding: 3.5vw 0;
-  font-family: 'M PLUS Rounded 1c', "メイリオ", sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   font-weight: 700;
   font-size: 4vw;
   color: #fff;
@@ -3083,7 +3083,7 @@ address {
 .form input[type="text"],
 .form input[type="file"],
 .form textarea {
-  font-family: "メイリオ","ヒラギノ角ゴ Pro W3","ＭＳ Ｐゴシック",sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ","ヒラギノ角ゴ Pro W3","ＭＳ Ｐゴシック",sans-serif;
 }
 
 .form input[type="text"],
@@ -3143,7 +3143,7 @@ address {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  font-family: "メイリオ","ヒラギノ角ゴ Pro W3","ＭＳ Ｐゴシック",sans-serif;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ","ヒラギノ角ゴ Pro W3","ＭＳ Ｐゴシック",sans-serif;
   letter-spacing: 2px;
   cursor: pointer;
   -webkit-transition: all 0.4s ease;
