@@ -25,6 +25,68 @@
 }
 
 /** --------------------------------------------------------------------------------
+ * Google Fonts: Fredoka（可変フォント、300〜700をサブセット化して自己ホスト）
+ */
+@font-face {
+  font-family: 'Fredoka';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../../fonts/fredoka-variable.woff2") format("woff2");
+}
+
+.fredokaFont {
+  font-family: 'Fredoka', "メイリオ", sans-serif;
+}
+
+/** --------------------------------------------------------------------------------
+ * Google Fonts: Zen Maru Gothic（全ウェイトをサブセット化して自己ホスト）
+ */
+@font-face {
+  font-family: 'Zen Maru Gothic';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../../fonts/zen-maru-gothic-300.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: 'Zen Maru Gothic';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../../fonts/zen-maru-gothic-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: 'Zen Maru Gothic';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../../fonts/zen-maru-gothic-500.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: 'Zen Maru Gothic';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../../fonts/zen-maru-gothic-700.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: 'Zen Maru Gothic';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("../../fonts/zen-maru-gothic-900.woff2") format("woff2");
+}
+
+.zenMaruFont {
+  font-family: 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+}
+
+/** --------------------------------------------------------------------------------
  * html5doctor.com Reset Stylesheet
  * v1.6.1
  * Last Updated: 2010-09-17

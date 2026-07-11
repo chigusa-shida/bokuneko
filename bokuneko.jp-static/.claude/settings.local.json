@@ -52,7 +52,21 @@
       "Bash(cp assets/images/sp/common/footer/twitter.png assets/images/icon-twitter-footer.png)",
       "Bash(cp assets/images/sp/common/footer/line.png assets/images/icon-line-footer.png)",
       "Bash(rm -f assets/images/pc/common/header/logo.png assets/images/sp/common/header/logo.png assets/images/pc/common/header/twitter.png assets/images/sp/common/header/twitter.png assets/images/pc/common/header/line.png assets/images/sp/common/header/line.png assets/images/pc/common/footer/twitter.png assets/images/sp/common/footer/twitter.png assets/images/pc/common/footer/line.png assets/images/sp/common/footer/line.png assets/images/pc/common/under/bg.png assets/images/sp/common/under/bg.png assets/images/pc/common/under/clipboard.png assets/images/sp/common/under/clipboard.png assets/images/pc/index/concept/bg.png assets/images/sp/index/concept/bg.png assets/images/pc/index/system/qa/A.png assets/images/pc/index/system/qa/Q.png assets/images/pc/index/concept/mainSlide/bg.png assets/images/pc/index/concept/subSlide/bg.png assets/images/pc/index/header/catchCopy.png assets/images/sp/index/header/catchCopy.png assets/images/pc/index/system/deco.png assets/images/sp/index/system/deco.png assets/images/pc/index/system/qa/title.png assets/images/sp/index/system/qa/title.png assets/images/pc/index/access/title.png assets/images/sp/index/access/title.png)",
-      "Bash(rmdir assets/images/pc/index/system/qa)"
+      "Bash(rmdir assets/images/pc/index/system/qa)",
+      "Bash(git branch *)",
+      "Bash(git reset *)",
+      "Bash(git checkout *)",
+      "Bash(git push *)",
+      "Bash(ls -la C:/Users/chigu/AppData/Local/Temp/claude/D--Desktop-test-bokuneko-jp-static-bokuneko-jp-static/b21b5ac0-b2b6-461b-839c-64db912c5bab/scratchpad)",
+      "Bash(wc -m charset_full.txt)",
+      "Bash(node -e \"console.log\\(require\\('fs'\\).readFileSync\\('charset_full.txt','utf8'\\).length\\)\")",
+      "Bash(mkdir -p C:/Users/chigu/AppData/Local/Temp/claude/D--Desktop-test-bokuneko-jp-static-bokuneko-jp-static/b21b5ac0-b2b6-461b-839c-64db912c5bab/scratchpad)",
+      "Bash(cp charset_full.txt C:/Users/chigu/AppData/Local/Temp/claude/D--Desktop-test-bokuneko-jp-static-bokuneko-jp-static/b21b5ac0-b2b6-461b-839c-64db912c5bab/scratchpad/charset_full.txt)",
+      "Bash(curl -sk --max-time 15 -A 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36' -w '\\\\nHTTP_CODE:%{http_code}\\\\n' 'https://fonts.googleapis.com/css2?family=Fredoka&text=ABC')",
+      "Bash(curl -sk --max-time 15 -A 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36' -w '\\\\nHTTP_CODE:%{http_code}\\\\n' 'https://fonts.googleapis.com/css2?family=Fredoka+One&text=ABC')",
+      "Bash(md5sum assets/fonts/fredoka-*.woff2)",
+      "Bash(mv assets/fonts/fredoka-300.woff2 assets/fonts/fredoka-variable.woff2)",
+      "Bash(rm -f assets/fonts/fredoka-400.woff2 assets/fonts/fredoka-500.woff2 assets/fonts/fredoka-600.woff2 assets/fonts/fredoka-700.woff2)"
     ]
   }
 }
