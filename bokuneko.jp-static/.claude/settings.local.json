@@ -69,7 +69,8 @@
       "Bash(rm -f assets/fonts/fredoka-400.woff2 assets/fonts/fredoka-500.woff2 assets/fonts/fredoka-600.woff2 assets/fonts/fredoka-700.woff2)",
       "Bash(git merge *)",
       "Bash(git stash *)",
-      "mcp__Claude_Browser__preview_start"
+      "mcp__Claude_Browser__preview_start",
+      "Bash(xargs sed -i 's/logo-header\\\\.png/bokuneko-logo.webp/g')"
     ]
   }
 }

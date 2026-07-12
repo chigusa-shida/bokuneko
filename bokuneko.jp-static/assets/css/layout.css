@@ -395,16 +395,21 @@ img {
   bottom: 115px;
   left: 0;
   width: auto;
+  max-width: 600px;
 }
 
 .catchCopy {
-  margin: auto;
-  padding-right: 130px;
   position: absolute;
-  top: 40px;
-  right: 0;
-  left: 0;
-  width: 280px;
+  top: 36%;
+  left: 50px;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.6;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .headerSeal {
@@ -1765,9 +1770,16 @@ img {
 
 .catchCopy {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
+  top: 36%;
+  left: 6%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+  font-weight: 700;
+  font-size: 4.2vw;
+  line-height: 1.6;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .headerSeal {
