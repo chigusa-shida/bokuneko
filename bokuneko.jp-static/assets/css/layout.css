@@ -108,7 +108,7 @@
   position: relative;
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   font-weight: 700;
-  color: #5c370c;
+  color: #383838;
   text-align: center;
 }
 
@@ -116,7 +116,7 @@
 .ruleMessageText::after {
   font-family: Georgia, serif;
   font-weight: 700;
-  color: #5c370c;
+  color: #383838;
 }
 
 .ruleMessageText::before {
@@ -133,7 +133,7 @@
   z-index: 2;
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
   font-weight: 700;
-  color: #5c370c;
+  color: #383838;
   text-align: center;
 }
 
@@ -182,7 +182,7 @@
   font-family: 'Fredoka', 'Zen Maru Gothic', sans-serif;
   font-weight: 700;
   letter-spacing: 0.2em;
-  color: #5c370c;
+  color: #383838;
   white-space: nowrap;
 }
 
@@ -233,7 +233,7 @@
   display: inline-block;
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   font-weight: 900;
-  color: #5c370c;
+  color: #383838;
 }
 
 /* フッターコピーライト */
@@ -631,11 +631,17 @@ img {
   font-weight: 700;
   line-height: 1.9;
   text-align: left;
+  min-height: 3.8em;
 }
 
 .subSlideText__list li {
   position: relative;
   padding-left: 1.1em;
+  display: none;
+}
+
+.subSlideText__list li:first-child {
+  display: block;
 }
 
 .subSlideText__list li::before {
@@ -677,7 +683,7 @@ img {
   font-size: 26px;
   line-height: 30px;
   text-align: center;
-  color: #5c370c;
+  color: #383838;
 }
 
 #concept .bx-wrapper .bx-prev {
@@ -1666,7 +1672,7 @@ footer a {
 body {
   min-width: 320px;
   line-height: 1.5;
-  color: #5c370c;
+  color: #383838;
   background-color: #fff;
   font-size: 3vw;
   font-family: 'Fredoka', 'Zen Maru Gothic', Helvetica, Arial, Roboto, "Droid Sans", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
@@ -1990,11 +1996,17 @@ img {
   font-weight: 700;
   line-height: 1.7;
   text-align: left;
+  min-height: 3.4em;
 }
 
 .subSlideText__list li {
   position: relative;
   padding-left: 1.1em;
+  display: none;
+}
+
+.subSlideText__list li:first-child {
+  display: block;
 }
 
 .subSlideText__list li::before {

@@ -130,14 +130,35 @@
         <main>
           <script>
             $(document).ready(function(){
-              $('.bxslider').bxSlider({
+              // mainSlideの写真とsubSlideのテキストを連動させる
+              var syncSubSlide = function(index) {
+                var $items = $('.subSlideText__list li');
+                if (!$items.length) return;
+                var i = ((index % $items.length) + $items.length) % $items.length;
+                $items.stop(true, true).hide();
+                $items.eq(i).fadeIn(300);
+              };
+
+              var slider = $('.bxslider').bxSlider({
                 auto: "true",
                 pause: 5000,
                 speed: 200,
                 useCSS: false,
                 controls: true,
                 prevText: "＜",
-                nextText: "＞"
+                nextText: "＞",
+                onSliderLoad: function(currentIndex){
+                  syncSubSlide(currentIndex);
+                },
+                onSlideBefore: function($slideElement, oldIndex, newIndex){
+                  syncSubSlide(newIndex);
+                },
+                onSlideAfter: function(){
+                  // フリックや矢印・ドット操作の直後に自動送りが重なって
+                  // 順番が飛ばないよう、移動のたびに自動送りタイマーをリセットする
+                  slider.stopAuto();
+                  slider.startAuto();
+                }
               });
             });
           </script>
