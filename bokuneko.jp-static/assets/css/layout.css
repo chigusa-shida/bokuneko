@@ -34,7 +34,6 @@
   line-height: 1.05;
 }
 
-.titleGraphic--concept,
 .titleGraphic--system,
 .titleGraphic--rule,
 .titleGraphic--calendar,
@@ -44,7 +43,7 @@
   justify-content: center;
 }
 
-.titleGraphic--concept, .titleGraphic--cat {
+.titleGraphic--cat {
   justify-content: flex-start;
 }
 
@@ -518,7 +517,7 @@ img {
 }
 
 #concept .sectionInner {
-  height: 1554px;
+  padding-bottom: 100px;
 }
 
 #concept .sectionInner::before {
@@ -540,28 +539,24 @@ img {
   padding-top: 63px;
   position: relative;
   z-index: 20;
-}
-
-#concept .sectionTitle .titleGraphic__en {
-  font-size: 46px;
-}
-
-#concept .sectionTitle .titleGraphic__accent {
-  font-size: 120px;
-}
-
-#concept .sectionTitle .titleGraphic__ja {
-  font-size: 15px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 800;
 }
 
 /** ------------------------------
- * スライド
+ * スライド（.conceptSlidesを位置の基準にする）
  */
+.conceptSlides {
+  position: relative;
+  height: 830px;
+}
+
 .mainSlide {
   padding: 12px;
   position: absolute;
-  right: -142px;
-  top: 99px;
+  right: -105px;
+  top: 0;
   z-index: 2;
   width: 774px;
   height: 774px;
@@ -592,11 +587,11 @@ img {
      -moz-border-radius: 1000px;
           border-radius: 1000px;
   position: absolute;
-  left: -53px;
-  top: 556px;
+  left: -97px;
+  top: 320px;
   z-index: 1;
-  width: 567px;
-  height: 567px;
+  width: 500px;
+  height: 500px;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -616,7 +611,7 @@ img {
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 0 45px;
+  padding: 0 43px;
   box-sizing: border-box;
   text-align: center;
   color: #383838;
@@ -627,27 +622,19 @@ img {
   margin: 0 0 20px;
   padding: 0;
   list-style: none;
-  font-size: 18px;
+  font-size: 41px;
   font-weight: 700;
   line-height: 1.9;
-  text-align: left;
-  min-height: 3.8em;
+  text-align: center;
 }
 
 .subSlideText__list li {
   position: relative;
-  padding-left: 1.1em;
   display: none;
 }
 
 .subSlideText__list li:first-child {
   display: block;
-}
-
-.subSlideText__list li::before {
-  content: "・";
-  position: absolute;
-  left: 0;
 }
 
 .subSlideText__note {
@@ -1866,18 +1853,9 @@ img {
 
 #concept .sectionTitle {
   padding-top: 47px;
-}
-
-#concept .sectionTitle .titleGraphic__en {
-  font-size: 9vw;
-}
-
-#concept .sectionTitle .titleGraphic__accent {
-  font-size: 23.4vw;
-}
-
-#concept .sectionTitle .titleGraphic__ja {
-  font-size: 3.4vw;
+  text-align: center;
+  font-size: max(20px, 5.5vw);
+  font-weight: 800;
 }
 
 .sectionTitle img {
@@ -1910,16 +1888,21 @@ img {
 }
 
 #concept .sectionInner {
-  height: 185vw;
+  padding-bottom: 10vw;
 }
 
 /** ------------------------------
- * スライド
+ * スライド（.conceptSlidesを位置の基準にする）
  */
+.conceptSlides {
+  position: relative;
+  height: calc(46vw + max(224px, 60vw));
+}
+
 .mainSlide {
   padding: 7px;
   position: absolute;
-  top: 6vw;
+  top: 0;
   right: -7vw;
   z-index: 2;
   width: 73.7vw;
@@ -1952,7 +1935,7 @@ img {
 .subSlide {
   padding: 7px;
   position: absolute;
-  top: 58vw;
+  top: 46vw;
   left: -8vw;
   width: max(224px, 60vw);
   height: max(224px, 60vw);
@@ -1992,27 +1975,19 @@ img {
   margin: 0 0 2vw;
   padding: 0;
   list-style: none;
-  font-size: max(11px, 2.5vw);
+  font-size: max(14px, 3.4vw);
   font-weight: 700;
   line-height: 1.7;
-  text-align: left;
-  min-height: 3.4em;
+  text-align: center;
 }
 
 .subSlideText__list li {
   position: relative;
-  padding-left: 1.1em;
   display: none;
 }
 
 .subSlideText__list li:first-child {
   display: block;
-}
-
-.subSlideText__list li::before {
-  content: "・";
-  position: absolute;
-  left: 0;
 }
 
 .subSlideText__note {
@@ -2059,14 +2034,6 @@ img {
 /** ------------------------------
  * スタッフ
  */
-.conceptDeco {
-  position: absolute;
-  top: 122vw;
-  left: 0;
-  width: 100%;
-  z-index: 10;
-}
-
 /** ------------------------------------------------------------
  * #calendar
  */
