@@ -101,6 +101,74 @@
   background-color: #ff8094;
 }
 
+/* スライド操作UI（JSでconceptSlides直下へ移動し、下・中央に表示） */
+.conceptSlides .bx-controls {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 24px;
+  text-align: center;
+  z-index: 5;
+}
+
+.conceptSlides .bx-pager {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 0;
+  line-height: 0;
+}
+
+.conceptSlides .bx-pager-item {
+  display: inline-block;
+  font-size: 0;
+  line-height: 0;
+}
+
+.conceptSlides .bx-pager.bx-default-pager a {
+  margin: 0 12px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 3px solid #fff;
+  -webkit-border-radius: 100px;
+     -moz-border-radius: 100px;
+          border-radius: 100px;
+  background-color: #5c370c;
+  text-indent: -9999px;
+}
+
+.conceptSlides .bx-pager.bx-default-pager a:hover,
+.conceptSlides .bx-pager.bx-default-pager a.active,
+.conceptSlides .bx-pager.bx-default-pager a:focus {
+  background-color: #ff8090;
+}
+
+.conceptSlides .bx-controls-direction a {
+  position: absolute;
+  top: 50%;
+  margin-top: -15px;
+  width: 30px;
+  height: 30px;
+  background: none;
+  text-indent: 0;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 30px;
+  text-align: center;
+  color: #383838;
+  z-index: 6;
+}
+
+.conceptSlides .bx-prev {
+  left: calc(50% - 130px);
+}
+
+.conceptSlides .bx-next {
+  right: calc(50% - 130px);
+}
+
 
 /* ルール説明文の装飾カッコ */
 .ruleMessageText {
@@ -647,38 +715,6 @@ img {
   font-size: 20px;
   font-weight: 700;
   line-height: 1.7;
-}
-
-/* pager */
-.bx-pager {
-  position: absolute;
-  top: auto;
-  bottom: -55px;
-}
-
-/* 左右送りの＜＞矢印（ドットの左右に配置） */
-#concept .bx-wrapper .bx-controls-direction a {
-  top: auto;
-  bottom: -62px;
-  margin-top: 0;
-  width: 30px;
-  height: 30px;
-  background: none;
-  text-indent: 0;
-  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
-  font-weight: 700;
-  font-size: 26px;
-  line-height: 30px;
-  text-align: center;
-  color: #383838;
-}
-
-#concept .bx-wrapper .bx-prev {
-  left: calc(50% - 130px);
-}
-
-#concept .bx-wrapper .bx-next {
-  right: calc(50% - 130px);
 }
 
 /** ------------------------------------------------------------
@@ -1896,7 +1932,7 @@ img {
  */
 .conceptSlides {
   position: relative;
-  height: calc(46vw + max(224px, 60vw));
+  height: calc(40vw + clamp(224px, 54vw, 500px));
 }
 
 .mainSlide {
@@ -1905,8 +1941,8 @@ img {
   top: 0;
   right: -7vw;
   z-index: 2;
-  width: 73.7vw;
-  height: 73.7vw;
+  width: min(73.7vw, 650px);
+  height: min(73.7vw, 650px);
   -webkit-background-size: 100% 100%;
      -moz-background-size: 100% 100%;
           background-size: 100% 100%;
@@ -1935,10 +1971,10 @@ img {
 .subSlide {
   padding: 7px;
   position: absolute;
-  top: 46vw;
+  top: 40vw;
   left: -8vw;
-  width: max(224px, 60vw);
-  height: max(224px, 60vw);
+  width: clamp(224px, 54vw, 500px);
+  height: clamp(224px, 54vw, 500px);
   -webkit-border-radius: 1000px;
   -moz-border-radius: 1000px;
   border-radius: 1000px;
@@ -2002,38 +2038,26 @@ img {
   line-height: 1.5;
 }
 
-.bx-pager {
-  position: absolute;
-  z-index: 30;
+/* SPはドットを少し小さく（大画面SPで肥大して矢印にかぶらないよう上限つき） */
+.conceptSlides .bx-controls {
+  margin-top: min(5vw, 36px);
 }
 
-.mainSlide .bx-pager {
-  width: 73.7vw;
+.conceptSlides .bx-pager.bx-default-pager a {
+  margin: 0 clamp(6px, 2.5vw, 12px);
+  width: clamp(10px, 2.6vw, 12px);
+  height: clamp(10px, 2.6vw, 12px);
 }
 
-#concept .bx-wrapper .bx-pager.bx-default-pager a {
-  position: relative;
-  margin: 0 2vw;
-  border-width: 4px;
-  -webkit-border-radius: 1000px;
-     -moz-border-radius: 1000px;
-          border-radius: 1000px;
-  width: 2vw;
-  height: 2vw;
+/* SPの＜＞矢印はドット幅に合わせて少し内側に */
+.conceptSlides .bx-prev {
+  left: calc(50% - min(125px, 30vw));
 }
 
-.bx-pager-item {
-  position: relative;
+.conceptSlides .bx-next {
+  right: calc(50% - min(125px, 30vw));
 }
 
-/* SPでは左右矢印は非表示 */
-.bx-controls-direction {
-  display: none;
-}
-
-/** ------------------------------
- * スタッフ
- */
 /** ------------------------------------------------------------
  * #calendar
  */
