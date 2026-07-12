@@ -70,7 +70,14 @@
       "Bash(git merge *)",
       "Bash(git stash *)",
       "mcp__Claude_Browser__preview_start",
-      "Bash(xargs sed -i 's/logo-header\\\\.png/bokuneko-logo.webp/g')"
+      "Bash(xargs sed -i 's/logo-header\\\\.png/bokuneko-logo.webp/g')",
+      "Bash(cd \"D:/Desktop/test.bokuneko.jp-static/bokuneko.jp-static\" && mv assets/fonts/zen-maru-subset/*.woff2 assets/fonts/ && rmdir assets/fonts/zen-maru-subset && rm assets/fonts/zen-maru-gothic-300.woff2 assets/fonts/zen-maru-gothic-400.woff2 assets/fonts/zen-maru-gothic-500.woff2 assets/fonts/zen-maru-gothic-700.woff2 assets/fonts/zen-maru-gothic-900.woff2 && ls assets/fonts/ | grep zen-maru | sort)",
+      "Bash(node -e 'console.log\\(\"64ee vs actual:\", \"撮\".codePointAt\\(0\\).toString\\(16\\)\\)')",
+      "Bash(node -e \"setTimeout\\(\\(\\) => console.log\\('waited'\\), 20000\\)\")",
+      "Bash(node -e \"setTimeout\\(\\(\\) => console.log\\('waited'\\), 45000\\)\")",
+      "Bash(node -e \"setTimeout\\(\\(\\) => console.log\\('waited'\\), 90000\\)\")",
+      "Bash(node -e \"setTimeout\\(\\(\\) => console.log\\('waited'\\), 120000\\)\")",
+      "Bash(node -e \"setTimeout\\(\\(\\) => console.log\\('waited'\\), 180000\\)\")"
     ]
   }
 }

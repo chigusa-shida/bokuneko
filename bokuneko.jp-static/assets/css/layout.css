@@ -101,47 +101,6 @@
   background-color: #ff8094;
 }
 
-/* 吹き出し（オーバル型） */
-.speechBubble {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-color: #fff;
-  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
-  color: #5c370c;
-}
-
-.speechBubble strong {
-  display: block;
-  margin: 0.2em 0;
-  color: #ff8094;
-  font-weight: 900;
-  font-size: 1.8em;
-  line-height: 1.2;
-}
-
-.speechBubble__star {
-  display: inline-block;
-  margin-left: 0.15em;
-  color: #ff8094;
-  font-size: 0.7em;
-  vertical-align: super;
-}
-
-/* スタッフTwitter見出し */
-.staffTwitterCaption {
-  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
-  font-weight: 700;
-  color: #5c370c;
-  text-align: center;
-}
-
-.staffTwitterCaption strong {
-  font-weight: 900;
-}
 
 /* ルール説明文の装飾カッコ */
 .ruleMessageText {
@@ -341,6 +300,10 @@ img {
   min-width: 900px;
 }
 
+.navButton {
+  display: none;
+}
+
 /* top専用 */
 .header--index {
   height: 100vh;
@@ -406,10 +369,10 @@ img {
   writing-mode: vertical-rl;
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
   font-weight: 700;
-  font-size: 26px;
-  line-height: 1.6;
+  font-size: 37px;
+  line-height: 2;
   color: #fff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 1.4);
 }
 
 .headerSeal {
@@ -532,8 +495,10 @@ img {
   margin-bottom: 21px;
 }
 
-.sectionTitle__main,
-.sectionTitle__sub {
+#system .sectionTitle,
+#system .sectionTitle__sub,
+#rule .sectionTitle,
+#rule .sectionTitle__sub {
   display: inline-block;
   vertical-align: middle;
 }
@@ -548,22 +513,11 @@ img {
  * #concept
  */
 #concept {
-  background: url("../images/pc/index/concept/bg3.png") no-repeat 50% 0, url("../images/pc/index/concept/bg2.png") no-repeat 50% 0, #9abf42 url("../images/bg-stripe-concept.png") repeat 50% 0;
+  background-color: #fffbee;
 }
 
 #concept .sectionInner {
   height: 1554px;
-}
-
-#concept .sectionInner::after {
-  content: "";
-  position: absolute;
-  left: -33px;
-  bottom: 0;
-  display: block;
-  width: 784px;
-  height: 402px;
-  background: url("../images/pc/index/concept/deco.png") no-repeat 0 0;
 }
 
 #concept .sectionInner::before {
@@ -579,119 +533,24 @@ img {
 }
 
 /** ------------------------------
- * タイトルと吹き出し
+ * タイトル
  */
-.conceptTitle {
+#concept .sectionTitle {
   padding-top: 63px;
   position: relative;
   z-index: 20;
 }
 
-.conceptTitle .titleGraphic__en {
+#concept .sectionTitle .titleGraphic__en {
   font-size: 46px;
 }
 
-.conceptTitle .titleGraphic__accent {
+#concept .sectionTitle .titleGraphic__accent {
   font-size: 120px;
 }
 
-.conceptTitle .titleGraphic__ja {
+#concept .sectionTitle .titleGraphic__ja {
   font-size: 15px;
-}
-
-.conceptMessage1 {
-  position: absolute;
-  top: 204px;
-  left: 50px;
-  z-index: 3;
-}
-
-.conceptMessage1 .speechBubble {
-  width: 260px;
-  height: 140px;
-  padding: 0 16px;
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 1.4;
-  box-sizing: border-box;
-}
-
-.conceptMessage2 {
-  position: absolute;
-  right: -64px;
-  bottom: 400px;
-  z-index: 4;
-  width: 300px;
-  height: 210px;
-}
-
-.conceptMessage2 .speechBubble {
-  position: absolute;
-  font-weight: 700;
-  line-height: 1.5;
-  box-sizing: border-box;
-}
-
-.conceptMessage2 .speechBubble--a {
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 300px;
-  min-height: 210px;
-  padding: 22px 26px;
-  font-size: 13px;
-}
-
-.conceptMessage2 .speechBubble--b {
-  top: 150px;
-  left: 90px;
-  z-index: 2;
-  width: 250px;
-  min-height: 170px;
-  padding: 18px 22px;
-  font-size: 12px;
-}
-
-/** ------------------------------
- * ツイッター
- */
-.staffTwitter {
-  position: absolute;
-  right: 39px;
-  bottom: 48px;
-  z-index: 10;
-  width: 240px;
-  text-align: center;
-}
-
-.staffTwitter__message {
-  padding-left: 10px;
-  text-align: center;
-}
-
-.staffTwitterCaption {
-  font-size: 15px;
-}
-
-.staffTwitterCaption strong {
-  display: block;
-  font-size: 19px;
-}
-
-.staffTwitter a {
-  margin: 12px 0 3px;
-  -webkit-border-radius: 100%;
-     -moz-border-radius: 100%;
-          border-radius: 100%;
-  width: 236px;
-  height: 236px;
-  display: block;
-  position: relative;
-
-  background: url("../images/common/logo.jpg") no-repeat 50% 50%;
-  -webkit-background-size: cover;
-     -moz-background-size: cover;
-          background-size: cover;
 }
 
 /** ------------------------------
@@ -705,7 +564,6 @@ img {
   z-index: 2;
   width: 774px;
   height: 774px;
-  background: url("../images/concept-mainslide-bg.png") no-repeat 50% 0;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -714,6 +572,7 @@ img {
 .bx-viewport {
   position: relative;
   z-index: 2;
+  border: solid 10px #ff8094;
   -webkit-border-radius: 2000px;
      -moz-border-radius: 2000px;
           border-radius: 2000px;
@@ -737,10 +596,11 @@ img {
   z-index: 1;
   width: 567px;
   height: 567px;
-  background: url("../images/concept-subslide-bg.png") no-repeat 50% 0;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
+            border: solid 10px #d3a5e9;
+            background-color: #fff;
 }
 
 .subSlide img {
@@ -748,10 +608,83 @@ img {
   height: 100%;
 }
 
+.subSlideText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 45px;
+  box-sizing: border-box;
+  text-align: center;
+  color: #5c370c;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+}
+
+.subSlideText__list {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.9;
+  text-align: left;
+}
+
+.subSlideText__list li {
+  position: relative;
+  padding-left: 1.1em;
+}
+
+.subSlideText__list li::before {
+  content: "・";
+  position: absolute;
+  left: 0;
+}
+
+.subSlideText__note {
+  font-size: 0.75em;
+  font-weight: 400;
+}
+
+.subSlideText__closing {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
 /* pager */
 .bx-pager {
   position: absolute;
-  top: -90px;
+  top: auto;
+  bottom: -55px;
+}
+
+/* 左右送りの＜＞矢印（ドットの左右に配置） */
+#concept .bx-wrapper .bx-controls-direction a {
+  top: auto;
+  bottom: -62px;
+  margin-top: 0;
+  width: 30px;
+  height: 30px;
+  background: none;
+  text-indent: 0;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 30px;
+  text-align: center;
+  color: #5c370c;
+}
+
+#concept .bx-wrapper .bx-prev {
+  left: calc(50% - 130px);
+}
+
+#concept .bx-wrapper .bx-next {
+  right: calc(50% - 130px);
 }
 
 /** ------------------------------------------------------------
@@ -760,7 +693,7 @@ img {
 #calendar {
   padding: 50px 0;
   min-width: 1000px;
-  background: url("../images/bg-stripe-under.png") repeat 50% 0;
+  background: url(../images/bg-stripe-under.png) repeat 50% 0;
 }
 
 #calendar h2 {
@@ -779,13 +712,18 @@ img {
   font-size: 14px;
 }
 
+#calendar .calendarFrame iframe {
+  border: solid 1px #777;
+  height: 600px;
+}
+
 /** ------------------------------------------------------------
  * #cat
  */
 #cat {
   padding: 100px 0 0;
   min-width: 1000px;
-  background: #faecab url("../images/pc/index/cat/bg.png") repeat 50% 0;
+ background-color: #faf2ffb5;
 }
 
 #cat .sectionTitle .titleGraphic__en {
@@ -1021,6 +959,10 @@ img {
   width: 440px;
   min-height: 681px;
   float: right;
+}
+
+.systemDetail__looseLeaf {
+  display: none;
 }
 
 .systemDetail p {
@@ -1349,6 +1291,7 @@ address {
 
 #access iframe {
   display: block;
+  height: 600px;
 }
 
 /** ------------------------------------------------------------
@@ -1629,6 +1572,24 @@ footer a {
   color: #fff;
 }
 
+.footerInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerSNSWrap {
+  order: 1;
+}
+
+.footerNav {
+  order: 2;
+}
+
+.copy {
+  order: 3;
+}
+
 .footerCopyText {
   font-size: 10px;
   letter-spacing: 0.05em;
@@ -1738,7 +1699,7 @@ img {
   max-width: 330px;
 }
 
-.indexLogo {
+.logo.logo--index {
   margin: -5% auto 5%;
   position: absolute;
   left: 0;
@@ -1750,7 +1711,7 @@ img {
   max-width: 498px;
 }
 
-.mainImage {
+.header--index .header__wrap {
   margin-top: -50px;
   position: relative;
 }
@@ -1776,10 +1737,10 @@ img {
   writing-mode: vertical-rl;
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
   font-weight: 700;
-  font-size: 4.2vw;
-  line-height: 1.6;
+  font-size: max(20px, 4.2vw);
+  line-height: 2;
   color: #fff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 1.4);
 }
 
 .headerSeal {
@@ -1934,79 +1895,12 @@ img {
 #concept {
   width: 100%;
   position: relative;
-  background: #9abf42 url("../images/bg-stripe-concept.png") repeat 50% 0;
+  background-color: #fffbee;
   overflow: hidden;
 }
 
-#concept::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: url("../images/sp/index/concept/bg2.png") repeat 50% 0;
-  -webkit-background-size: 100% 100%;
-     -moz-background-size: 100% 100%;
-          background-size: 100% 100%;
-}
-
-/** ------------------------------
- * 吹き出し
- */
-.conceptMessage1 {
-  margin-top: 4%;
-  margin-left: -3.7%;
-  width: 45%;
-  position: relative;
-  z-index: 10;
-}
-
-.conceptMessage1 .speechBubble {
-  width: 100%;
-  min-height: 34vw;
-  padding: 3vw 4vw;
-  font-size: 3.1vw;
-  line-height: 1.4;
-  font-weight: 700;
-  box-sizing: border-box;
-}
-
-.conceptMessage2 {
-  margin-top: 10.2%;
-  margin-left: 21.3%;
-  width: 78%;
-  height: 38vw;
-  position: relative;
-  z-index: 10;
-}
-
-.conceptMessage2 .speechBubble {
-  position: absolute;
-  font-weight: 700;
-  line-height: 1.5;
-  box-sizing: border-box;
-}
-
-.conceptMessage2 .speechBubble--a {
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  min-height: 100%;
-  padding: 4vw 5vw;
-  font-size: 2.6vw;
-}
-
-.conceptMessage2 .speechBubble--b {
-  top: 20vw;
-  left: 20%;
-  z-index: 2;
-  width: 84%;
-  min-height: 26vw;
-  padding: 3vw 4.5vw;
-  font-size: 2.1vw;
+#concept .sectionInner {
+  height: 185vw;
 }
 
 /** ------------------------------
@@ -2015,13 +1909,11 @@ img {
 .mainSlide {
   padding: 7px;
   position: absolute;
-  z-index: 20;
-  top: 6.1%;
-  right: -7.2%;
+  top: 6vw;
+  right: -7vw;
   z-index: 2;
   width: 73.7vw;
   height: 73.7vw;
-  background: url("../images/concept-mainslide-bg.png") no-repeat 50% 0;
   -webkit-background-size: 100% 100%;
      -moz-background-size: 100% 100%;
           background-size: 100% 100%;
@@ -2034,10 +1926,12 @@ img {
   position: relative;
   z-index: 2;
   -webkit-border-radius: 2000px;
-     -moz-border-radius: 2000px;
-          border-radius: 2000px;
+  -moz-border-radius: 2000px;
+  border-radius: 2000px;
   overflow: hidden;
   background: transparent;
+  border: solid 7px #ff8094;
+  background-color: #fff;
 }
 
 .mainSlide img {
@@ -2048,17 +1942,21 @@ img {
 .subSlide {
   padding: 7px;
   position: absolute;
-  top: 6%;
-  right: -12%;
-  width: 80vw;
-  height: 80vw;
-  background: url("../images/concept-subslide-bg.png") no-repeat 50% 0;
+  top: 58vw;
+  left: -8vw;
+  width: max(224px, 60vw);
+  height: max(224px, 60vw);
+  -webkit-border-radius: 1000px;
+  -moz-border-radius: 1000px;
+  border-radius: 1000px;
   -webkit-background-size: 100% 100%;
-     -moz-background-size: 100% 100%;
-          background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  background-size: 100% 100%;
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: solid 7px #d3a5e9;
 }
 
 .subSlide img {
@@ -2066,28 +1964,60 @@ img {
   height: 100%;
 }
 
+.subSlideText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 6vw;
+  box-sizing: border-box;
+  text-align: center;
+  color: #5c370c;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+}
+
+.subSlideText__list {
+  margin: 0 0 2vw;
+  padding: 0;
+  list-style: none;
+  font-size: max(11px, 2.5vw);
+  font-weight: 700;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.subSlideText__list li {
+  position: relative;
+  padding-left: 1.1em;
+}
+
+.subSlideText__list li::before {
+  content: "・";
+  position: absolute;
+  left: 0;
+}
+
+.subSlideText__note {
+  font-size: 0.75em;
+  font-weight: 400;
+}
+
+.subSlideText__closing {
+  margin: 0;
+  font-size: max(11px, 2.3vw);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
 .bx-pager {
   position: absolute;
   z-index: 30;
 }
 
-.subSlide .bx-pager {
-  top: -23%;
-  margin-left: 4%;
-}
-
-@media only screen and (min-width: 450px) {
-  .subSlide .bx-pager {
-    top: -19%;
-  }
-}
-
 .mainSlide .bx-pager {
   width: 73.7vw;
-}
-
-.subSlide .bx-pager {
-  width: 57.9vw;
 }
 
 #concept .bx-wrapper .bx-pager.bx-default-pager a {
@@ -2105,64 +2035,18 @@ img {
   position: relative;
 }
 
-/** ------------------------------
- * ツイッター
- */
-.staffTwitter {
-  position: relative;
-  z-index: 15;
-}
-
-.staffTwitter::after {
-  content: ".";
-  display: block;
-  visibility: hidden;
-  height: 0;
-  line-height: 0;
-  font-size: 0;
-  clear: both;
-}
-
-.staffTwitter__message {
-  margin-top: 14%;
-  margin-right: 5.8%;
-  float: right;
-  width: 34.9vw;
-}
-
-.staffTwitterCaption {
-  font-size: 2.6vw;
-}
-
-.staffTwitterCaption strong {
-  display: block;
-  font-size: 3.4vw;
-}
-
-.staffTwitter a {
-  margin-top: -11%;
-  margin-left: 11.8%;
-  -webkit-border-radius: 100%;
-     -moz-border-radius: 100%;
-          border-radius: 100%;
-  display: block;
-  float: left;
-  position: relative;
-  width: 42.2vw;
-  height: 42.2vw;
-
-  background: url("../images/common/logo.jpg") no-repeat 50% 50%;
-  -webkit-background-size: cover;
-     -moz-background-size: cover;
-          background-size: cover;
+/* SPでは左右矢印は非表示 */
+.bx-controls-direction {
+  display: none;
 }
 
 /** ------------------------------
  * スタッフ
  */
 .conceptDeco {
-  margin-top: -6%;
-  position: relative;
+  position: absolute;
+  top: 122vw;
+  left: 0;
   width: 100%;
   z-index: 10;
 }
@@ -2171,7 +2055,7 @@ img {
  * #calendar
  */
 #calendar {
-  background: url("../images/bg-stripe-under.png") repeat 50% 0;
+  background: url(../images/bg-stripe-under.png) repeat 50% 0;
 }
 
 #calendar h2 {
@@ -2190,12 +2074,17 @@ img {
   font-size: 3.2vw;
 }
 
+#calendar .calendarFrame iframe {
+  border: none;
+  height: 440px;
+}
+
 
 /** ------------------------------------------------------------
  * #cat
  */
 #cat {
-  background: #faecab url("../images/sp/index/cat/bg.png") repeat 50% 0;
+   background-color: #faf2ffb5;
   -webkit-background-size: 100% auto;
        -o-background-size: 100% auto;
           background-size: 100% auto;
@@ -2417,7 +2306,8 @@ img {
   color: #5c370c;
 }
 
-.systemDetail {
+.systemDetail__main,
+.systemDetail__sub {
   margin-top: 2vw;
   margin-bottom: 6.6vw;
   padding: 9vw 6.6vw;
@@ -2863,6 +2753,7 @@ address {
 
 #access iframe {
   display: block;
+  height: 300px;
 }
 
 /** ------------------------------------------------------------
@@ -3214,6 +3105,24 @@ footer a {
   color: #fff;
 }
 
+.footerInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerNav {
+  order: 1;
+}
+
+.copy {
+  order: 2;
+}
+
+.footerSNSWrap {
+  order: 3;
+}
+
 /** ------------------------------
  * nav
  */
@@ -3261,19 +3170,16 @@ footer a {
  * SNS
  */
 .footerSNS {
+  margin: 0 auto;
   position: absolute;
   right: 0;
   bottom: 15%;
   left: 0;
-  text-align: left;
-}
-
-.footerSNS > * {
-  margin: 0 auto;
   display: table;
   table-layout: fixed;
   width: 87%;
   max-width: 654px;
+  text-align: left;
 }
 
 .footerSNS__item {

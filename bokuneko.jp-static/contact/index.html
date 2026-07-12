@@ -49,7 +49,7 @@
   </head>
 
   <body id="pageTop" class="under">
-    <header class="header pc-only">
+    <header class="header">
       <div class="header__wrap">
         <h1>
           <a href="../">
@@ -57,87 +57,47 @@
           </a>
         </h1>
 
-        <div class="headerNav">
-          <ul class="headerNav__wrap">
-            <li class="headerNav__item headerNav__item--concept">
-              <a href="../#concept">コンセプト</a>
-            </li>
-            <li class="headerNav__item headerNav__item--cat">
-              <a href="../#cat">猫紹介</a>
-            </li>
-            <li class="headerNav__item headerNav__item--system">
-              <a href="../#system">システム</a>
-            </li>
-            <li class="headerNav__item headerNav__item--rule">
-              <a href="../#rule">ルール</a>
-            </li>
-            <li class="headerNav__item headerNav__item--access">
-              <a href="../#access">アクセス</a>
-            </li>
-          </ul>
-        </div>
+        <p class="navButton">
+          <a href="#">
+            <img src="../assets/images/sp/common/header/navButton.png" alt="メニューを開く" />
+          </a>
+        </p>
 
-        <aside class="headerSNS">
-          <ul class="headerSNS__wrap">
-            <li class="headerSNS__item">
-              <a href="https://twitter.com/bokuneko_stuff" target="_blank">
-                <img src="../assets/images/icon-twitter-header.png" alt="Twitter" />
-              </a>
-            </li>
-            <li class="headerSNS__item">
-              <a href="https://lin.ee/tn2yxq5" target="_blank">
-                <img src="../assets/images/icon-line-header.png" alt="LINE" />
-              </a>
-            </li>
-          </ul>
-        </aside>
-      </div>
-    </header>
+        <div class="panel">
+          <aside class="headerSNS">
+            <ul class="headerSNS__wrap">
+              <li class="headerSNS__item">
+                <a href="https://twitter.com/bokunekoakb" target="_blank">
+                  <img src="../assets/images/icon-twitter-header.png" alt="Twitter" />
+                </a>
+              </li>
+              <li class="headerSNS__item">
+                <a href="https://lin.ee/tn2yxq5" target="_blank">
+                  <img src="../assets/images/icon-line-header.png" alt="LINE" />
+                </a>
+              </li>
+            </ul>
+          </aside>
 
-    <header class="header sp-only">
-      <h1>
-        <a href="../">
-          <img class="logo" src="../assets/images/bokuneko-logo.webp" alt="猫カフェ【僕と猫。】" />
-        </a>
-      </h1>
-      <p class="navButton">
-        <a href="#">
-          <img src="../assets/images/sp/common/header/navButton.png" alt="メニューを開く" />
-        </a>
-      </p>
-      <div class="panel">
-        <aside class="headerSNS">
-          <ul>
-            <li class="headerSNS__item">
-              <a href="https://twitter.com/bokunekoakb" target="_blank">
-                <img src="../assets/images/icon-twitter-header.png" alt="Twitter" />
-              </a>
-            </li>
-            <li class="headerSNS__item">
-              <a href="https://lin.ee/tn2yxq5" target="_blank">
-                <img src="../assets/images/icon-line-header.png" alt="LINE" />
-              </a>
-            </li>
-          </ul>
-        </aside>
-        <div class="headerNav">
-          <ul>
-            <li class="headerNav__item headerNav__item--concept">
-              <a href="../#concept">コンセプト</a>
-            </li>
-            <li class="headerNav__item headerNav__item--cat">
-              <a href="../#cat">猫紹介</a>
-            </li>
-            <li class="headerNav__item headerNav__item--system">
-              <a href="../#system">システム</a>
-            </li>
-            <li class="headerNav__item headerNav__item--rule">
-              <a href="../#rule">ルール</a>
-            </li>
-            <li class="headerNav__item headerNav__item--access">
-              <a href="../#access">アクセス</a>
-            </li>
-          </ul>
+          <div class="headerNav">
+            <ul class="headerNav__wrap">
+              <li class="headerNav__item headerNav__item--concept">
+                <a href="../#concept">コンセプト</a>
+              </li>
+              <li class="headerNav__item headerNav__item--cat">
+                <a href="../#cat">猫紹介</a>
+              </li>
+              <li class="headerNav__item headerNav__item--system">
+                <a href="../#system">システム</a>
+              </li>
+              <li class="headerNav__item headerNav__item--rule">
+                <a href="../#rule">ルール</a>
+              </li>
+              <li class="headerNav__item headerNav__item--access">
+                <a href="../#access">アクセス</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </header>
@@ -266,9 +226,9 @@
       </div>
     </div>
 
-    <footer class="pc-only">
-      <div class="wow fadeIn" data-wow-duration="2.5s">
-        <aside>
+    <footer>
+      <div class="footerInner wow fadeIn" data-wow-duration="2.5s">
+        <aside class="footerSNSWrap">
           <ul class="footerSNS">
             <li class="footerSNS__item">
               <a href="https://twitter.com/bokunekoakb" target="_blank">
@@ -301,63 +261,15 @@
           </li>
         </ul>
 
-        <p>
-          <small class="footerCopyText">© 2016 Boku to neko. All Rights Reserved.</small>
-        </p>
-      </div>
-
-      <p class="pageTop">
-        <a href="#pageTop">
-          <img src="../assets/images/pc/common/footer/top.png" alt="ページTOPへ" />
-        </a>
-      </p>
-    </footer>
-
-    <footer class="sp-only">
-      <div class="wow fadeIn" data-wow-duration="2.5s">
-        <ul class="footerNav">
-          <li class="footerNav__item">
-            <a href="#law">
-              第１種動物取扱業者標識
-            </a>
-          </li>
-          <li class="footerNav__item">
-            <a href="../recruit/">
-              採用情報
-            </a>
-          </li>
-          <li class="footerNav__item">
-            <a href="../contact/">
-              お問い合わせ
-            </a>
-          </li>
-        </ul>
-
         <p class="copy">
           <small class="footerCopyText">© 2016 Boku to neko. All Rights Reserved.</small>
         </p>
-
-        <aside>
-          <div class="footerSNS">
-            <ul class="footerSNS__inner">
-              <li class="footerSNS__item">
-                <a href="https://twitter.com/bokunekoakb" target="_blank">
-                  <img src="../assets/images/icon-twitter-footer.png" alt="Twitter" />
-                </a>
-              </li>
-              <li class="footerSNS__item">
-                <a href="https://lin.ee/tn2yxq5" target="_blank">
-                  <img src="../assets/images/icon-line-footer.png" alt="LINE" />
-                </a>
-              </li>
-            </ul>
-          </div>
-        </aside>
       </div>
 
       <p class="pageTop">
         <a href="#pageTop">
-          <img src="../assets/images/sp/common/footer/top.png" alt="ページTOPへ" />
+          <img class="pc-only" src="../assets/images/pc/common/footer/top.png" alt="ページTOPへ" />
+          <img class="sp-only" src="../assets/images/sp/common/footer/top.png" alt="ページTOPへ" />
         </a>
       </p>
     </footer>
