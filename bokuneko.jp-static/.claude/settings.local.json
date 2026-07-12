@@ -66,7 +66,10 @@
       "Bash(curl -sk --max-time 15 -A 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36' -w '\\\\nHTTP_CODE:%{http_code}\\\\n' 'https://fonts.googleapis.com/css2?family=Fredoka+One&text=ABC')",
       "Bash(md5sum assets/fonts/fredoka-*.woff2)",
       "Bash(mv assets/fonts/fredoka-300.woff2 assets/fonts/fredoka-variable.woff2)",
-      "Bash(rm -f assets/fonts/fredoka-400.woff2 assets/fonts/fredoka-500.woff2 assets/fonts/fredoka-600.woff2 assets/fonts/fredoka-700.woff2)"
+      "Bash(rm -f assets/fonts/fredoka-400.woff2 assets/fonts/fredoka-500.woff2 assets/fonts/fredoka-600.woff2 assets/fonts/fredoka-700.woff2)",
+      "Bash(git merge *)",
+      "Bash(git stash *)",
+      "mcp__Claude_Browser__preview_start"
     ]
   }
 }

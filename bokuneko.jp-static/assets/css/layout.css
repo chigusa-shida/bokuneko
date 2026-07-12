@@ -27,10 +27,10 @@
    サイズや位置などデバイス差分はPC/SPそれぞれのブロックで上書きする
    ========================================================================== */
 
-/* 見出し（英単語+colored accent文字+日本語サブタイトル） */
+/* 見出し（英単語+日本語サブタイトル） */
 .titleGraphic {
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
-  color: #5c370c;
+  color: #000;
   line-height: 1.05;
 }
 
@@ -43,11 +43,16 @@
   justify-content: center;
 }
 
+.titleGraphic--concept {
+  justify-content: flex-start;
+}
+
 .titleGraphic__accent {
   display: inline-block;
   margin-right: 0.06em;
   color: inherit;
   font-size: 2.6em;
+  font-weight: 900;
   line-height: 1;
 }
 
@@ -58,28 +63,8 @@
 }
 
 .titleGraphic__en {
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 0.02em;
-}
-
-.titleGraphic--concept .titleGraphic__accent {
-  color: #ffc100;
-}
-
-.titleGraphic--system .titleGraphic__body {
-  color: #fff;
-}
-
-.titleGraphic--system .titleGraphic__accent {
-  color: #ff8094;
-}
-
-.titleGraphic--rule .titleGraphic__accent {
-  color: #0d8046;
-}
-
-.titleGraphic--calendar .titleGraphic__accent {
-  color: #0d8046;
 }
 
 .titleGraphic__ja {
