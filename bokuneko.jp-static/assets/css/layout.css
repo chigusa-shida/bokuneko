@@ -30,20 +30,21 @@
 /* 見出し（英単語+日本語サブタイトル） */
 .titleGraphic {
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
-  color: #000;
+  color: #383838;
   line-height: 1.05;
 }
 
 .titleGraphic--concept,
 .titleGraphic--system,
 .titleGraphic--rule,
-.titleGraphic--calendar {
+.titleGraphic--calendar,
+.titleGraphic--cat {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.titleGraphic--concept {
+.titleGraphic--concept, .titleGraphic--cat {
   justify-content: flex-start;
 }
 
@@ -150,7 +151,7 @@
   z-index: 3;
   font-family: 'Fredoka', 'Zen Maru Gothic', sans-serif;
   font-weight: 700;
-  color: #5c370c;
+  color: #383838;
   line-height: 1;
 }
 
@@ -264,7 +265,7 @@ html {
 body {
   min-width: 1050px;
   line-height: 1.5;
-  color: #5c370c;
+  color: #383838;
   background-color: #fff;
   font-size: 16px;
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ","ヒラギノ角ゴ Pro W3","ＭＳ Ｐゴシック",sans-serif;
@@ -423,7 +424,7 @@ img {
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   font-weight: 700;
   font-size: 15px;
-  color: #5c370c;
+  color: #383838;
   white-space: nowrap;
   -webkit-transition: color 0.3s ease;
      -moz-transition: color 0.3s ease;
@@ -505,7 +506,7 @@ img {
 
 .sectionTitle__sub {
   margin-left: 35px;
-  color: #fff;
+  color: #383838;
   font-weight: bold;
 }
 
@@ -618,7 +619,7 @@ img {
   padding: 0 45px;
   box-sizing: border-box;
   text-align: center;
-  color: #5c370c;
+  color: #383838;
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
 }
 
@@ -723,12 +724,15 @@ img {
 #cat {
   padding: 100px 0 0;
   min-width: 1000px;
- background-color: #faf2ffb5;
+ background: #faecab url("../images/pc/index/cat/bg.png") repeat 50% 0;
 }
 
-#cat .sectionTitle .titleGraphic__en {
-  font-size: 34px;
-  letter-spacing: 0.1em;
+#cat h2 .titleGraphic__accent {
+  font-size: 104px;
+}
+
+#cat h2 .titleGraphic__en {
+  font-size: 40px;
 }
 
 .catList {
@@ -1009,7 +1013,7 @@ img {
 }
 
 #rule .sectionTitle__sub {
-  color: #5c370c;
+  color: #383838;
 }
 
 #rule .sectionTitle .titleGraphic__en {
@@ -1974,7 +1978,7 @@ img {
   padding: 0 6vw;
   box-sizing: border-box;
   text-align: center;
-  color: #5c370c;
+  color: #383838;
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
 }
 
@@ -2084,16 +2088,18 @@ img {
  * #cat
  */
 #cat {
-   background-color: #faf2ffb5;
+   background: #faecab url("../images/sp/index/cat/bg.png") repeat 50% 0;
   -webkit-background-size: 100% auto;
        -o-background-size: 100% auto;
           background-size: 100% auto;
   overflow: hidden;
 }
 
-#cat .sectionTitle .titleGraphic__en {
-  font-size: 7vw;
-  letter-spacing: 0.1em;
+#cat h2 .titleGraphic__accent {
+  font-size: 20.8vw;
+}
+#cat h2 .titleGraphic__en {
+  font-size: 8vw;
 }
 
 .catList {
@@ -2303,7 +2309,7 @@ img {
   margin-top: 2vw;
   font-size: 3.4vw;
   font-weight: bold;
-  color: #5c370c;
+  color: #383838;
 }
 
 .systemDetail__main,
@@ -2408,7 +2414,7 @@ img {
   margin-top: 2vw;
   font-size: 3.4vw;
   font-weight: bold;
-  color: #5c370c;
+  color: #383838;
 }
 
 .ruleList {
