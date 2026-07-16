@@ -101,13 +101,13 @@
   background-color: #ff8094;
 }
 
-/* スライド操作UI（JSでconceptSlides直下へ移動し、下・中央に表示） */
+
 .conceptSlides .bx-controls {
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
-  margin-top: 24px;
+  margin-top: 78px;
   text-align: center;
   z-index: 5;
 }
@@ -134,7 +134,7 @@
   -webkit-border-radius: 100px;
      -moz-border-radius: 100px;
           border-radius: 100px;
-  background-color: #5c370c;
+  background-color: #383838;
   text-indent: -9999px;
 }
 
@@ -585,7 +585,7 @@ img {
 }
 
 #concept .sectionInner {
-  padding-bottom: 100px;
+  padding-bottom: 150px;
 }
 
 #concept .sectionInner::before {
@@ -610,6 +610,11 @@ img {
   text-align: center;
   font-size: 40px;
   font-weight: 800;
+}
+
+/* 英字（Fredoka）は日本語より小さく見えるため少し大きくしてバランスを取る */
+.sectionTitle__en {
+  font-size: 1.2em;
 }
 
 /** ------------------------------
@@ -644,9 +649,29 @@ img {
   background: transparent;
 }
 
+/* スライドは円（正方形）を保つ。横長画像は歪ませず中央基準でトリミングする */
+.mainSlide .bxslider li {
+  aspect-ratio: 1 / 1;
+}
+
 .mainSlide img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+/* 2つの円をまたぐ猫イラスト（PCは原寸100%） */
+.conceptSlides__neko {
+  margin: 0;
+  position: absolute;
+  top: 13px;
+  left: 90px;
+  z-index: 3;
+  width: 306px;
+}
+
+.conceptSlides__neko img {
+  width: 100%;
 }
 
 .subSlide {
@@ -708,6 +733,18 @@ img {
 .subSlideText__note {
   font-size: 0.75em;
   font-weight: 400;
+}
+
+
+/* スライド操作UI（JSでconceptSlides直下へ移動し、下・中央に表示） */
+/* 締めの一文（スライドの下・bx-controlsの上・中央揃え） */
+.conceptSlides .subSlideText__closing {
+  position: absolute;
+  top: 98%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 5;
 }
 
 .subSlideText__closing {
@@ -1736,7 +1773,7 @@ img {
   margin: -5% auto 5%;
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 7vw;
   right: 0;
   z-index: 5;
   display: block;
@@ -1894,6 +1931,11 @@ img {
   font-weight: 800;
 }
 
+/* 英字（Fredoka）は日本語より小さく見えるため少し大きくしてバランスを取る */
+.sectionTitle__en {
+  font-size: 1.2em;
+}
+
 .sectionTitle img {
   width: 100%;
   max-width: 100%;
@@ -1924,25 +1966,31 @@ img {
 }
 
 #concept .sectionInner {
-  padding-bottom: 10vw;
+  --u: min(1vw, 8.82px);
+  padding-bottom: calc(4 * var(--u) + 100px);
 }
 
 /** ------------------------------
  * スライド（.conceptSlidesを位置の基準にする）
+ * --u はビューポート882pxで固定される擬似vw。
+ * 大きなSP幅でも375px時と同じ重なり方（相対配置）を保つため、
+ * サイズ・オフセットすべてを --u で指定し、基準ボックスも882pxで打ち止めて中央寄せする。
  */
 .conceptSlides {
   position: relative;
-  height: calc(40vw + clamp(224px, 54vw, 500px));
+  max-width: 882px;
+  margin: 0 auto;
+  height: calc(40 * var(--u) + max(224px, 54 * var(--u)));
 }
 
 .mainSlide {
   padding: 7px;
   position: absolute;
   top: 0;
-  right: -7vw;
+  right: calc(-7 * var(--u));
   z-index: 2;
-  width: min(73.7vw, 650px);
-  height: min(73.7vw, 650px);
+  width: calc(73.7 * var(--u));
+  height: calc(73.7 * var(--u));
   -webkit-background-size: 100% 100%;
      -moz-background-size: 100% 100%;
           background-size: 100% 100%;
@@ -1963,18 +2011,38 @@ img {
   background-color: #fff;
 }
 
+/* スライドは円（正方形）を保つ。横長画像は歪ませず中央基準でトリミングする */
+.mainSlide .bxslider li {
+  aspect-ratio: 1 / 1;
+}
+
 .mainSlide img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+/* 2つの円をまたぐ猫イラスト（375px時: width130px / top24px / left21px 相当で全幅追従） */
+.conceptSlides__neko {
+  margin: 0;
+  position: absolute;
+  top: calc(6.4 * var(--u));
+  left: calc(5.6 * var(--u));
+  z-index: 3;
+  width: calc(34.7 * var(--u));
+}
+
+.conceptSlides__neko img {
+  width: 100%;
 }
 
 .subSlide {
   padding: 7px;
   position: absolute;
-  top: 40vw;
-  left: -8vw;
-  width: clamp(224px, 54vw, 500px);
-  height: clamp(224px, 54vw, 500px);
+  top: calc(40 * var(--u));
+  left: calc(-8 * var(--u));
+  width: max(224px, 54 * var(--u));
+  height: max(224px, 54 * var(--u));
   -webkit-border-radius: 1000px;
   -moz-border-radius: 1000px;
   border-radius: 1000px;
@@ -2011,10 +2079,14 @@ img {
   margin: 0 0 2vw;
   padding: 0;
   list-style: none;
-  font-size: max(14px, 3.4vw);
+  font-size: max(16px, 3.4vw);
   font-weight: 700;
   line-height: 1.7;
   text-align: center;
+}
+
+.subSlideText__list li.subSlideText__item--play {
+  font-size: max(20px, 3.4vw);
 }
 
 .subSlideText__list li {
@@ -2031,16 +2103,25 @@ img {
   font-weight: 400;
 }
 
+.conceptSlides .subSlideText__closing {
+    position: absolute;
+    top: 83%;
+    right: -1%;
+    width: 54%;
+    text-align: center;
+    z-index: 5;
+}
+
 .subSlideText__closing {
   margin: 0;
-  font-size: max(11px, 2.3vw);
+  font-size: max(14px, 2.7vw);
   font-weight: 700;
   line-height: 1.5;
 }
 
 /* SPはドットを少し小さく（大画面SPで肥大して矢印にかぶらないよう上限つき） */
 .conceptSlides .bx-controls {
-  margin-top: min(5vw, 36px);
+  margin-top: calc(4 * var(--u) + 48px);
 }
 
 .conceptSlides .bx-pager.bx-default-pager a {
@@ -2050,6 +2131,10 @@ img {
 }
 
 /* SPの＜＞矢印はドット幅に合わせて少し内側に */
+.conceptSlides .bx-controls-direction a {
+  font-size: 18px;
+}
+
 .conceptSlides .bx-prev {
   left: calc(50% - min(125px, 30vw));
 }
