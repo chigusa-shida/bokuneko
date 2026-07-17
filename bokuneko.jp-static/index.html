@@ -145,11 +145,11 @@
                 speed: 200,
                 useCSS: false,
                 controls: true,
-                prevText: "＜",
-                nextText: "＞",
+                prevText: "前へ",
+                nextText: "次へ",
                 onSliderLoad: function(currentIndex){
                   syncSubSlide(currentIndex);
-                  // ドットと＜＞矢印をconceptSlidesの直下（下・中央）へ移動する
+                  // ドットと前へ・次へ矢印をconceptSlidesの直下（下・中央）へ移動する
                   $('#concept .bx-controls').appendTo('#concept .conceptSlides');
                 },
                 onSlideBefore: function($slideElement, oldIndex, newIndex){

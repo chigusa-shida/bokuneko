@@ -125,40 +125,139 @@
   line-height: 0;
 }
 
+/* ページネーション：サイトのブランドカラー（ピンク#ff8094／ブラウン#5c370c）と
+   丸みのあるデザインに合わせる。aは当たり判定、::beforeが見た目のドット。
+   アクティブは横長のピルにして一目で分かるようにする */
 .conceptSlides .bx-pager.bx-default-pager a {
-  margin: 0 12px;
+  position: relative;
   display: inline-block;
-  width: 12px;
-  height: 12px;
-  border: 3px solid #fff;
-  -webkit-border-radius: 100px;
-     -moz-border-radius: 100px;
-          border-radius: 100px;
-  background-color: #383838;
+  margin: 0 3px;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  background: none;
   text-indent: -9999px;
 }
 
-.conceptSlides .bx-pager.bx-default-pager a:hover,
-.conceptSlides .bx-pager.bx-default-pager a.active,
-.conceptSlides .bx-pager.bx-default-pager a:focus {
-  background-color: #ff8090;
+.conceptSlides .bx-pager.bx-default-pager a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  -webkit-transform: translate(-50%, -50%);
+     -moz-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-border-radius: 999px;
+     -moz-border-radius: 999px;
+          border-radius: 999px;
+  background-color: rgba(92, 55, 12, 0.22);
+  -webkit-transition: width 0.3s ease, background-color 0.3s ease, -webkit-transform 0.3s ease;
+     -moz-transition: width 0.3s ease, background-color 0.3s ease, -moz-transform 0.3s ease;
+          transition: width 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 }
 
+/* ホバー：やわらかいピンクにふわっと拡大 */
+.conceptSlides .bx-pager.bx-default-pager a:hover::before,
+.conceptSlides .bx-pager.bx-default-pager a:focus::before {
+  background-color: #ffb0bd;
+  -webkit-transform: translate(-50%, -50%) scale(1.25);
+     -moz-transform: translate(-50%, -50%) scale(1.25);
+          transform: translate(-50%, -50%) scale(1.25);
+}
+
+/* アクティブ：ブランドピンクのピル */
+.conceptSlides .bx-pager.bx-default-pager a.active::before {
+  width: 26px;
+  background-color: #ff8094;
+}
+
+/* アクティブ時はホバーで拡大させず、形を保つ */
+.conceptSlides .bx-pager.bx-default-pager a.active:hover::before,
+.conceptSlides .bx-pager.bx-default-pager a.active:focus::before {
+  -webkit-transform: translate(-50%, -50%);
+     -moz-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+/* 前へ・次へ：ページャと同じブランドカラー・丸みで統一。
+   ラベルテキストは読み上げ用に残しつつ視覚的に隠し、シェブロンはCSSで描画する */
 .conceptSlides .bx-controls-direction a {
   position: absolute;
   top: 50%;
-  margin-top: -15px;
-  width: 30px;
-  height: 30px;
-  background: none;
-  text-indent: 0;
-  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
-  font-weight: 700;
-  font-size: 26px;
-  line-height: 30px;
-  text-align: center;
-  color: #383838;
+  margin-top: -22px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid rgba(92, 55, 12, 0.18);
+  -webkit-border-radius: 100%;
+     -moz-border-radius: 100%;
+          border-radius: 100%;
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  text-indent: -9999px;
+  white-space: nowrap;
+  overflow: hidden;
   z-index: 6;
+  -webkit-transition: background-color 0.3s ease, border-color 0.3s ease, -webkit-transform 0.3s ease;
+     -moz-transition: background-color 0.3s ease, border-color 0.3s ease, -moz-transform 0.3s ease;
+          transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+/* シェブロン本体（正方形の2辺を回転させて矢印にする） */
+.conceptSlides .bx-controls-direction a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 11px;
+  height: 11px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  border-top: 2.5px solid #5c370c;
+  border-right: 2.5px solid #5c370c;
+  -webkit-transition: border-color 0.3s ease;
+     -moz-transition: border-color 0.3s ease;
+          transition: border-color 0.3s ease;
+}
+
+.conceptSlides .bx-prev::before {
+  -webkit-transform: translate(-35%, -50%) rotate(-135deg);
+     -moz-transform: translate(-35%, -50%) rotate(-135deg);
+          transform: translate(-35%, -50%) rotate(-135deg);
+}
+
+.conceptSlides .bx-next::before {
+  -webkit-transform: translate(-65%, -50%) rotate(45deg);
+     -moz-transform: translate(-65%, -50%) rotate(45deg);
+          transform: translate(-65%, -50%) rotate(45deg);
+}
+
+/* ホバー：ブランドピンクの塗り＋白いシェブロンにふわっと変化 */
+.conceptSlides .bx-controls-direction a:hover,
+.conceptSlides .bx-controls-direction a:focus {
+  background-color: #ff8094;
+  border-color: #ff8094;
+  -webkit-transform: scale(1.08);
+     -moz-transform: scale(1.08);
+          transform: scale(1.08);
+}
+
+.conceptSlides .bx-controls-direction a:hover::before,
+.conceptSlides .bx-controls-direction a:focus::before {
+  border-color: #fff;
+}
+
+/* クリック時はわずかに沈ませて押した感を出す */
+.conceptSlides .bx-controls-direction a:active {
+  -webkit-transform: scale(0.96);
+     -moz-transform: scale(0.96);
+          transform: scale(0.96);
 }
 
 .conceptSlides .bx-prev {
@@ -585,7 +684,7 @@ img {
 }
 
 #concept .sectionInner {
-  padding-bottom: 150px;
+  padding-bottom: 60px;
 }
 
 #concept .sectionInner::before {
@@ -620,19 +719,23 @@ img {
 /** ------------------------------
  * スライド（.conceptSlidesを位置の基準にする）
  */
+/* 画面高さが低い環境でもナビまで収まるよう、全体を630px以内に最適化。
+   基準枠も同率(0.659)で縮めて中央寄せすることで、円のはみ出し方・重なり方を元のまま保つ */
 .conceptSlides {
   position: relative;
-  height: 830px;
+  max-width: 659px;
+  margin: 0 auto;
+  height: 630px;
 }
 
 .mainSlide {
   padding: 12px;
   position: absolute;
-  right: -105px;
+  right: -69px;
   top: 0;
   z-index: 2;
-  width: 774px;
-  height: 774px;
+  width: 510px;
+  height: 510px;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -664,10 +767,10 @@ img {
 .conceptSlides__neko {
   margin: 0;
   position: absolute;
-  top: 13px;
-  left: 90px;
+  top: 9px;
+  left: 59px;
   z-index: 3;
-  width: 306px;
+  width: 202px;
 }
 
 .conceptSlides__neko img {
@@ -680,11 +783,11 @@ img {
      -moz-border-radius: 1000px;
           border-radius: 1000px;
   position: absolute;
-  left: -97px;
-  top: 320px;
+  left: -64px;
+  top: 211px;
   z-index: 1;
-  width: 500px;
-  height: 500px;
+  width: 330px;
+  height: 330px;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -704,7 +807,7 @@ img {
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 0 43px;
+  padding: 0 24px;
   box-sizing: border-box;
   text-align: center;
   color: #383838;
@@ -712,10 +815,10 @@ img {
 }
 
 .subSlideText__list {
-  margin: 0 0 20px;
+  margin: 0 0 13px;
   padding: 0;
   list-style: none;
-  font-size: 41px;
+  font-size: 26px;
   font-weight: 700;
   line-height: 1.9;
   text-align: center;
@@ -737,14 +840,49 @@ img {
 
 
 /* スライド操作UI（JSでconceptSlides直下へ移動し、下・中央に表示） */
-/* 締めの一文（スライドの下・bx-controlsの上・中央揃え） */
+/* 締めの一文・ナビはconceptSlides内（下端）に配置し、画面高さが低くても隠れないようにする */
 .conceptSlides .subSlideText__closing {
   position: absolute;
-  top: 98%;
+  top: auto;
+  bottom: 7px;
   left: 0;
   width: 100%;
   text-align: center;
   z-index: 5;
+}
+
+/* コントロール枠は高さ0のアンカーとし、ページャと矢印を個別に配置する。
+   枠がスライダーに重ならないため、スワイプ操作を阻害しない */
+.conceptSlides .bx-controls {
+  top: auto;
+  bottom: 0;
+  margin-top: 0;
+  height: 0;
+}
+
+/* ページャは締めの一文の直上に配置（円・締め文との間隔を均等に取る） */
+.conceptSlides .bx-pager {
+  position: absolute;
+  bottom: 51px;
+  left: 0;
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+/* 矢印は構成全体を左右から挟み、円の中央付近の高さ(270px)に揃える */
+.conceptSlides .bx-controls-direction a {
+  top: auto;
+  bottom: 338px;
+  margin-top: 0;
+}
+
+.conceptSlides .bx-prev {
+  left: -139px;
+}
+
+.conceptSlides .bx-next {
+  right: -144px;
 }
 
 .subSlideText__closing {
@@ -1967,7 +2105,8 @@ img {
 
 #concept .sectionInner {
   --u: min(1vw, 8.82px);
-  padding-bottom: calc(4 * var(--u) + 100px);
+  /* コントロールの実高さは--uに比例して増えるため、余白も同率で確保する */
+  padding-bottom: calc(8 * var(--u) + 26px);
 }
 
 /** ------------------------------
@@ -2119,28 +2258,47 @@ img {
   line-height: 1.5;
 }
 
-/* SPはドットを少し小さく（大画面SPで肥大して矢印にかぶらないよう上限つき） */
+/* SPは上下の余白を詰めてスライダーの近くに配置する（ドットは大画面SPで肥大しないよう上限つき） */
 .conceptSlides .bx-controls {
-  margin-top: calc(4 * var(--u) + 48px);
+  margin-top: calc(2 * var(--u) + 8px);
 }
 
+/* SPは左右の矢印と干渉しないよう、当たり判定は確保しつつ一回り小さく */
 .conceptSlides .bx-pager.bx-default-pager a {
-  margin: 0 clamp(6px, 2.5vw, 12px);
-  width: clamp(10px, 2.6vw, 12px);
-  height: clamp(10px, 2.6vw, 12px);
+  margin: 0 3px;
+  width: 24px;
+  height: 24px;
 }
 
-/* SPの＜＞矢印はドット幅に合わせて少し内側に */
+.conceptSlides .bx-pager.bx-default-pager a::before {
+  width: 9px;
+  height: 9px;
+}
+
+.conceptSlides .bx-pager.bx-default-pager a.active::before {
+  width: 22px;
+}
+
+/* SPは一回り小さく。ページャの外側に十分な間隔を空けて配置する */
 .conceptSlides .bx-controls-direction a {
-  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  margin-top: -18px;
+}
+
+.conceptSlides .bx-controls-direction a::before {
+  width: 9px;
+  height: 9px;
+  border-top-width: 2px;
+  border-right-width: 2px;
 }
 
 .conceptSlides .bx-prev {
-  left: calc(50% - min(125px, 30vw));
+  left: calc(50% - min(136px, 32vw));
 }
 
 .conceptSlides .bx-next {
-  right: calc(50% - min(125px, 30vw));
+  right: calc(50% - min(136px, 32vw));
 }
 
 /** ------------------------------------------------------------
