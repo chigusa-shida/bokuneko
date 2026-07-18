@@ -88,7 +88,9 @@
       "Bash(awk 'NR>=1938 && NR<=2010' assets/css/layout.css)",
       "Bash(awk '/max-width: 1049px/{sp=1} sp' assets/css/layout.css)",
       "Bash(grep -oE \"on\\\\\\(.{0,80}\\(touchstart|pointerdown|PointerDown\\)\" assets/js/jquery.bxslider.min.js)",
-      "Bash(grep -oE \"\\(pointerEnabled|msPointerEnabled|setPointerCapture|touchEnabled\\)[^,;{]{0,40}\" assets/js/jquery.bxslider.min.js)"
+      "Bash(grep -oE \"\\(pointerEnabled|msPointerEnabled|setPointerCapture|touchEnabled\\)[^,;{]{0,40}\" assets/js/jquery.bxslider.min.js)",
+      "Bash(awk '/min-width: 1050px/{f=1} f' assets/css/layout.css)",
+      "Bash(awk '/max-width: 750px/{f++} f==2' assets/css/layout.css)"
     ]
   }
 }
