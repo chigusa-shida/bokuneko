@@ -1,0 +1,29 @@
+# ------------------------------------------------------------
+# テストサーバー（サブドメイン test.bokuneko.jp）用の設定
+#
+# 【背景】
+# 親ディレクトリ /bokuneko.jp/public_html/.htaccess に、旧サイトの
+# PC/SP 振り分けルールが設定されている:
+#
+#   RewriteRule ^(.*)$ pc/$1 [L]   （PCのUAのとき）
+#   RewriteRule ^(.*)$ sp/$1 [L]   （スマホのUAのとき）
+#
+# Xserverではサブドメインの公開ディレクトリが public_html の
+# サブフォルダとして作られるため、この Rewrite が当サブドメインにも
+# 継承され、/index.html が /pc/index.html へ書き換えられてしまう。
+# サブドメイン配下に pc/・sp/ は無いので 404 になる。
+#
+# 【対処】
+# 当サイトはCSSでレスポンシブ対応済みでUA振り分けは不要なため、
+# このディレクトリ以下で継承された Rewrite を無効化する。
+# 親の .htaccess は本番サイトが使用中のため絶対に変更しないこと。
+#
+# 【本番公開時】
+# このファイル・robots.txt・各ページのnoindexメタは削除すること。
+# ------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+  RewriteEngine Off
+</IfModule>
+
+DirectoryIndex index.html

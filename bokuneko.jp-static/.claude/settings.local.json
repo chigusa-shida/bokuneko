@@ -82,7 +82,8 @@
       "Bash(node -e \"setTimeout\\(\\(\\) => console.log\\('waited'\\), 60000\\)\")",
       "Bash(node -e \"setTimeout\\(\\(\\) => console.log\\('waited'\\), 150000\\)\")",
       "Bash(node -e *)",
-      "Bash(git diff *)"
+      "Bash(git diff *)",
+      "Bash(grep -v \"^\\\\s*$\")"
     ]
   }
 }
