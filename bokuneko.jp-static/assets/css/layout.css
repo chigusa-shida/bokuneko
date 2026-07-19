@@ -402,6 +402,123 @@
   color: #383838;
 }
 
+/* --------------------------------------------------
+ * システム：料金・営業時間カードの構成要素（PC/SP共通の構造）
+ * 店内写真の木目トーン(#b1854f)をアクセントに使用
+ * -------------------------------------------------- */
+.systemCard__heading {
+  margin: 0 0 1em;
+  text-align: center;
+}
+
+/* 「平日」「土日祝」などの小見出し：両脇に木目色のライン */
+.priceGroup__title {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  margin: 0 0 0.6em;
+  color: #b1854f;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.priceGroup__title::before,
+.priceGroup__title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: rgba(177, 133, 79, 0.45);
+}
+
+.priceList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.priceList__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1em;
+  padding: 0.55em 0.2em;
+  border-bottom: 1px dashed rgba(92, 55, 12, 0.25);
+}
+
+.priceList__name {
+  font-weight: 700;
+}
+
+.priceList__price {
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.priceList__price small {
+  font-weight: 400;
+  font-size: 0.62em;
+  color: #8a7a66;
+}
+
+/* 平日限定サービスの案内（既存の淡黄トークン#fff3ccを使用） */
+.serviceNote {
+  border-radius: 10px;
+  background-color: #fff3cc;
+  text-align: center;
+}
+
+.serviceNote__title {
+  margin: 0 0 0.4em;
+  color: #b1854f;
+  font-weight: 900;
+}
+
+.serviceNote__body {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+/* 「フリードリンク無料」はマーカー風の強調（ピンク下地＋既存文字色で可読性を確保） */
+.serviceNote__body strong {
+  font-weight: 900;
+  background: linear-gradient(transparent 55%, #ffd3da 55%);
+}
+
+.hoursGroup {
+  text-align: center;
+}
+
+.hoursGroup__time {
+  margin: 0;
+}
+
+.hoursGroup__note {
+  margin: 0.15em 0 0;
+  color: #8a7a66;
+}
+
+.hoursGroup__allYear {
+  text-align: center;
+  font-weight: 700;
+}
+
+.ageNote {
+  text-align: center;
+  line-height: 1.9;
+}
+
+.ageNote__small {
+  text-align: center;
+  color: #8a7a66;
+}
+
+.qaLink {
+  text-align: center;
+  font-weight: 700;
+}
+
 /* フッターコピーライト */
 .footerCopyText {
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
@@ -686,7 +803,7 @@ img {
  * #concept
  */
 #concept {
-  background-color: #fffbee;
+  background-color: #faf4e6;
 }
 
 #concept .sectionInner {
@@ -904,7 +1021,7 @@ img {
 #calendar {
   padding: calc(50 * var(--p)) 0;
   min-width: calc(1000 * var(--p));
-  background: url(../images/bg-stripe-under.png) repeat 50% 0;
+  background-color: #f3e8d2;
 }
 
 #calendar h2 {
@@ -934,7 +1051,7 @@ img {
 #cat {
   padding: calc(100 * var(--p)) 0 0;
   min-width: calc(1000 * var(--p));
- background: #faecab url("../images/pc/index/cat/bg.png") repeat 50% 0;
+ background: #f0e0bd url("../images/pc/index/cat/bg.png") repeat 50% 0;
 }
 
 #cat h2 .titleGraphic__accent {
@@ -1100,9 +1217,30 @@ img {
 /** ------------------------------------------------------------
  * #system
  */
+/* 店内写真を背景に。読み込み前・未配置時は木目調のフォールバック色 */
 #system {
   padding: calc(100 * var(--p)) 0;
-  background: url("../images/pc/index/system/bg2.png") repeat-y 50% 0, url("../images/pc/index/system/bg.png") repeat 50% 0;
+  position: relative;
+  background: #e6d3b3 url("../images/system-bg.jpg") no-repeat 50% 50%;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+          background-size: cover;
+}
+
+/* 写真の上にクリームのベールを敷き、カード周りの可読性と落ち着きを確保する */
+#system::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(250, 244, 230, 0.72);
+}
+
+#system .sectionInner {
+  position: relative;
+  z-index: 1;
 }
 
 #system .sectionTitle .titleGraphic__en {
@@ -1135,76 +1273,98 @@ img {
 
 .systemDetail__main,
 .systemDetail__sub {
-  -webkit-border-radius: calc(5 * var(--p));
-     -moz-border-radius: calc(5 * var(--p));
-          border-radius: calc(5 * var(--p));
+  -webkit-border-radius: calc(14 * var(--p));
+     -moz-border-radius: calc(14 * var(--p));
+          border-radius: calc(14 * var(--p));
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
   background-color: #fff;
-}
-
-.systemDetail__main::before,
-.systemDetail__sub::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: calc(-8 * var(--p));
-  left: calc(30 * var(--p));
-  right: calc(30 * var(--p));
-  height: calc(39 * var(--p));
-  background: url("../images/pc/index/system/looseLeaf.png") repeat-x 50% 0;
+  box-shadow: 0 calc(6 * var(--p)) calc(20 * var(--p)) rgba(92, 55, 12, 0.12);
 }
 
 .systemDetail__main {
-  padding: calc(86 * var(--p)) calc(70 * var(--p));
+  padding: calc(40 * var(--p)) calc(48 * var(--p));
   width: calc(514 * var(--p));
-  min-height: calc(681 * var(--p));
   float: left;
 }
 
-.systemDetail__main::before {
-  position: absolute;
-}
-
 .systemDetail__sub {
-  padding: calc(86 * var(--p)) calc(52 * var(--p)) calc(34 * var(--p));
+  padding: calc(40 * var(--p)) calc(44 * var(--p));
   width: calc(440 * var(--p));
-  min-height: calc(681 * var(--p));
   float: right;
 }
 
-.systemDetail__looseLeaf {
-  display: none;
-}
-
-.systemDetail p {
-  font-size: max(11px, calc(14 * var(--p)));
-}
-
 .systemLabel {
-  padding: calc(6 * var(--p)) calc(18 * var(--p));
-  font-size: max(11px, calc(16 * var(--p)));
+  padding: calc(6 * var(--p)) calc(24 * var(--p));
+  font-size: max(11px, calc(17 * var(--p)));
 }
 
 .systemValue {
   font-size: max(11px, calc(30 * var(--p)));
 }
 
-.systemDetail__itemName {
-  margin: calc(20 * var(--p)) 0;
+/* 料金・営業時間カード内の各パーツ（PCサイズ） */
+.priceGroup {
+  margin-bottom: calc(26 * var(--p));
 }
 
-.systemDetail__itemName .systemLabel {
-  padding: calc(5 * var(--p)) calc(14 * var(--p));
+.priceGroup__title {
+  font-size: max(11px, calc(16 * var(--p)));
+}
+
+.priceList__name {
   font-size: max(11px, calc(15 * var(--p)));
 }
 
-.systemDetail__tax {
-  margin-top: calc(52 * var(--p));
-  margin-left: calc(-40 * var(--p));
-  margin-bottom: calc(-60 * var(--p));
+.priceList__price {
+  font-size: max(11px, calc(22 * var(--p)));
+}
+
+.serviceNote {
+  margin-top: calc(28 * var(--p));
+  padding: calc(18 * var(--p)) calc(16 * var(--p));
+}
+
+.serviceNote__title {
+  font-size: max(11px, calc(15 * var(--p)));
+}
+
+.serviceNote__body {
+  font-size: max(11px, calc(15 * var(--p)));
+}
+
+.hoursGroup {
+  margin-bottom: calc(20 * var(--p));
+}
+
+.hoursGroup__note {
+  font-size: max(11px, calc(13 * var(--p)));
+}
+
+.hoursGroup__allYear {
+  margin: calc(4 * var(--p)) 0 0;
+  font-size: max(11px, calc(13 * var(--p)));
+}
+
+.systemCard__heading--second {
+  margin-top: calc(34 * var(--p));
+}
+
+.ageNote {
+  margin: 0;
+  font-size: max(11px, calc(14 * var(--p)));
+}
+
+.ageNote__small {
+  margin: calc(8 * var(--p)) 0 0;
+  font-size: max(11px, calc(12 * var(--p)));
+}
+
+.qaLink {
+  margin: calc(24 * var(--p)) 0 0;
+  font-size: max(11px, calc(14 * var(--p)));
 }
 
 /* デコ画像 */
@@ -1219,7 +1379,7 @@ img {
  */
 #rule {
   padding: calc(100 * var(--p)) 0 calc(440 * var(--p));
-  background: url("../images/bg-stripe-under.png") repeat 50% 0;
+  background-color: #f3e8d2;
 }
 
 #rule .sectionTitle__sub {
@@ -1512,7 +1672,7 @@ address {
  * 下層
  */
 .under {
-  background: url("../images/bg-stripe-under.png") repeat 50% 0;
+  background-color: #faf4e6;
 }
 
 .frame {
@@ -2105,7 +2265,7 @@ img {
 #concept {
   width: 100%;
   position: relative;
-  background-color: #fffbee;
+  background-color: #faf4e6;
   overflow: hidden;
 }
 
@@ -2311,7 +2471,7 @@ img {
  * #calendar
  */
 #calendar {
-  background: url(../images/bg-stripe-under.png) repeat 50% 0;
+  background-color: #f3e8d2;
 }
 
 #calendar h2 {
@@ -2340,7 +2500,7 @@ img {
  * #cat
  */
 #cat {
-   background: #faecab url("../images/sp/index/cat/bg.png") repeat 50% 0;
+   background: #f0e0bd url("../images/sp/index/cat/bg.png") repeat 50% 0;
   -webkit-background-size: 100% auto;
        -o-background-size: 100% auto;
           background-size: 100% auto;
@@ -2528,10 +2688,14 @@ img {
   margin: 0 auto;
   padding: 0 6.6vw 6vw;
   position: relative;
-  background: url("../images/sp/index/system/bg.png") repeat 50% 0;
+  background: #e6d3b3 url("../images/system-bg.jpg") no-repeat 50% 50%;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+          background-size: cover;
   overflow: hidden;
 }
 
+/* 写真の上にクリームのベールを重ね、文字の可読性を確保する */
 #system::before {
   content: "";
   position: absolute;
@@ -2539,10 +2703,12 @@ img {
   right: 0;
   bottom: 0;
   left: 0;
-  background: url("../images/sp/index/system/bg2.png") repeat-y 50% 0;
-  -webkit-background-size: 100% 100%;
-     -moz-background-size: 100% 100%;
-          background-size: 100% 100%;
+  background-color: rgba(250, 244, 230, 0.72);
+}
+
+#system .sectionInner {
+  position: relative;
+  z-index: 1;
 }
 
 #system .sectionTitle .titleGraphic__en {
@@ -2568,62 +2734,87 @@ img {
 .systemDetail__sub {
   margin-top: 2vw;
   margin-bottom: 6.6vw;
-  padding: 9vw 6.6vw;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
+  padding: 7vw 6vw;
+  -webkit-border-radius: min(3vw, 14px);
+     -moz-border-radius: min(3vw, 14px);
+          border-radius: min(3vw, 14px);
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
   background-color: #fff;
-}
-
-.systemDetail__looseLeaf {
-  padding: 0 13.2%;
-  position: absolute;
-  top: -5px;
-  right: 0;
-  left: 0;
-  width: 100%;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.systemDetail__itemName {
-  margin: 20px 0 10px;
-}
-
-.systemDetail__tax {
-  margin-top: 6vw;
-  font-size: 80%;
-}
-
-.systemDetail__title {
-  width: 22.8vw;
-}
-
-.systemDetail__body {
-  width: 100%;
+  box-shadow: 0 min(1.5vw, 6px) min(4vw, 20px) rgba(92, 55, 12, 0.12);
 }
 
 .systemLabel {
-  padding: 1.2vw 4vw;
-  font-size: min(3.6vw, 18px);
+  padding: 1.2vw 5vw;
+  font-size: min(3.8vw, 19px);
 }
 
 .systemValue {
   font-size: min(7vw, 35px);
 }
 
-.systemDetail__itemName .systemLabel {
-  padding: 1vw 3vw;
+/* 料金・営業時間カード内の各パーツ（SPサイズ） */
+.priceGroup {
+  margin-bottom: 5vw;
+}
+
+.priceGroup__title {
+  font-size: min(3.8vw, 19px);
+}
+
+.priceList__name {
+  font-size: min(3.6vw, 18px);
+}
+
+.priceList__price {
+  font-size: min(5.2vw, 26px);
+}
+
+.serviceNote {
+  margin-top: 6vw;
+  padding: 4.5vw 4vw;
+}
+
+.serviceNote__title {
+  font-size: min(3.6vw, 18px);
+}
+
+.serviceNote__body {
+  font-size: min(3.6vw, 18px);
+}
+
+.hoursGroup {
+  margin-bottom: 5vw;
+}
+
+.hoursGroup__note {
+  font-size: min(3.2vw, 16px);
+}
+
+.hoursGroup__allYear {
+  margin: 1vw 0 0;
+  font-size: min(3.2vw, 16px);
+}
+
+.systemCard__heading--second {
+  margin-top: 8vw;
+}
+
+.ageNote {
+  margin: 0;
   font-size: min(3.4vw, 17px);
 }
 
-.systemDetail p {
-  font-size: 90%;
+.ageNote__small {
+  margin: 2vw 0 0;
+  font-size: min(3vw, 15px);
+}
+
+.qaLink {
+  margin: 6vw 0 0;
+  font-size: min(3.4vw, 17px);
 }
 
 /* デコ画像 */
@@ -2643,10 +2834,7 @@ img {
  */
 #rule {
   padding-bottom: 130px;
-  background: url("../images/bg-stripe-under.png") repeat 0 0;
-  -webkit-background-size: 15% auto;
-     -moz-background-size: 15% auto;
-          background-size: 15% auto;
+  background-color: #f3e8d2;
   overflow: hidden;
 }
 
@@ -3020,10 +3208,7 @@ address {
  * 下層
  */
 .under {
-  background: url("../images/bg-stripe-under.png") repeat 0 0;
-  -webkit-background-size: 15% auto;
-     -moz-background-size: 15% auto;
-          background-size: 15% auto;
+  background-color: #faf4e6;
 }
 
 .frame {

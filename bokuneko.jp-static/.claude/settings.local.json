@@ -90,7 +90,13 @@
       "Bash(grep -oE \"on\\\\\\(.{0,80}\\(touchstart|pointerdown|PointerDown\\)\" assets/js/jquery.bxslider.min.js)",
       "Bash(grep -oE \"\\(pointerEnabled|msPointerEnabled|setPointerCapture|touchEnabled\\)[^,;{]{0,40}\" assets/js/jquery.bxslider.min.js)",
       "Bash(awk '/min-width: 1050px/{f=1} f' assets/css/layout.css)",
-      "Bash(awk '/max-width: 750px/{f++} f==2' assets/css/layout.css)"
+      "Bash(awk '/max-width: 750px/{f++} f==2' assets/css/layout.css)",
+      "Read(//d/Desktop/test.bokuneko.jp-static/**)",
+      "Read(//d/Desktop/**)",
+      "Bash(powershell -Command \"Get-ChildItem 'C:\\\\Users\\\\chigu\\\\Downloads' -File | Sort-Object LastWriteTime -Descending | Select-Object -First 8 Name, LastWriteTime\")",
+      "Bash(powershell -Command \"Get-ChildItem 'D:\\\\Desktop' -File -Include *.jpg,*.png,*.webp -Recurse -Depth 0 | Select-Object -First 5 Name\")",
+      "Bash(awk 'NR>1 && /^#system {$/{exit} {print}')",
+      "Bash(awk '/max-width: 750px/{c++} c==2' assets/css/layout.css)"
     ]
   }
 }

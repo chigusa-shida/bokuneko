@@ -352,74 +352,81 @@
 
               <div class="systemDetail">
                 <div class="systemDetail__main wow fadeInLeft" data-wow-delay="0.5s">
-                  <img class="systemDetail__looseLeaf" src="assets/images/sp/index/system/looseLeaf.png" alt="" />
-                  <dl>
-                    <dt>
-                      <span class="systemLabel">料金</span>
-                    </dt>
-                    <dd>
-                      <span class="systemValue">10分440円</span>
-                    </dd>
-                    <dt>
-                      <span class="systemLabel">猫のおやつ</span>
-                    </dt>
-                    <dd>
-                      <span class="systemValue">550円</span>
-                      <p>
-                        ネコちゃんにあげるおやつを<br>
-                        販売しています。（数量限定）
-                      </p>
-                    </dd>
-                  </dl>
-                  <p class="systemDetail__tax">
-                    ※表示価格は税込料金です。
-                  </p>
+                  <h3 class="systemCard__heading">
+                    <span class="systemLabel">ご利用料金</span>
+                  </h3>
+
+                  <div class="priceGroup">
+                    <h4 class="priceGroup__title">平日</h4>
+                    <ul class="priceList">
+                      <li class="priceList__row">
+                        <span class="priceList__name">10分</span>
+                        <span class="priceList__price">300円<small>（税込330円）</small></span>
+                      </li>
+                      <li class="priceList__row">
+                        <span class="priceList__name">フリードリンク</span>
+                        <span class="priceList__price">350円<small>（税込385円）</small></span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="priceGroup">
+                    <h4 class="priceGroup__title">土日祝・特定日</h4>
+                    <ul class="priceList">
+                      <li class="priceList__row">
+                        <span class="priceList__name">10分</span>
+                        <span class="priceList__price">400円<small>（税込440円）</small></span>
+                      </li>
+                      <li class="priceList__row">
+                        <span class="priceList__name">フリードリンク</span>
+                        <span class="priceList__price">550円<small>（税込550円）</small></span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="serviceNote">
+                    <p class="serviceNote__title">平日限定サービス</p>
+                    <p class="serviceNote__body">
+                      未就学児のお子様・女性のお客様は<br>
+                      <strong>フリードリンク無料</strong>
+                    </p>
+                  </div>
                 </div>
+
                 <div class="systemDetail__sub wow fadeInRight" data-wow-delay="0.5s">
-                  <img class="systemDetail__looseLeaf" src="assets/images/sp/index/system/looseLeaf.png" alt="" />
-                  <dl>
-                    <dt>
-                      <span class="systemLabel">営業時間</span>
-                    </dt>
-                    <dd>
-                      <p style="margin-top: 1em; font-size: 120%;">
-                        ▼日～木
-                      </p>
-                      <span class="systemValue">12:00〜21:00</span>
-                      <p>
-                        最終入店時間は20:30
-                      </p>
-                    </dd>
-                    <dd>
-                      <p style="margin-top: 1em; font-size: 120%;">
-                        ▼金土・祝前日
-                      </p>
-                      <span class="systemValue">12:00〜22:00</span>
-                      <p>
-                        最終入店時間は21:30
-                      </p>
-                      <p style="margin-top: 1em;">
-                        ※年中無休
-                      </p>
-                    </dd>
-                    <dt class="systemDetail__itemName">
-                      <span class="systemLabel">年齢制限</span>
-                    </dt>
-                    <dd>
-                      中学生以上の方がご利用可能です。
-                    </dd>
-                    <dt class="systemDetail__itemName">
-                      <span class="systemLabel">Q&amp;A</span>
-                    </dt>
-                    <dd>
-                      よくある質問は<a href="#QA">こちら</a>から。
-                    </dd>
-                  </dl>
+                  <h3 class="systemCard__heading">
+                    <span class="systemLabel">営業時間</span>
+                  </h3>
+
+                  <div class="hoursGroup">
+                    <h4 class="priceGroup__title">日〜木</h4>
+                    <p class="hoursGroup__time"><span class="systemValue">12:00〜21:00</span></p>
+                    <p class="hoursGroup__note">最終入店：20:30</p>
+                  </div>
+
+                  <div class="hoursGroup">
+                    <h4 class="priceGroup__title">金・土・祝前日</h4>
+                    <p class="hoursGroup__time"><span class="systemValue">12:00〜22:00</span></p>
+                    <p class="hoursGroup__note">最終入店：21:30</p>
+                  </div>
+
+                  <p class="hoursGroup__allYear">※年中無休</p>
+
+                  <h3 class="systemCard__heading systemCard__heading--second">
+                    <span class="systemLabel">年齢制限</span>
+                  </h3>
+                  <p class="ageNote">
+                    年齢制限はありません。<br>
+                    ただし、中学生未満のお客様は<br class="pcBr">保護者同伴でのご利用をお願いいたします。
+                  </p>
+                  <p class="ageNote__small">※保護者1名につき、お子様は2名までご入場いただけます。</p>
+
+                  <p class="qaLink">よくある質問は<a href="#QA" data-remodal-target="QA">こちら</a>から。</p>
                 </div>
               </div>
-              <p class="system__deco">
+              <!-- <p class="system__deco">
                 <img src="assets/images/system-deco.png" alt="仲良くしてにゃ♪" />
-              </p>
+              </p> -->
             </div>
 
             <div class="remodal" data-remodal-id="QA" data-remodal-options="hashTracking:false">
@@ -526,7 +533,7 @@
                   <p class="ruleCaption">大声を出さない</p>
                 </li>
                 <li class="ruleList__item">
-                  <a href="#otherRule">
+                  <a href="#otherRule" data-remodal-target="otherRule">
                     <div class="ruleCard ruleCard--other wow zoomIn" data-wow-delay="1.1s">
                       <span class="ruleCard__click">CLICK</span>
                       <span class="ruleCard__badge">その他</span>
@@ -618,7 +625,7 @@
 
         <ul class="footerNav">
           <li class="footerNav__item">
-            <a href="#law">
+            <a href="#law" data-remodal-target="law">
               第１種動物取扱業者標識
             </a>
           </li>
