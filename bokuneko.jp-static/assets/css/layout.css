@@ -417,7 +417,7 @@
   align-items: center;
   gap: 0.75em;
   margin: 0 0 0.6em;
-  color: #b1854f;
+  color: #9a6f3c;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -491,7 +491,7 @@
 
 .serviceNote__title {
   margin: 0 0 0.4em;
-  color: #b1854f;
+  color: #9a6f3c;
   font-weight: 900;
 }
 
@@ -831,23 +831,58 @@ img {
  * #concept
  */
 #concept {
-  background-color: #faf4e6;
+  position: relative;
+  z-index: 0;
+  background-color: rgba(252, 241, 240, 0.72);
+  /* 丸窓風の円5つ：サイズ・色・透明度を変えて奥行きとリズムを出す
+     右上の白い大円は上端・右端から余白を取り全体が見えるように */
+  background-image:
+    radial-gradient(circle at calc(100% - (270 * var(--p))) calc(260 * var(--p)), rgba(255, 255, 255, 0.5) calc(209 * var(--p)), rgba(255, 255, 255, 0) calc(210 * var(--p))),
+    radial-gradient(circle at calc(170 * var(--p)) calc(200 * var(--p)), rgba(255, 211, 218, 0.45) calc(89 * var(--p)), rgba(255, 211, 218, 0) calc(90 * var(--p))),
+    radial-gradient(circle at 12% 74%, rgba(191, 227, 223, 0.45) calc(149 * var(--p)), rgba(191, 227, 223, 0) calc(150 * var(--p))),
+    radial-gradient(circle at calc(100% - (200 * var(--p))) 86%, rgba(255, 255, 255, 0.35) calc(129 * var(--p)), rgba(255, 255, 255, 0) calc(130 * var(--p))),
+    radial-gradient(circle at 55% calc(120 * var(--p)), rgba(191, 227, 223, 0.35) calc(59 * var(--p)), rgba(191, 227, 223, 0) calc(60 * var(--p)));
+  background-repeat: no-repeat;
+}
+
+/* 猫の足あと：左上寄りの小さめ2歩（木目ブラウン・下のピンクとサイズ/向き違い） */
+#concept::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  left: calc(70 * var(--p));
+  top: calc(140 * var(--p));
+  width: calc(130 * var(--p));
+  height: calc(170 * var(--p));
+  opacity: 0.22;
+  transform: rotate(28deg);
+  background-image: url("../images/cat-paw-wood.svg"), url("../images/cat-paw-wood.svg");
+  background-repeat: no-repeat;
+  background-size: calc(44 * var(--p)) auto, calc(36 * var(--p)) auto;
+  background-position: 22% 88%, 72% 12%;
+}
+
+/* 猫の足あと：右下から画面内へ歩いてくるような3歩（ブランドピンク・ごく淡く） */
+#concept::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  right: calc(36 * var(--p));
+  bottom: calc(40 * var(--p));
+  width: calc(200 * var(--p));
+  height: calc(310 * var(--p));
+  opacity: 0.3;
+  transform: rotate(14deg);
+  background-image: url("../images/cat-paw-pink.svg"), url("../images/cat-paw-pink.svg"), url("../images/cat-paw-pink.svg");
+  background-repeat: no-repeat;
+  background-size: calc(56 * var(--p)) auto, calc(46 * var(--p)) auto, calc(62 * var(--p)) auto;
+  background-position: 12% 94%, 68% 52%, 20% 8%;
 }
 
 #concept .sectionInner {
   padding-bottom: calc(60 * var(--p));
-}
-
-#concept .sectionInner::before {
-  content: "";
-  position: absolute;
-  right: calc(-73 * var(--p));
-  top: calc(768 * var(--p));
-  z-index: 12;
-  display: block;
-  width: calc(165 * var(--p));
-  height: calc(130 * var(--p));
-  background: url("../images/pc/index/concept/cloud.png") no-repeat 0 0;
 }
 
 /** ------------------------------
@@ -1046,11 +1081,43 @@ img {
 /** ------------------------------------------------------------
  * #calendar
  */
-/* 下端は#accessのマイナスマージン(270)ぶんの逃げを含む */
+/* 下端は#accessのマイナスマージン(270)ぶんの逃げを含む。
+   木の温もりをイメージした斜めストライプ */
 #calendar {
   padding: calc(80 * var(--p)) 0 calc(390 * var(--p));
   min-width: calc(1000 * var(--p));
-  background-color: #f3e8d2;
+  background-color: #f3e7d5;
+  /* 幅を変えた4段のストライプで板の並びを表現し、上からの淡い光で単調さを回避 */
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 40%),
+    repeating-linear-gradient(-45deg,
+      rgba(177, 133, 79, 0.09) 0 36px,
+      rgba(177, 133, 79, 0.02) 36px 72px,
+      rgba(177, 133, 79, 0.06) 72px 108px,
+      rgba(177, 133, 79, 0) 108px 144px);
+}
+
+#calendar .sectionInner {
+  position: relative;
+  z-index: 0;
+}
+
+/* 猫の足あと：タイトル脇の右上に2歩（フッターの茶色） */
+#calendar .sectionInner::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  right: 0;
+  top: calc(10 * var(--p));
+  width: calc(150 * var(--p));
+  height: calc(170 * var(--p));
+  opacity: 0.22;
+  transform: rotate(-32deg);
+  background-image: url("../images/cat-paw-brown.svg"), url("../images/cat-paw-brown.svg");
+  background-repeat: no-repeat;
+  background-size: calc(50 * var(--p)) auto, calc(40 * var(--p)) auto;
+  background-position: 14% 90%, 74% 12%;
 }
 
 #calendar h2 {
@@ -1080,7 +1147,52 @@ img {
 #cat {
   padding: calc(100 * var(--p)) 0 0;
   min-width: calc(1000 * var(--p));
- background: #f0e0bd url("../images/pc/index/cat/bg.png") repeat 50% 0;
+  position: relative;
+  z-index: 0;
+  background-color: #f7ecca;
+  /* ごく淡い水玉（他セクションと共通のテクスチャ） */
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.35) calc(3 * var(--p)), transparent calc(4 * var(--p))),
+    radial-gradient(rgba(255, 255, 255, 0.35) calc(3 * var(--p)), transparent calc(4 * var(--p)));
+  background-size: calc(36 * var(--p)) calc(36 * var(--p));
+  background-position: 0 0, calc(18 * var(--p)) calc(18 * var(--p));
+}
+
+/* 猫の足あと：左下・最下行カード下の帯に2歩（右上トレイルと同色で統一。
+   カード列は幅によって左端まで広がるため、常に空いている下端の帯に置く） */
+#cat::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  left: calc(30 * var(--p));
+  bottom: calc(6 * var(--p));
+  width: calc(220 * var(--p));
+  height: calc(64 * var(--p));
+  opacity: 0.26;
+  transform: rotate(-8deg);
+  background-image: url("../images/cat-paw-wood.svg"), url("../images/cat-paw-wood.svg");
+  background-repeat: no-repeat;
+  background-size: calc(44 * var(--p)) auto, calc(36 * var(--p)) auto;
+  background-position: 8% 75%, 58% 20%;
+}
+
+/* 猫の足あと：右上の丸窓を横切る2歩（木目ブラウン・ごく淡く） */
+#cat::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  right: calc(50 * var(--p));
+  top: calc(60 * var(--p));
+  width: calc(230 * var(--p));
+  height: calc(430 * var(--p));
+  opacity: 0.26;
+  transform: rotate(22deg);
+  background-image: url("../images/cat-paw-wood.svg"), url("../images/cat-paw-wood.svg"), url("../images/cat-paw-wood.svg"), url("../images/cat-paw-wood.svg");
+  background-repeat: no-repeat;
+  background-size: calc(62 * var(--p)) auto, calc(50 * var(--p)) auto, calc(58 * var(--p)) auto, calc(46 * var(--p)) auto;
+  background-position: 16% 94%, 72% 66%, 20% 38%, 76% 6%;
 }
 
 #cat h2 .titleGraphic__accent {
@@ -1250,7 +1362,7 @@ img {
 #system {
   padding: calc(100 * var(--p)) 0;
   position: relative;
-  background: #e6d3b3 url("../images/system-bg.jpg") no-repeat 50% 50%;
+  background: #eadbc8 url("../images/system-bg.jpg") no-repeat 50% 50%;
   -webkit-background-size: cover;
      -moz-background-size: cover;
           background-size: cover;
@@ -1264,7 +1376,7 @@ img {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(250, 244, 230, 0.72);
+  background-color: rgba(252, 241, 240, 0.72);
 }
 
 #system .sectionInner {
@@ -1400,7 +1512,16 @@ img {
  */
 #rule {
   padding: calc(100 * var(--p)) 0;
-  background-color: #f3e8d2;
+  background-color: #efe7f5;
+  /* 丸窓風の大円2つ＋ごく淡い水玉 */
+  background-image:
+    radial-gradient(circle at 92% 12%, rgba(255, 255, 255, 0.45) calc(179 * var(--p)), rgba(255, 255, 255, 0) calc(180 * var(--p))),
+    radial-gradient(circle at 5% 72%, rgba(255, 211, 218, 0.5) calc(130 * var(--p)), rgba(255, 211, 218, 0) calc(131 * var(--p))),
+    radial-gradient(rgba(255, 255, 255, 0.3) calc(3 * var(--p)), transparent calc(4 * var(--p))),
+    radial-gradient(rgba(255, 255, 255, 0.3) calc(3 * var(--p)), transparent calc(4 * var(--p)));
+  background-size: auto, auto, calc(36 * var(--p)) calc(36 * var(--p)), calc(36 * var(--p)) calc(36 * var(--p));
+  background-position: 0 0, 0 0, 0 0, calc(18 * var(--p)) calc(18 * var(--p));
+  background-repeat: no-repeat, no-repeat, repeat, repeat;
 }
 
 #rule .sectionTitle__sub {
@@ -1693,7 +1814,13 @@ address {
  * 下層
  */
 .under {
-  background-color: #faf4e6;
+  background-color: #fbedf0;
+  /* ごく淡い水玉（トップページと共通のテクスチャ） */
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.35) calc(3 * var(--p)), transparent calc(4 * var(--p))),
+    radial-gradient(rgba(255, 255, 255, 0.35) calc(3 * var(--p)), transparent calc(4 * var(--p)));
+  background-size: calc(36 * var(--p)) calc(36 * var(--p));
+  background-position: 0 0, calc(18 * var(--p)) calc(18 * var(--p));
 }
 
 .frame {
@@ -2286,8 +2413,54 @@ img {
 #concept {
   width: 100%;
   position: relative;
-  background-color: #faf4e6;
+  z-index: 0;
+  background-color: rgba(252, 241, 240, 0.72);
+  /* 丸窓風の円5つ：サイズ・色・透明度を変えて奥行きとリズムを出す
+     右上の白い大円は上端・右端から余白を取り全体が見えるように */
+  background-image:
+    radial-gradient(circle at calc(100% - 32vw) 42vw, rgba(255, 255, 255, 0.5) min(23.8vw, 119px), rgba(255, 255, 255, 0) min(24vw, 120px)),
+    radial-gradient(circle at 16vw 18vw, rgba(255, 211, 218, 0.45) min(11.8vw, 59px), rgba(255, 211, 218, 0) min(12vw, 60px)),
+    radial-gradient(circle at 12% 72%, rgba(191, 227, 223, 0.45) min(19.8vw, 99px), rgba(191, 227, 223, 0) min(20vw, 100px)),
+    radial-gradient(circle at calc(100% - 18vw) 88%, rgba(255, 255, 255, 0.35) min(15.8vw, 79px), rgba(255, 255, 255, 0) min(16vw, 80px)),
+    radial-gradient(circle at 58% 16vw, rgba(191, 227, 223, 0.35) min(7.8vw, 39px), rgba(191, 227, 223, 0) min(8vw, 40px));
+  background-repeat: no-repeat;
   overflow: hidden;
+}
+
+/* 猫の足あと：左上寄りの小さめ2歩（木目ブラウン・下のピンクとサイズ/向き違い） */
+#concept::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  left: 3vw;
+  top: 6vw;
+  width: 20vw;
+  height: 26vw;
+  opacity: 0.22;
+  transform: rotate(30deg);
+  background-image: url("../images/cat-paw-wood.svg"), url("../images/cat-paw-wood.svg");
+  background-repeat: no-repeat;
+  background-size: min(7.5vw, 38px) auto, min(6vw, 30px) auto;
+  background-position: 22% 88%, 72% 12%;
+}
+
+/* 猫の足あと：右下から歩いてくる3歩（ブランドピンク・ごく淡く） */
+#concept::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  right: min(5vw, 25px);
+  bottom: min(8vw, 40px);
+  width: min(36vw, 180px);
+  height: min(56vw, 280px);
+  opacity: 0.3;
+  transform: rotate(14deg);
+  background-image: url("../images/cat-paw-pink.svg"), url("../images/cat-paw-pink.svg"), url("../images/cat-paw-pink.svg");
+  background-repeat: no-repeat;
+  background-size: min(10vw, 50px) auto, min(8.5vw, 42px) auto, min(11.5vw, 57px) auto;
+  background-position: 12% 94%, 68% 52%, 20% 8%;
 }
 
 #concept .sectionInner {
@@ -2491,9 +2664,42 @@ img {
 /** ------------------------------------------------------------
  * #calendar
  */
+/* 木の温もりをイメージした斜めストライプ */
 #calendar {
   padding: min(6vw, 30px) 0 min(14vw, 70px);
-  background-color: #f3e8d2;
+  background-color: #f3e7d5;
+  overflow: hidden;
+  /* 幅を変えた4段のストライプで板の並びを表現し、上からの淡い光で単調さを回避 */
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 40%),
+    repeating-linear-gradient(-45deg,
+      rgba(177, 133, 79, 0.09) 0 28px,
+      rgba(177, 133, 79, 0.02) 28px 56px,
+      rgba(177, 133, 79, 0.06) 56px 84px,
+      rgba(177, 133, 79, 0) 84px 112px);
+}
+
+#calendar .sectionInner {
+  position: relative;
+  z-index: 0;
+}
+
+/* 猫の足あと：タイトル脇の右上に2歩（フッターの茶色） */
+#calendar .sectionInner::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  right: 2vw;
+  top: 0;
+  width: min(26vw, 130px);
+  height: min(30vw, 150px);
+  opacity: 0.22;
+  transform: rotate(-28deg);
+  background-image: url("../images/cat-paw-brown.svg"), url("../images/cat-paw-brown.svg");
+  background-repeat: no-repeat;
+  background-size: min(9.5vw, 47px) auto, min(7.5vw, 38px) auto;
+  background-position: 14% 90%, 74% 12%;
 }
 
 #calendar h2 {
@@ -2522,11 +2728,52 @@ img {
  * #cat
  */
 #cat {
-   background: #f0e0bd url("../images/sp/index/cat/bg.png") repeat 50% 0;
-  -webkit-background-size: 100% auto;
-       -o-background-size: 100% auto;
-          background-size: 100% auto;
+  position: relative;
+  z-index: 0;
+  background-color: #f7ecca;
+  /* ごく淡い水玉（他セクションと共通のテクスチャ） */
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.35) min(0.8vw, 4px), transparent min(1vw, 5px)),
+    radial-gradient(rgba(255, 255, 255, 0.35) min(0.8vw, 4px), transparent min(1vw, 5px));
+  background-size: min(9vw, 45px) min(9vw, 45px);
+  background-position: 0 0, min(4.5vw, 22.5px) min(4.5vw, 22.5px);
   overflow: hidden;
+}
+
+/* 猫の足あと：下部センター寄りの2歩（右上トレイルと同色で統一） */
+#cat::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  left: -16px;
+  bottom: 150px;
+  width: 23vw;
+  height: 30vw;
+  opacity: 0.26;
+  transform: rotate(-18deg);
+  background-image: url("../images/cat-paw-wood.svg"), url("../images/cat-paw-wood.svg");
+  background-repeat: no-repeat;
+  background-size: min(9vw, 45px) auto, min(7.5vw, 38px) auto;
+  background-position: 20% 85%, 70% 20%;
+}
+
+/* 猫の足あと：右上の丸窓を横切る2歩（木目ブラウン・ごく淡く） */
+#cat::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  right: min(4vw, 20px);
+  top: min(8vw, 40px);
+  width: min(42vw, 210px);
+  height: min(80vw, 400px);
+  opacity: 0.26;
+  transform: rotate(22deg);
+  background-image: url("../images/cat-paw-wood.svg"), url("../images/cat-paw-wood.svg"), url("../images/cat-paw-wood.svg"), url("../images/cat-paw-wood.svg");
+  background-repeat: no-repeat;
+  background-size: min(11.5vw, 57px) auto, min(9.5vw, 47px) auto, min(10.5vw, 52px) auto, min(8.5vw, 42px) auto;
+  background-position: 16% 94%, 72% 66%, 20% 38%, 76% 6%;
 }
 
 #cat h2 .titleGraphic__accent {
@@ -2710,7 +2957,7 @@ img {
   margin: 0 auto;
   padding: 0 6.6vw 6vw;
   position: relative;
-  background: #e6d3b3 url("../images/system-bg.jpg") no-repeat 50% 50%;
+  background: #eadbc8 url("../images/system-bg.jpg") no-repeat 50% 50%;
   -webkit-background-size: cover;
      -moz-background-size: cover;
           background-size: cover;
@@ -2725,7 +2972,7 @@ img {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(250, 244, 230, 0.72);
+  background-color: rgba(252, 241, 240, 0.72);
 }
 
 #system .sectionInner {
@@ -2857,7 +3104,16 @@ img {
  */
 #rule {
   padding-bottom: min(12vw, 60px);
-  background-color: #f3e8d2;
+  background-color: #efe7f5;
+  /* 丸窓風の大円2つ＋ごく淡い水玉 */
+  background-image:
+    radial-gradient(circle at 96% 6%, rgba(255, 255, 255, 0.45) min(28vw, 140px), rgba(255, 255, 255, 0) calc(min(28vw, 140px) + 1px)),
+    radial-gradient(circle at 3% 74%, rgba(255, 211, 218, 0.5) min(22vw, 110px), rgba(255, 211, 218, 0) calc(min(22vw, 110px) + 1px)),
+    radial-gradient(rgba(255, 255, 255, 0.3) min(0.8vw, 4px), transparent min(1vw, 5px)),
+    radial-gradient(rgba(255, 255, 255, 0.3) min(0.8vw, 4px), transparent min(1vw, 5px));
+  background-size: auto, auto, min(9vw, 45px) min(9vw, 45px), min(9vw, 45px) min(9vw, 45px);
+  background-position: 0 0, 0 0, 0 0, min(4.5vw, 22.5px) min(4.5vw, 22.5px);
+  background-repeat: no-repeat, no-repeat, repeat, repeat;
   overflow: hidden;
 }
 
@@ -3231,7 +3487,12 @@ address {
  * 下層
  */
 .under {
-  background-color: #faf4e6;
+  background-color: #fbedf0;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.35) min(0.8vw, 4px), transparent min(1vw, 5px)),
+    radial-gradient(rgba(255, 255, 255, 0.35) min(0.8vw, 4px), transparent min(1vw, 5px));
+  background-size: min(9vw, 45px) min(9vw, 45px);
+  background-position: 0 0, min(4.5vw, 22.5px) min(4.5vw, 22.5px);
 }
 
 .frame {
