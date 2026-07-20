@@ -56,6 +56,19 @@
   line-height: 1;
 }
 
+/* セクション見出しの頭文字アクセント：各背景に馴染む落ち着いた色で管理 */
+:root {
+  --accent-cat: #8a6234;       /* 猫紹介（バタークリーム背景）：木目ブラウン */
+  --accent-system: #a1545f;    /* システム（ピンクのベール背景）：くすみローズ */
+  --accent-rule: #7d6790;      /* ルール（ラベンダー背景）：くすみプラム */
+  --accent-calendar: #83592f;  /* カレンダー（木目ストライプ背景）：濃い木目 */
+}
+
+#cat .titleGraphic__accent { color: var(--accent-cat); }
+#system .titleGraphic__accent { color: var(--accent-system); }
+#rule .titleGraphic__accent { color: var(--accent-rule); }
+#calendar .titleGraphic__accent { color: var(--accent-calendar); }
+
 .titleGraphic__body {
   display: flex;
   flex-direction: column;
@@ -272,25 +285,36 @@
 /* ルール説明文の装飾カッコ */
 .ruleMessageText {
   position: relative;
+  display: inline-block;
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   font-weight: 700;
   color: #383838;
   text-align: center;
 }
 
+/* フォントの［］ではなく、縦線＋上下の短い横線で直線的な括弧を描き、文章ブロック全体を囲む */
 .ruleMessageText::before,
 .ruleMessageText::after {
-  font-family: Georgia, serif;
-  font-weight: 700;
-  color: #383838;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 2px solid #383838;
 }
 
+/* 左「［」：縦線＋上下の横線（右辺なし） */
 .ruleMessageText::before {
-  content: "(";
+  left: 0;
+  border-right: none;
 }
 
+/* 右「］」：縦線＋上下の横線（左辺なし） */
 .ruleMessageText::after {
-  content: ")";
+  right: 0;
+  border-left: none;
 }
 
 /* ルールアイコン下のキャプション（サークル下部に重ねる） */
@@ -518,7 +542,7 @@
 
 .hoursGroup__note {
   margin: 0.15em 0 0;
-  color: #5c370c;
+  color: #383838;
   font-weight: 700;
 }
 
@@ -536,7 +560,7 @@
 /* 保護者同伴の注意書き：淡ピンクの角丸ボックスで本文より一段目立たせる */
 .ageNote__small {
   text-align: center;
-  color: #5c370c;
+  color: #383838;
   font-weight: 700;
   background-color: #ffeef2;
   border-radius: 8px;
@@ -1233,8 +1257,8 @@ img {
           border-radius: 1.8em;
   position: relative;
   line-height: 1.8;
-  color: #fff;
-  background-color: #5c370c;
+  color: #383838;
+  background-color: #e9d7bd;
   letter-spacing: 1px;
   font-weight: bold;
   text-align: center;
@@ -1244,16 +1268,16 @@ img {
 }
 
 .catList__item.green .cat__name {
-  background-color: #0d8046;
+  background-color: #a9d7cf;
 }
 .catList__item.orange  .cat__name {
-  background-color: #ff9c32;
+  background-color: #f4c98f;
 }
 .catList__item.yerrow  .cat__name {
-  background-color: #ffc100;
+  background-color: #f2dc9b;
 }
 .catList__item.pink  .cat__name {
-  background-color: #ff8094;
+  background-color: #f9bcc7;
 }
 
 .cat__name::before,
@@ -1286,6 +1310,7 @@ img {
      -moz-border-radius: 100%;
           border-radius: 100%;
   border: calc(6 * var(--p)) solid #fff;
+  box-shadow: 0 calc(6 * var(--p)) calc(16 * var(--p)) rgba(92, 55, 12, 0.15);
   width: calc(225 * var(--p));
   height: calc(225 * var(--p));
   text-align: center;
@@ -1299,19 +1324,19 @@ img {
 
 .catList__item.green .cat__image img,
 .catList__item.green .cat__detail {
-  border-color: #0d8046;
+  border-color: #a9d7cf;
 }
 .catList__item.orange  .cat__image img,
 .catList__item.orange .cat__detail {
-  border-color: #ff9c32;
+  border-color: #f4c98f;
 }
 .catList__item.yerrow  .cat__image img,
 .catList__item.yerrow .cat__detail {
-  border-color: #ffc100;
+  border-color: #f2dc9b;
 }
 .catList__item.pink  .cat__image img,
 .catList__item.pink .cat__detail {
-  border-color: #ff8094;
+  border-color: #f9bcc7;
 }
 
 .cat__detail {
@@ -1398,7 +1423,7 @@ img {
 
 /* 横並び時はflexで2カードの幅・高さを揃える */
 .systemDetail {
-  padding-top: calc(15 * var(--p));
+  padding-top: calc(39 * var(--p));
   font-size: max(11px, calc(18 * var(--p)));
   display: flex;
   justify-content: space-between;
@@ -1544,7 +1569,7 @@ img {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: calc(100 * var(--p)) calc(20 * var(--p));
-  padding: calc(35 * var(--p)) calc(20 * var(--p)) 0;
+  padding: calc(39 * var(--p)) calc(20 * var(--p)) 0;
 }
 
 .ruleList__item {
@@ -1589,18 +1614,19 @@ img {
 }
 
 .ruleMessage {
+  padding-top: calc(70 * var(--p));
   text-align: center;
 }
 
 .ruleMessageText {
+  padding: 0 calc(40 * var(--p));
   font-size: max(11px, calc(16 * var(--p)));
-  line-height: 2;
+  line-height: 1.7;
 }
 
 .ruleMessageText::before,
 .ruleMessageText::after {
-  font-size: max(11px, calc(40 * var(--p)));
-  vertical-align: middle;
+  width: calc(16 * var(--p));
 }
 
 /** ------------------------------------------------------------
@@ -1798,6 +1824,16 @@ img {
 address {
   padding-bottom: calc(50 * var(--p));
   font-style: normal;
+}
+
+/* 電話番号：大きく表示。PCでは発信リンクを無効化して通常テキスト扱いに */
+.accessTel {
+  color: inherit;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
+  font-size: max(11px, calc(32 * var(--p)));
+  font-weight: 900;
+  text-decoration: none;
+  pointer-events: none;
 }
 
 .shopName {
@@ -2085,7 +2121,7 @@ footer {
   padding: calc(74 * var(--p)) calc(20 * var(--p)) calc(90 * var(--p));
   position: relative;
   line-height: 1.2;
-  background-color: #5c370c;
+  background-color: #83592f;
   text-align: center;
 }
 
@@ -2410,6 +2446,16 @@ img {
 /** ------------------------------------------------------------
  * #concept
  */
+/* SPではセクションタイトル（titleGraphic）とサブタイトルを常にセンター揃えにする */
+.sectionTitle .titleGraphic {
+  justify-content: center;
+}
+
+.sectionTitle__sub {
+  margin-bottom: min(8vw, 40px);
+  text-align: center;
+}
+
 #concept {
   width: 100%;
   position: relative;
@@ -2666,7 +2712,7 @@ img {
  */
 /* 木の温もりをイメージした斜めストライプ */
 #calendar {
-  padding: min(6vw, 30px) 0 min(14vw, 70px);
+  padding: min(6vw, 30px) 0 min(26vw, 130px);
   background-color: #f3e7d5;
   overflow: hidden;
   /* 幅を変えた4段のストライプで板の並びを表現し、上からの淡い光で単調さを回避 */
@@ -2816,8 +2862,8 @@ img {
           border-radius: 1.8em;
   position: relative;
   line-height: 1.8;
-  color: #fff;
-  background-color: #5c370c;
+  color: #383838;
+  background-color: #e9d7bd;
   font-weight: bold;
   text-align: center;
   overflow: hidden;
@@ -2826,16 +2872,16 @@ img {
 }
 
 .catList__item.green .cat__name {
-  background-color: #0d8046;
+  background-color: #a9d7cf;
 }
 .catList__item.orange  .cat__name {
-  background-color: #ff9c32;
+  background-color: #f4c98f;
 }
 .catList__item.yerrow  .cat__name {
-  background-color: #ffc100;
+  background-color: #f2dc9b;
 }
 .catList__item.pink  .cat__name {
-  background-color: #ff8094;
+  background-color: #f9bcc7;
 }
 
 .cat__name::before,
@@ -2868,6 +2914,7 @@ img {
      -moz-border-radius: 100%;
           border-radius: 100%;
   border: 6px solid #fff;
+  box-shadow: 0 min(1.5vw, 6px) min(4vw, 16px) rgba(92, 55, 12, 0.15);
   position: absolute;
   top: 0;
   text-align: center;
@@ -2880,19 +2927,19 @@ img {
 
 .catList__item.green .cat__image img,
 .catList__item.green .cat__detail {
-  border-color: #0d8046;
+  border-color: #a9d7cf;
 }
 .catList__item.orange  .cat__image img,
 .catList__item.orange .cat__detail {
-  border-color: #ff9c32;
+  border-color: #f4c98f;
 }
 .catList__item.yerrow  .cat__image img,
 .catList__item.yerrow .cat__detail {
-  border-color: #ffc100;
+  border-color: #f2dc9b;
 }
 .catList__item.pink  .cat__image img,
 .catList__item.pink .cat__detail {
-  border-color: #ff8094;
+  border-color: #f9bcc7;
 }
 
 .cat__detail {
@@ -3192,7 +3239,7 @@ img {
 }
 
 .ruleMessage {
-  padding-top: 6vw;
+  padding: 12vw 4vw 0;
   text-align: center;
 }
 
@@ -3202,15 +3249,15 @@ img {
 }
 
 .ruleMessageText {
-  padding: 0 4vw;
+  padding: 0 min(8vw, 40px);
   font-size: min(3.4vw, 17px);
-  line-height: 1.8;
+  line-height: 1.6;
 }
 
+/* PCの calc(16 * var(--p))（≒16px）と同じ見た目になるよう、SPも16px相当に統一 */
 .ruleMessageText::before,
 .ruleMessageText::after {
-  font-size: min(6vw, 30px);
-  vertical-align: middle;
+  width: min(4.3vw, 16px);
 }
 
 /** ------------------------------------------------------------
@@ -3470,6 +3517,16 @@ address {
   padding-bottom: 8vw;
   display: block;
   font-style: normal;
+}
+
+/* 電話番号：大きく表示し、タップで発信できるようリンクを有効化 */
+.accessTel {
+  display: inline-block;
+  color: inherit;
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
+  font-size: min(8vw, 40px);
+  font-weight: 900;
+  text-decoration: none;
 }
 
 .shopName {
@@ -3825,7 +3882,7 @@ footer {
   padding: 24px 0 0;
   position: relative;
   line-height: 1.2;
-  background-color: #5c370c;
+  background-color: #83592f;
   text-align: center;
 }
 
