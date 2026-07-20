@@ -449,10 +449,31 @@
   font-weight: 700;
 }
 
+/* 「10分」の数字部分：価格の数字と同じトーンで拡大 */
+.priceList__nameNum {
+  font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
+  font-size: 1.4em;
+  font-weight: 900;
+  line-height: 1;
+}
+
 .priceList__price {
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   font-weight: 900;
   white-space: nowrap;
+}
+
+/* 価格の数字を最優先で目立たせる（税込表記smallは据え置き） */
+.priceList__num {
+  font-size: 1.4em;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.priceList__unit {
+  font-size: 0.85em;
+  font-weight: 700;
+  margin-right: 0.15em;
 }
 
 .priceList__price small {
@@ -483,6 +504,7 @@
 /* 「フリードリンク無料」はマーカー風の強調（ピンク下地＋既存文字色で可読性を確保） */
 .serviceNote__body strong {
   font-weight: 900;
+  font-size: 1.15em;
   background: linear-gradient(transparent 55%, #ffd3da 55%);
 }
 
@@ -496,7 +518,8 @@
 
 .hoursGroup__note {
   margin: 0.15em 0 0;
-  color: #8a7a66;
+  color: #5c370c;
+  font-weight: 700;
 }
 
 .hoursGroup__allYear {
@@ -506,12 +529,17 @@
 
 .ageNote {
   text-align: center;
+  font-weight: 700;
   line-height: 1.9;
 }
 
+/* 保護者同伴の注意書き：淡ピンクの角丸ボックスで本文より一段目立たせる */
 .ageNote__small {
   text-align: center;
-  color: #8a7a66;
+  color: #5c370c;
+  font-weight: 700;
+  background-color: #ffeef2;
+  border-radius: 8px;
 }
 
 .qaLink {
@@ -1255,20 +1283,13 @@ img {
   font-size: max(11px, calc(14 * var(--p)));
 }
 
+/* 横並び時はflexで2カードの幅・高さを揃える */
 .systemDetail {
   padding-top: calc(15 * var(--p));
   font-size: max(11px, calc(18 * var(--p)));
-  font-weight: bold;
-}
-
-.systemDetail::after {
-  content: ".";
-  display: block;
-  visibility: hidden;
-  height: 0;
-  line-height: 0;
-  font-size: 0;
-  clear: both;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
 .systemDetail__main,
@@ -1285,15 +1306,13 @@ img {
 }
 
 .systemDetail__main {
-  padding: calc(40 * var(--p)) calc(48 * var(--p));
-  width: calc(514 * var(--p));
-  float: left;
+  padding: calc(40 * var(--p)) calc(46 * var(--p));
+  width: calc(485 * var(--p));
 }
 
 .systemDetail__sub {
-  padding: calc(40 * var(--p)) calc(44 * var(--p));
-  width: calc(440 * var(--p));
-  float: right;
+  padding: calc(40 * var(--p)) calc(46 * var(--p));
+  width: calc(485 * var(--p));
 }
 
 .systemLabel {
@@ -1315,7 +1334,7 @@ img {
 }
 
 .priceList__name {
-  font-size: max(11px, calc(15 * var(--p)));
+  font-size: max(11px, calc(18 * var(--p)));
 }
 
 .priceList__price {
@@ -1328,11 +1347,11 @@ img {
 }
 
 .serviceNote__title {
-  font-size: max(11px, calc(15 * var(--p)));
+  font-size: max(11px, calc(18 * var(--p)));
 }
 
 .serviceNote__body {
-  font-size: max(11px, calc(15 * var(--p)));
+  font-size: max(11px, calc(17 * var(--p)));
 }
 
 .hoursGroup {
@@ -1340,7 +1359,7 @@ img {
 }
 
 .hoursGroup__note {
-  font-size: max(11px, calc(13 * var(--p)));
+  font-size: max(11px, calc(15 * var(--p)));
 }
 
 .hoursGroup__allYear {
@@ -1358,8 +1377,9 @@ img {
 }
 
 .ageNote__small {
-  margin: calc(8 * var(--p)) 0 0;
-  font-size: max(11px, calc(12 * var(--p)));
+  margin: calc(12 * var(--p)) 0 0;
+  padding: calc(10 * var(--p)) calc(14 * var(--p));
+  font-size: max(11px, calc(13 * var(--p)));
 }
 
 .qaLink {
@@ -2765,7 +2785,7 @@ img {
 }
 
 .priceList__name {
-  font-size: min(3.6vw, 18px);
+  font-size: min(4.2vw, 21px);
 }
 
 .priceList__price {
@@ -2778,11 +2798,11 @@ img {
 }
 
 .serviceNote__title {
-  font-size: min(3.6vw, 18px);
+  font-size: min(4.2vw, 21px);
 }
 
 .serviceNote__body {
-  font-size: min(3.6vw, 18px);
+  font-size: min(4vw, 20px);
 }
 
 .hoursGroup {
@@ -2790,7 +2810,7 @@ img {
 }
 
 .hoursGroup__note {
-  font-size: min(3.2vw, 16px);
+  font-size: min(3.6vw, 18px);
 }
 
 .hoursGroup__allYear {
@@ -2808,8 +2828,9 @@ img {
 }
 
 .ageNote__small {
-  margin: 2vw 0 0;
-  font-size: min(3vw, 15px);
+  margin: 3vw 0 0;
+  padding: 2.5vw 3vw;
+  font-size: min(3.2vw, 16px);
 }
 
 .qaLink {
