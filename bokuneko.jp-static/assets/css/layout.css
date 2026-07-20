@@ -840,7 +840,9 @@ img {
 #system .sectionTitle,
 #system .sectionTitle__sub,
 #rule .sectionTitle,
-#rule .sectionTitle__sub {
+#rule .sectionTitle__sub,
+#cat .sectionTitle,
+#cat .sectionTitle__sub {
   display: inline-block;
   vertical-align: middle;
 }
@@ -3177,6 +3179,14 @@ img {
 }
 
 #rule .sectionTitle__sub {
+  margin-top: 2vw;
+  font-size: min(3.4vw, 17px);
+  font-weight: bold;
+  color: #383838;
+}
+
+/* 猫紹介：SPではタイトル下に中央寄せで2行表示（system/ruleと同一スタイル） */
+#cat .sectionTitle__sub {
   margin-top: 2vw;
   font-size: min(3.4vw, 17px);
   font-weight: bold;

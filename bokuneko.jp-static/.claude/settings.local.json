@@ -98,7 +98,8 @@
       "Bash(awk 'NR>1 && /^#system {$/{exit} {print}')",
       "Bash(awk '/max-width: 750px/{c++} c==2' assets/css/layout.css)",
       "Bash(node -e 'const s=require\\(\"fs\"\\).readFileSync\\(\"assets/css/layout.css\",\"utf8\"\\);let b=0;for\\(const ch of s\\){if\\(ch===\"{\"\\)b++;if\\(ch===\"}\"\\)b--;}console.log\\(\"brace balance:\",b, \"| mask残り:\", \\(s.match\\(/mask/g\\)||[]\\).length, \"| cat-paw参照:\", \\(s.match\\(/cat-paw-\\\\w+\\\\.svg/g\\)||[]\\).length\\);')",
-      "Bash(grep -n -A12 \"細い線の半円\\\\|フォントの（）\\\\|ruleMessageText::before,\\\\|ruleMessageText {\" assets/css/layout.css)"
+      "Bash(grep -n -A12 \"細い線の半円\\\\|フォントの（）\\\\|ruleMessageText::before,\\\\|ruleMessageText {\" assets/css/layout.css)",
+      "Bash(awk -F: '$1>2218')"
     ]
   }
 }
