@@ -63,10 +63,83 @@
   --accent-rule: #7d6790;      /* ルール（ラベンダー背景）：くすみプラム */
   --accent-calendar: #83592f;  /* カレンダー（木目ストライプ背景）：濃い木目 */
 
-  /* フッター背景：木の温もりを残しつつ彩度・コントラストを抑えたグレージュブラウン。
-     濃い木目(#83592f)より落ち着き、ベージュ/木目系の各セクションと調和して
-     ページ全体をやさしく締めくくる役割にする */
-  --footer-bg: #7b6a57;
+  /* フッター背景：ナチュラルな明るめグレージュ。ページ全体をやさしくまとめる。
+     背景が明るいため文字色は白ではなく濃色(--footer-text)で可読性を確保する。 */
+  --footer-bg: #b5a38d;
+  --footer-text: #3a342b;   /* 明るいグレージュ背景で十分なコントラストの濃い温かみブラウン */
+}
+
+/* ============================================================
+   SNSアイコン（ヘッダー／フッター共通）
+   X・Instagram・LINE を同一サイズ・同一余白・同一ホバーで統一。
+   円形バッジのブランドSVGをそのまま使い視認性を保ちつつ、
+   サイズ・間隔・配置を揃えてサイトのナチュラルな世界観に馴染ませる。
+   旧float/table/絶対配置レイアウトは各SNSリストで解除し、これに統一。
+   ============================================================ */
+.snsList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+     -ms-flex-align: center;
+        align-items: center;
+  -webkit-box-pack: center;
+     -ms-flex-pack: center;
+        justify-content: center;
+  gap: clamp(10px, 2.4vw, 16px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.snsList__item {
+  margin: 0;
+  padding: 0;
+  float: none;
+  display: block;
+}
+
+/* リンク＝クリック領域。アイコン周囲に余白を持たせタップしやすくする */
+.snsLink {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+     -ms-flex-align: center;
+        align-items: center;
+  -webkit-box-pack: center;
+     -ms-flex-pack: center;
+        justify-content: center;
+  padding: 6px;
+  border-radius: 50%;
+  -webkit-transition: opacity 0.2s ease, -webkit-transform 0.2s ease;
+          transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.snsIcon {
+  display: block;
+  width: clamp(38px, 8.5vw, 46px);
+  height: auto;
+  border-radius: 50%;
+}
+
+/* ホバー／フォーカス：控えめにふわっと持ち上げ、少しだけ透過 */
+.snsLink:hover,
+.snsLink:focus-visible {
+  opacity: 0.82;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
+.snsLink:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snsLink,
+  .snsLink:hover,
+  .snsLink:focus-visible { -webkit-transform: none; transform: none; }
 }
 
 #cat .titleGraphic__accent { color: var(--accent-cat); }
@@ -1052,22 +1125,7 @@ img {
   right: 0;
 }
 
-.headerSNS__wrap {
-  margin: 0 auto;
-  display: table;
-}
-
-.headerSNS__item {
-  float: left;
-}
-
-.headerSNS img {
-  width: calc(50 * var(--p));
-}
-
-.headerSNS__item + .headerSNS__item {
-  padding-left: calc(20 * var(--p));
-}
+/* 内側のレイアウト・サイズ・ホバーは共通の .snsList / .snsIcon に統一 */
 
 /** ------------------------------------------------------------
  * section
@@ -2383,7 +2441,7 @@ footer {
 
 footer,
 footer a {
-  color: #fff;
+  color: var(--footer-text);
 }
 
 .footerInner {
@@ -2414,20 +2472,9 @@ footer a {
  */
 .footerSNS {
   margin: 0 auto;
-  display: table;
 }
 
-.footerSNS__item {
-  float: left;
-}
-
-.footerSNS__item img {
-  width: calc(50 * var(--p));
-}
-
-.footerSNS__item + .footerSNS__item {
-  padding-left: calc(20 * var(--p));
-}
+/* 内側のレイアウト・サイズ・ホバーは共通の .snsList / .snsIcon に統一 */
 
 /** ------------------------------
  * nav
@@ -2447,7 +2494,7 @@ footer a {
 }
 
 .footerNav__item + .footerNav__item {
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(58, 52, 43, 0.35);
 }
 
 /** ------------------------------
@@ -2636,24 +2683,7 @@ img {
 /** ------------------------------
  * SNS
  */
-.headerSNS::after {
-  content: ".";
-  display: block;
-  visibility: hidden;
-  height: 0;
-  line-height: 0;
-  font-size: 0;
-  clear: both;
-}
-
-.headerSNS__item {
-  padding: 10px 0 10px 10px;
-  float: left;
-}
-
-.headerSNS img {
-  width: 45px;
-}
+/* SP：ヘッダー内SNSも共通の .snsList / .snsIcon に統一 */
 
 /** ------------------------------------------------------------
  * section
@@ -4128,7 +4158,7 @@ footer {
 
 footer,
 footer a {
-  color: #fff;
+  color: var(--footer-text);
 }
 
 .footerInner {
@@ -4137,15 +4167,16 @@ footer a {
   align-items: center;
 }
 
-.footerNav {
+.footerSNSWrap {
   order: 1;
+  margin-top: 8px;
 }
 
-.copy {
+.footerNav {
   order: 2;
 }
 
-.footerSNSWrap {
+.copy {
   order: 3;
 }
 
@@ -4173,7 +4204,7 @@ footer a {
 }
 
 .footerNav__item + .footerNav__item {
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(58, 52, 43, 0.35);
 }
 
 /** ------------------------------
@@ -4195,36 +4226,10 @@ footer a {
 /** ------------------------------
  * SNS
  */
+/* SP：旧・背景画像に合わせた絶対配置をやめ、在来フローで中央寄せ。
+   レイアウト・サイズ・ホバーは共通の .snsList / .snsIcon に統一 */
 .footerSNS {
-  margin: 0 auto;
-  position: absolute;
-  right: 0;
-  bottom: 15%;
-  left: 0;
-  display: table;
-  table-layout: fixed;
-  width: 87%;
-  max-width: 654px;
-  text-align: left;
-}
-
-.footerSNS__item {
-  display: table-cell;
-}
-
-.footerSNS__item + .footerSNS__item {
-  text-align: right;
-}
-
-.footerSNS__item a {
-  position: relative;
-  display: inline-block;
-  width: 60%;
-}
-
-.footerSNS__item img {
-  width: 100%;
-  max-width: 180px;
+  margin: 0 auto 24px;
 }
 
 /** ------------------------------

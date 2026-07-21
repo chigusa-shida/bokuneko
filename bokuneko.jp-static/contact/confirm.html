@@ -12,7 +12,7 @@
     <meta http-equiv="Content-Style-Type" content="text/css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link type="text/css" rel="stylesheet" href="../assets/css/common/default.css?v=d5689750" />
-    <link type="text/css" rel="stylesheet" href="../assets/css/layout.css?v=4e1dab5c" />
+    <link type="text/css" rel="stylesheet" href="../assets/css/layout.css?v=af3631d3" />
     <script src="../assets/js/jquery-1.11.3.min.js?v=13c0a505"></script>
     <script>
       $(function() {
@@ -67,15 +67,20 @@
 
         <div class="panel">
           <aside class="headerSNS">
-            <ul class="headerSNS__wrap">
-              <li class="headerSNS__item">
-                <a href="https://twitter.com/bokunekoakb" target="_blank">
-                  <img src="../assets/images/icon-twitter-header.png" alt="Twitter" />
+            <ul class="headerSNS__wrap snsList">
+              <li class="headerSNS__item snsList__item">
+                <a class="snsLink" href="https://x.com/bokunekoakb" target="_blank" rel="noopener" aria-label="X（旧Twitter）">
+                  <img class="snsIcon" src="../assets/images/sns/x_logo.svg" alt="X" />
                 </a>
               </li>
-              <li class="headerSNS__item">
-                <a href="https://lin.ee/tn2yxq5" target="_blank">
-                  <img src="../assets/images/icon-line-header.png" alt="LINE" />
+              <li class="headerSNS__item snsList__item">
+                <a class="snsLink" href="https://www.instagram.com/bokunekoakb?igsh=MWY0cGlvM29mZjNuZg==" target="_blank" rel="noopener" aria-label="Instagram">
+                  <img class="snsIcon" src="../assets/images/sns/instagram_logo.svg" alt="Instagram" />
+                </a>
+              </li>
+              <li class="headerSNS__item snsList__item">
+                <a class="snsLink" href="https://lin.ee/tn2yxq5" target="_blank" rel="noopener" aria-label="LINE">
+                  <img class="snsIcon" src="../assets/images/sns/line.svg" alt="LINE" />
                 </a>
               </li>
             </ul>
@@ -173,15 +178,20 @@
     <footer>
       <div class="footerInner wow fadeIn" data-wow-duration="2.5s">
         <aside class="footerSNSWrap">
-          <ul class="footerSNS">
-            <li class="footerSNS__item">
-              <a href="https://twitter.com/bokunekoakb" target="_blank">
-                <img src="../assets/images/icon-twitter-footer.png" alt="Twitter" />
+          <ul class="footerSNS snsList">
+            <li class="footerSNS__item snsList__item">
+              <a class="snsLink" href="https://x.com/bokunekoakb" target="_blank" rel="noopener" aria-label="X（旧Twitter）">
+                <img class="snsIcon" src="../assets/images/sns/x_logo.svg" alt="X" />
               </a>
             </li>
-            <li class="footerSNS__item">
-              <a href="https://lin.ee/tn2yxq5" target="_blank">
-                <img src="../assets/images/icon-line-footer.png" alt="LINE" />
+            <li class="footerSNS__item snsList__item">
+              <a class="snsLink" href="https://www.instagram.com/bokunekoakb?igsh=MWY0cGlvM29mZjNuZg==" target="_blank" rel="noopener" aria-label="Instagram">
+                <img class="snsIcon" src="../assets/images/sns/instagram_logo.svg" alt="Instagram" />
+              </a>
+            </li>
+            <li class="footerSNS__item snsList__item">
+              <a class="snsLink" href="https://lin.ee/tn2yxq5" target="_blank" rel="noopener" aria-label="LINE">
+                <img class="snsIcon" src="../assets/images/sns/line.svg" alt="LINE" />
               </a>
             </li>
           </ul>
@@ -210,12 +220,14 @@
         </p>
       </div>
 
+      <!-- ページTOPボタンは非表示（画像差し替え検討中のためコメントアウト）
       <p class="pageTop">
         <a href="#pageTop">
           <img class="pc-only" src="../assets/images/pc/common/footer/top.png" alt="ページTOPへ" />
           <img class="sp-only" src="../assets/images/sp/common/footer/top.png" alt="ページTOPへ" />
         </a>
       </p>
+      -->
     </footer>
 
     <div class="remodal" data-remodal-id="law" data-remodal-options="hashTracking:false">
