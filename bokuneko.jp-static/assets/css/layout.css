@@ -62,6 +62,11 @@
   --accent-system: #a1545f;    /* システム（ピンクのベール背景）：くすみローズ */
   --accent-rule: #7d6790;      /* ルール（ラベンダー背景）：くすみプラム */
   --accent-calendar: #83592f;  /* カレンダー（木目ストライプ背景）：濃い木目 */
+
+  /* フッター背景：木の温もりを残しつつ彩度・コントラストを抑えたグレージュブラウン。
+     濃い木目(#83592f)より落ち着き、ベージュ/木目系の各セクションと調和して
+     ページ全体をやさしく締めくくる役割にする */
+  --footer-bg: #7b6a57;
 }
 
 #cat .titleGraphic__accent { color: var(--accent-cat); }
@@ -2372,7 +2377,7 @@ footer {
   padding: calc(74 * var(--p)) calc(20 * var(--p)) calc(90 * var(--p));
   position: relative;
   line-height: 1.2;
-  background-color: #83592f;
+  background-color: var(--footer-bg);
   text-align: center;
 }
 
@@ -2442,7 +2447,7 @@ footer a {
 }
 
 .footerNav__item + .footerNav__item {
-  border-left: 1px solid #fff;
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 /** ------------------------------
@@ -4117,7 +4122,7 @@ footer {
   padding: 24px 0 0;
   position: relative;
   line-height: 1.2;
-  background-color: #83592f;
+  background-color: var(--footer-bg);
   text-align: center;
 }
 
@@ -4168,7 +4173,7 @@ footer a {
 }
 
 .footerNav__item + .footerNav__item {
-  border-left: 1px solid #fff;
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 /** ------------------------------

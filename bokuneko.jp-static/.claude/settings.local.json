@@ -109,7 +109,9 @@
       "Bash(npm init *)",
       "Bash(npm install *)",
       "Bash(node -e \"const s=require\\('sharp'\\); console.log\\('sharp ok', s.versions.sharp\\)\")",
-      "Bash(node resize.js)"
+      "Bash(node resize.js)",
+      "Bash(node .claude/cache-bust.mjs)",
+      "Bash(node .claude/cache-bust.mjs --dev)"
     ]
   }
 }

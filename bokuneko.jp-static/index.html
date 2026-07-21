@@ -13,9 +13,9 @@
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <link type="text/css" rel="stylesheet" href="assets/css/common/default.css" />
-    <link type="text/css" rel="stylesheet" href="assets/css/layout.css" />
-    <script src="assets/js/jquery-1.11.3.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="assets/css/common/default.css?v=d5689750" />
+    <link type="text/css" rel="stylesheet" href="assets/css/layout.css?v=4e1dab5c" />
+    <script src="assets/js/jquery-1.11.3.min.js?v=13c0a505"></script>
     <script>
       $(function() {
         var topBtn = $('.pageTop a');
@@ -44,15 +44,15 @@
         });
       });
     </script>
-    <link rel="stylesheet" href="assets/css/common/remodal.css">
-    <link rel="stylesheet" href="assets/css/common/remodal-default-theme.css">
-    <script src="assets/js/remodal.min.js"></script>
+    <link rel="stylesheet" href="assets/css/common/remodal.css?v=dc76fd28">
+    <link rel="stylesheet" href="assets/css/common/remodal-default-theme.css?v=8131904d">
+    <script src="assets/js/remodal.min.js?v=9dd8df8a"></script>
 
-    <link rel="stylesheet" href="assets/css/common/animate.css">
-    <script src="assets/js/wow.min.js"></script>
+    <link rel="stylesheet" href="assets/css/common/animate.css?v=73bcf41f">
+    <script src="assets/js/wow.min.js?v=e1f1ff68"></script>
 
-    <link rel="stylesheet" href="assets/css/common/jquery.bxslider.css">
-    <script src="assets/js/jquery.bxslider.min.js"></script>
+    <link rel="stylesheet" href="assets/css/common/jquery.bxslider.css?v=81fbb149">
+    <script src="assets/js/jquery.bxslider.min.js?v=b69e0a8e"></script>
   </head>
 
   <body id="pageTop">
@@ -340,57 +340,8 @@
             </div>
           </div>
 
-          <script>
-            (function () {
-              var modal = document.querySelector('.catModal');
-              if (!modal) return;
-              var body = modal.querySelector('.catModal__body');
-              var lastFocus = null;
-              var COLORS = ['green', 'orange', 'yerrow', 'pink'];
-
-              function openModal(item) {
-                var color = COLORS.filter(function (c) { return item.classList.contains(c); })[0] || '';
-                body.className = 'catModal__body' + (color ? ' ' + color : '');
-                body.innerHTML = item.innerHTML;
-                // 複製した画像のWOWアニメ用クラス/インラインスタイルを除去し、確実に表示する
-                body.querySelectorAll('img').forEach(function (img) {
-                  img.classList.remove('wow');
-                  img.classList.remove('flipInY');
-                  img.removeAttribute('style');
-                  img.removeAttribute('data-wow-delay');
-                });
-                lastFocus = document.activeElement;
-                modal.hidden = false;
-                modal.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-                modal.querySelector('.catModal__close').focus();
-              }
-
-              function closeModal() {
-                modal.hidden = true;
-                modal.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-                body.innerHTML = '';
-                if (lastFocus && lastFocus.focus) lastFocus.focus();
-              }
-
-              // リンク（クリック範囲）は catList__item 全体。
-              // カードのどこをクリック/タップ、または Enter/Space で開く。
-              document.querySelectorAll('.catList__item').forEach(function (item) {
-                item.addEventListener('click', function () { openModal(item); });
-                item.addEventListener('keydown', function (e) {
-                  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(item); }
-                });
-              });
-
-              modal.querySelectorAll('[data-cat-close]').forEach(function (el) {
-                el.addEventListener('click', closeModal);
-              });
-              document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && !modal.hidden) closeModal();
-              });
-            })();
-          </script>
+          <!-- 猫モーダルの制御。外部ファイル化し ?v= でキャッシュ対策（cache-bust.mjsが自動採番） -->
+          <script src="assets/js/cat.js?v=17298887"></script>
 
           <section id="system">
             <div class="sectionInner">
