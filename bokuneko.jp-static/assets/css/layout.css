@@ -69,6 +69,226 @@
 #rule .titleGraphic__accent { color: var(--accent-rule); }
 #calendar .titleGraphic__accent { color: var(--accent-calendar); }
 
+/* ============================================================
+   猫プロフィール ポップアップ（モーダル）
+   - 一覧のカードは「画像＋名前＋"プロフィールを見る"ボタン」のみ表示し、
+     写真と名前が主役のシンプルなレイアウトにする
+   - タイプ（性格）・詳細（種類・誕生日など）はポップアップ内で表示する
+   - ボタン（またはカードのどこでも）クリック/タップ or Enter/Space で開き、
+     そのカードの内容を複製して表示する
+   - 表示内容はHTML側の各カードに集約されているため、画像や項目を
+     増やしてもモーダル側のHTML/JSは変更不要（拡張しやすい設計）
+   - PC/SP共通。サイズはclamp/vwでレスポンシブに調整
+   ============================================================ */
+
+/* 一覧はシンプルに：タイプ・詳細はカードに出さず、ポップアップに集約する */
+.catList__item > .cat__type,
+.catList__item > .cat__detail {
+  display: none;
+}
+
+/* リンク（クリック範囲）は catList__item 全体。
+   カードのどこをクリック/タップ/Enter/Space しても開く */
+.catList__item {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ホバー/フォーカス時、写真をふわっと持ち上げて反応を示す */
+.catList__item:hover .cat__image img,
+.catList__item:focus-visible .cat__image img {
+  -webkit-transform: translateY(-3px);
+     -moz-transform: translateY(-3px);
+          transform: translateY(-3px);
+  -webkit-transition: -webkit-transform 0.25s ease;
+          transition: transform 0.25s ease;
+}
+
+/* キーボード操作時、カード全体にフォーカスリングを表示 */
+.catList__item:focus-visible {
+  outline: 3px solid rgba(138, 98, 52, 0.55);
+  outline-offset: 6px;
+  border-radius: 14px;
+}
+
+/* 「プロフィールを見る」ボタン風ラベル（実体はspan。クリックはカード全体が担う）。
+   一目でタップできると分かる上品なピル型 */
+.cat__more {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+     -ms-flex-align: center;
+        align-items: center;
+  gap: 0.4em;
+  margin-top: 0.9em;
+  padding: 0.55em 1.35em;
+  border: 1.5px solid #d8c19a;
+  border-radius: 999px;
+  background-color: #fff;
+  color: #8a6234;
+  font-size: clamp(11px, 3vw, 14px);
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  -webkit-transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, -webkit-transform 0.1s ease;
+          transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.cat__more__arrow {
+  font-weight: bold;
+  -webkit-transition: -webkit-transform 0.2s ease;
+          transition: transform 0.2s ease;
+}
+
+/* hover：カードのどこをホバーしてもボタン風ラベルが塗りつぶしに変化 */
+.catList__item:hover .cat__more,
+.catList__item:focus-visible .cat__more {
+  background-color: #8a6234;
+  border-color: #8a6234;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(92, 55, 12, 0.22);
+}
+.catList__item:hover .cat__more__arrow,
+.catList__item:focus-visible .cat__more__arrow {
+  -webkit-transform: translateX(3px);
+          transform: translateX(3px);
+}
+
+/* active：押下（タップ/クリック）時に少し沈む */
+.catList__item:active .cat__more {
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(92, 55, 12, 0.25);
+}
+
+/* ポップアップ内には複製されたボタンを出さない */
+.catModal__body .cat__more {
+  display: none;
+}
+
+/* オーバーレイ全体 */
+.catModal[hidden] {
+  display: none;
+}
+
+.catModal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+     -ms-flex-align: center;
+        align-items: center;
+  -webkit-box-pack: center;
+     -ms-flex-pack: center;
+        justify-content: center;
+  padding: 5vw;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.catModal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(40, 24, 4, 0.55);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+}
+
+.catModal__dialog {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fffdf8;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(60, 34, 6, 0.35);
+  padding: clamp(28px, 6vw, 44px) clamp(20px, 6vw, 36px) clamp(28px, 7vw, 44px);
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+  -webkit-animation: catModalIn 0.28s ease;
+          animation: catModalIn 0.28s ease;
+}
+
+@-webkit-keyframes catModalIn {
+  from { opacity: 0; -webkit-transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; -webkit-transform: none; }
+}
+@keyframes catModalIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+.catModal__close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #8a6234;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.catModal__close:hover {
+  color: #5c370c;
+}
+
+/* モーダル内に複製されたカード内容の見た目調整 */
+.catModal__body .cat__image {
+  width: clamp(150px, 45vw, 190px);
+  max-width: none;
+  margin: 0 auto;
+}
+
+.catModal__body .cat__name {
+  display: inline-block;
+  margin-top: 1em;
+  font-size: 1.15em;
+}
+
+.catModal__body .cat__type {
+  margin-top: 0.7em;
+  font-size: 1.02em;
+}
+
+.catModal__body .cat__detail {
+  display: block;
+  margin-top: 1.1em;
+  color: #6b5535;
+  font-size: 0.95em;
+  line-height: 2;
+}
+
+/* モーダル内の色テーマ（枠色・名前ピル）はカードの色クラスをJSで付与 */
+.catModal__body.green .cat__image img { border-color: #a9d7cf; }
+.catModal__body.orange .cat__image img { border-color: #f4c98f; }
+.catModal__body.yerrow .cat__image img { border-color: #f2dc9b; }
+.catModal__body.pink .cat__image img { border-color: #f9bcc7; }
+.catModal__body.green .cat__name { background-color: #a9d7cf; }
+.catModal__body.orange .cat__name { background-color: #f4c98f; }
+.catModal__body.yerrow .cat__name { background-color: #f2dc9b; }
+.catModal__body.pink .cat__name { background-color: #f9bcc7; }
+
+@media (prefers-reduced-motion: reduce) {
+  .catModal__dialog { -webkit-animation: none; animation: none; }
+  .catList__item:hover .cat__image img,
+  .catList__item:focus-visible .cat__image img { -webkit-transform: none; transform: none; }
+}
+
 .titleGraphic__body {
   display: flex;
   flex-direction: column;
@@ -1171,7 +1391,7 @@ img {
  * #cat
  */
 #cat {
-  padding: calc(100 * var(--p)) 0 0;
+  padding: calc(100 * var(--p)) 0 calc(90 * var(--p));
   min-width: calc(1000 * var(--p));
   position: relative;
   z-index: 0;
@@ -1230,29 +1450,28 @@ img {
 }
 
 .catList {
-  margin: 0 calc(-5 * var(--p)) 0 calc(-40 * var(--p));
-}
-
-.catList::after {
-  content: ".";
-  display: block;
-  visibility: hidden;
-  height: 0;
-  line-height: 0;
-  font-size: 0;
-  clear: both;
+  /* 頭数の増減に応じて列数が自動で変わるグリッド。
+     minmaxで最小カード幅を確保し、極端に小さくならないようにする。
+     固定列数ではないため猫が増えても自然に折り返す */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(200 * var(--p)), 1fr));
+  gap: calc(56 * var(--p)) calc(30 * var(--p));
+  align-items: start;
 }
 
 .catList__item {
-  margin-bottom: calc(77 * var(--p));
-  padding-left: calc(35 * var(--p));
+  /* カード：画像 → 名前 → タイプ → 詳細を縦に積む構成。
+     項目や画像が増えても縦に伸びるだけでレイアウトは崩れない */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
-  float: left;
-  width: calc(225 * var(--p));
+  min-width: 0;
 }
 
 .cat__name {
-  margin: calc(233 * var(--p)) calc(30 * var(--p)) 0;
+  margin: calc(20 * var(--p)) 0 0;
+  max-width: 100%;
   padding: 0 calc(18 * var(--p));
   -webkit-border-radius: 1.8em;
      -moz-border-radius: 1.8em;
@@ -1261,6 +1480,7 @@ img {
   line-height: 1.8;
   color: #383838;
   background-color: #e9d7bd;
+  font-size: max(15px, calc(19 * var(--p)));
   letter-spacing: 1px;
   font-weight: bold;
   text-align: center;
@@ -1306,58 +1526,66 @@ img {
   left: calc(9 * var(--p));
 }
 
-.cat__image img,
-.cat__detail {
+/* 画像エリア：正方形の枠を持つ独立コンテナ。
+   将来ここをスライダー/ギャラリーのトラックに置き換えれば
+   複数枚表示へ拡張できる（現状は1枚のimg） */
+.cat__image {
+  position: relative;
+  width: 100%;
+  max-width: calc(225 * var(--p));
+  aspect-ratio: 1 / 1;
+}
+
+.cat__image img {
   -webkit-border-radius: 100%;
      -moz-border-radius: 100%;
           border-radius: 100%;
   border: calc(6 * var(--p)) solid #fff;
   box-shadow: 0 calc(6 * var(--p)) calc(16 * var(--p)) rgba(92, 55, 12, 0.15);
-  width: calc(225 * var(--p));
-  height: calc(225 * var(--p));
-  text-align: center;
-  position: absolute;
-  top: 0;
-  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-.catList__item.green .cat__image img,
-.catList__item.green .cat__detail {
+.catList__item.green .cat__image img {
   border-color: #a9d7cf;
 }
-.catList__item.orange  .cat__image img,
-.catList__item.orange .cat__detail {
+.catList__item.orange .cat__image img {
   border-color: #f4c98f;
 }
-.catList__item.yerrow  .cat__image img,
-.catList__item.yerrow .cat__detail {
+.catList__item.yerrow .cat__image img {
   border-color: #f2dc9b;
 }
-.catList__item.pink  .cat__image img,
-.catList__item.pink .cat__detail {
+.catList__item.pink .cat__image img {
   border-color: #f9bcc7;
 }
 
-.cat__detail {
-  padding: calc(45 * var(--p)) calc(10 * var(--p)) calc(10 * var(--p));
-  color: #fff;
-  background-color: rgba(25,14,0,0.8);
-  font-size: max(11px, calc(14 * var(--p)));
-  line-height: 2;
-  overflow: hidden;
-  opacity: 0;
-  -webkit-transition: all 0.4s ease;
-     -moz-transition: all 0.4s ease;
-      -ms-transition: all 0.4s ease;
-       -o-transition: all 0.4s ease;
-          transition: all 0.4s ease;
+/* 猫のタイプ・性格：プロフィール内で最も目に入りやすい位置（名前直下）に、
+   全体の色調に馴染む木目ブラウンで常時表示。文字数が増えても折り返す */
+.cat__type {
+  margin: calc(12 * var(--p)) 0 0;
+  color: #8a6234;
+  font-size: max(12px, calc(15 * var(--p)));
+  font-weight: bold;
+  line-height: 1.6;
+  text-align: center;
 }
 
-.cat__detail:hover {
-  opacity: 1;
+/* 種類・誕生日などの詳細：常時表示のリスト。
+   dt/ddを追加してもカードが縦に伸びるだけでレイアウトは崩れない */
+.cat__detail {
+  margin: calc(8 * var(--p)) 0 0;
+  color: #6b5535;
+  font-size: max(11px, calc(13 * var(--p)));
+  line-height: 1.85;
+  text-align: center;
+}
+
+.cat__detail dt {
+  font-weight: bold;
 }
 
 .cat__detail dt::before {
@@ -2776,6 +3004,7 @@ img {
  * #cat
  */
 #cat {
+  padding-bottom: 12vw;
   position: relative;
   z-index: 0;
   background-color: #f7ecca;
@@ -2832,33 +3061,31 @@ img {
 }
 
 .catList {
-  margin: 0 0 0 5.78vw;
-}
-
-.catList::after {
-  content: ".";
-  display: block;
-  visibility: hidden;
-  height: 0;
-  line-height: 0;
-  font-size: 0;
-  clear: both;
-}
-
-.catList__item {
-  margin-bottom: 8vw;
-  padding-right: 5.78vw;
-  position: relative;
-  float: left;
-  width: 50%;
+  /* SPも同じく列数可変のグリッド。最小140pxで最低2列を確保しつつ、
+     画面が広がれば自動的に列が増える（固定列数にしない） */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(140px, 100%), 1fr));
+  gap: 8vw 5vw;
+  align-items: start;
+  margin: 0;
+  padding: 0 5.78vw;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 
+.catList__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 0;
+}
+
 .cat__name {
-  margin: 43.33vw 8% 0;
-  padding: 0 1.5em;
+  margin: 3.5vw 0 0;
+  max-width: 100%;
+  padding: 0 1.2em;
   -webkit-border-radius: 1.8em;
      -moz-border-radius: 1.8em;
           border-radius: 1.8em;
@@ -2866,6 +3093,7 @@ img {
   line-height: 1.8;
   color: #383838;
   background-color: #e9d7bd;
+  font-size: clamp(13px, 3.47vw, 18px);
   font-weight: bold;
   text-align: center;
   overflow: hidden;
@@ -2910,64 +3138,60 @@ img {
   left: 9px;
 }
 
-.cat__image img,
-.cat__detail {
+.cat__image {
+  position: relative;
+  width: 100%;
+  max-width: 41.33vw;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+
+.cat__image img {
   -webkit-border-radius: 100%;
      -moz-border-radius: 100%;
           border-radius: 100%;
   border: 6px solid #fff;
   box-shadow: 0 min(1.5vw, 6px) min(4vw, 16px) rgba(92, 55, 12, 0.15);
-  position: absolute;
-  top: 0;
-  text-align: center;
-  width: 41.33vw;
-  height: 41.33vw;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-.catList__item.green .cat__image img,
-.catList__item.green .cat__detail {
+.catList__item.green .cat__image img {
   border-color: #a9d7cf;
 }
-.catList__item.orange  .cat__image img,
-.catList__item.orange .cat__detail {
+.catList__item.orange .cat__image img {
   border-color: #f4c98f;
 }
-.catList__item.yerrow  .cat__image img,
-.catList__item.yerrow .cat__detail {
+.catList__item.yerrow .cat__image img {
   border-color: #f2dc9b;
 }
-.catList__item.pink  .cat__image img,
-.catList__item.pink .cat__detail {
+.catList__item.pink .cat__image img {
   border-color: #f9bcc7;
 }
 
+.cat__type {
+  margin: 2.5vw 0 0;
+  color: #8a6234;
+  font-size: min(3.6vw, 16px);
+  font-weight: bold;
+  line-height: 1.55;
+  text-align: center;
+}
+
 .cat__detail {
-  padding: 7vw 1vw 0;
-  color: #fff;
-  background-color: rgba(25,14,0,0.8);
-  line-height: 2;
-  overflow: hidden;
-  opacity: 0;
-  -webkit-transition: all 0.5s ease;
-     -moz-transition: all 0.5s ease;
-      -ms-transition: all 0.5s ease;
-       -o-transition: all 0.5s ease;
-          transition: all 0.5s ease;
+  margin: 2vw 0 0;
+  color: #6b5535;
+  font-size: min(3.2vw, 14px);
+  line-height: 1.8;
+  text-align: center;
 }
 
-@media only screen and (max-width: 400px) {
-  .cat__detail {
-    padding-top: 12vw;
-    line-height: 1.5;
-    font-size: 9px;
-  }
-}
-
-.cat__detail.JS_ON {
-  opacity: 1;
+.cat__detail dt {
+  font-weight: bold;
 }
 
 .cat__detail dt::before {

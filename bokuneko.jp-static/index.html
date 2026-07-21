@@ -220,105 +220,176 @@
               <p class="sectionTitle__sub">
                 BOKUNEKOで暮らす<br class="sp-only">個性豊かな猫たちをご紹介します。<br>気になる猫をクリックすると、<br class="sp-only">プロフィールをご覧いただけます。
               </p>
+              <!--
+                猫カード：画像 → 名前 → タイプ（性格）→ 詳細 の順で縦に積むカード構成。
+                ・.cat__image は正方形コンテナ。将来ここに img を複数追加、または
+                  スライダー/ギャラリーのトラックを入れれば複数画像表示へ拡張可能。
+                ・.cat__detail は <dl>。<dt>/<dd> を増やすだけで項目追加でき、
+                  カードが縦に伸びるのみでレイアウトは崩れない。
+                ・カードを増減しても .catList のグリッドが自動で折り返す。
+              -->
               <div class="catList">
-                <article class="catList__item green">
-                  <h3 class="cat__name">ルイ</h3>
+                <a class="catList__item green" role="button" tabindex="0" aria-haspopup="dialog">
                   <div class="cat__image">
-                    <img class="wow flipInY" data-wow-delay="0.3s" src="assets/images/cats/rui.jpg" alt="" />
+                    <img class="wow flipInY" data-wow-delay="0.3s" src="assets/images/cats/rui.jpg" alt="ルイ" />
                   </div>
+                  <h3 class="cat__name">ルイ</h3>
+                  <span class="cat__more">プロフィールを見る<span class="cat__more__arrow" aria-hidden="true">→</span></span>
+                  <p class="cat__type">遊ぶの大好き！おやつ大好き！</p>
                   <dl class="cat__detail">
                     <dt>種類</dt>
                     <dd>ペルシャ</dd>
                     <dt>誕生日</dt>
                     <dd>2018/1/30（オス）</dd>
                   </dl>
-                </article>
-                <article class="catList__item orange">
-                  <h3 class="cat__name">カヌレ</h3>
+                </a>
+                <a class="catList__item orange" role="button" tabindex="0" aria-haspopup="dialog">
                   <div class="cat__image">
-                    <img class="wow flipInY" data-wow-delay="0.6s" src="assets/images/cats/kanure.jpg" alt="" />
+                    <img class="wow flipInY" data-wow-delay="0.6s" src="assets/images/cats/kanure.jpg" alt="カヌレ" />
                   </div>
+                  <h3 class="cat__name">カヌレ</h3>
+                  <span class="cat__more">プロフィールを見る<span class="cat__more__arrow" aria-hidden="true">→</span></span>
+                  <p class="cat__type">写真大好き・食いしん坊</p>
                   <dl class="cat__detail">
                     <dt>種類</dt>
                     <dd>ミヌエット</dd>
                     <dt>誕生日</dt>
                     <dd>2018/3/05（オス）</dd>
                   </dl>
-                </article>
-                <article class="catList__item yerrow">
-                  <h3 class="cat__name">しまじろう</h3>
+                </a>
+                <a class="catList__item yerrow" role="button" tabindex="0" aria-haspopup="dialog">
                   <div class="cat__image">
-                    <img class="wow flipInY" data-wow-delay="0.9s" src="assets/images/cats/shimajiro.jpg" alt="" />
+                    <img class="wow flipInY" data-wow-delay="0.9s" src="assets/images/cats/shimajiro.jpg" alt="しまじろう" />
                   </div>
+                  <h3 class="cat__name">しまじろう</h3>
+                  <span class="cat__more">プロフィールを見る<span class="cat__more__arrow" aria-hidden="true">→</span></span>
+                  <p class="cat__type">やんちゃっ子な甘えん坊</p>
                   <dl class="cat__detail">
                     <dt>種類</dt>
                     <dd>ノルウェージャンフォレスト</dd>
                     <dt>誕生日</dt>
                     <dd>2019/7/21（オス）</dd>
                   </dl>
-                </article>
-                <article class="catList__item pink">
-                  <h3 class="cat__name">しらたま</h3>
+                </a>
+                <a class="catList__item pink" role="button" tabindex="0" aria-haspopup="dialog">
                   <div class="cat__image">
-                    <img class="wow flipInY" data-wow-delay="1.2s" src="assets/images/cats/shiratama.jpg" alt="" />
+                    <img class="wow flipInY" data-wow-delay="1.2s" src="assets/images/cats/shiratama.jpg" alt="しらたま" />
                   </div>
+                  <h3 class="cat__name">しらたま</h3>
+                  <span class="cat__more">プロフィールを見る<span class="cat__more__arrow" aria-hidden="true">→</span></span>
+                  <p class="cat__type">貫禄のある食いしん坊</p>
                   <dl class="cat__detail">
                     <dt>種類</dt>
                     <dd>スコティッシュフォールド</dd>
                     <dt>誕生日</dt>
                     <dd>2019/9/11（オス）</dd>
                   </dl>
-                </article>
-                <article class="catList__item orange">
-                  <h3 class="cat__name">あんず</h3>
+                </a>
+                <a class="catList__item orange" role="button" tabindex="0" aria-haspopup="dialog">
                   <div class="cat__image">
-                    <img class="wow flipInY" data-wow-delay="0.3s" src="assets/images/cats/anzu.jpg" alt="" />
+                    <img class="wow flipInY" data-wow-delay="0.3s" src="assets/images/cats/anzu.jpg" alt="あんず" />
                   </div>
+                  <h3 class="cat__name">あんず</h3>
+                  <span class="cat__more">プロフィールを見る<span class="cat__more__arrow" aria-hidden="true">→</span></span>
+                  <p class="cat__type">マイペースなおっとりさん</p>
                   <dl class="cat__detail">
                     <dt>種類</dt>
                     <dd>アメリカンショートヘア</dd>
                     <dt>誕生日</dt>
                     <dd>2020/6/12（メス）</dd>
                   </dl>
-                </article>
-                <article class="catList__item yerrow">
-                  <h3 class="cat__name">かりん</h3>
+                </a>
+                <a class="catList__item yerrow" role="button" tabindex="0" aria-haspopup="dialog">
                   <div class="cat__image">
-                    <img class="wow flipInY" data-wow-delay="0.6s" src="assets/images/cats/karin.jpg" alt="" />
+                    <img class="wow flipInY" data-wow-delay="0.6s" src="assets/images/cats/karin.jpg" alt="かりん" />
                   </div>
+                  <h3 class="cat__name">かりん</h3>
+                  <span class="cat__more">プロフィールを見る<span class="cat__more__arrow" aria-hidden="true">→</span></span>
+                  <p class="cat__type">おてんば</p>
                   <dl class="cat__detail">
                     <dt>種類</dt>
                     <dd>ブリティッシュショートヘアー</dd>
                     <dt>誕生日</dt>
                     <dd>2022/10/01（メス）</dd>
                   </dl>
-                </article>
-                <article class="catList__item pink">
-                  <h3 class="cat__name">ちくわ</h3>
+                </a>
+                <a class="catList__item pink" role="button" tabindex="0" aria-haspopup="dialog">
                   <div class="cat__image">
-                    <img class="wow flipInY" data-wow-delay="0.9s" src="assets/images/cats/chikuwa.jpg" alt="" />
+                    <img class="wow flipInY" data-wow-delay="0.9s" src="assets/images/cats/chikuwa.jpg" alt="ちくわ" />
                   </div>
+                  <h3 class="cat__name">ちくわ</h3>
+                  <span class="cat__more">プロフィールを見る<span class="cat__more__arrow" aria-hidden="true">→</span></span>
+                  <p class="cat__type">小心者の甘えん坊</p>
                   <dl class="cat__detail">
                     <dt>種類</dt>
                     <dd>エキゾチックショートヘア</dd>
                     <dt>誕生日</dt>
                     <dd>2023/4/08（オス）</dd>
                   </dl>
-                </article>
+                </a>
               </div>
             </div>
           </section>
 
+          <!-- 猫プロフィール ポップアップ（1つを使い回し、開いたカードの内容を複製して表示） -->
+          <div class="catModal" hidden aria-hidden="true">
+            <div class="catModal__overlay" data-cat-close></div>
+            <div class="catModal__dialog" role="dialog" aria-modal="true" aria-label="猫のプロフィール">
+              <button type="button" class="catModal__close" data-cat-close aria-label="閉じる">×</button>
+              <div class="catModal__body"></div>
+            </div>
+          </div>
+
           <script>
-            $(function(){
-              $('.cat__detail').click(function() {
-                if ($(this).hasClass("JS_ON")) {
-                  $(this).removeClass("JS_ON");
-                } else {
-                  $(this).addClass("JS_ON");
-                }
+            (function () {
+              var modal = document.querySelector('.catModal');
+              if (!modal) return;
+              var body = modal.querySelector('.catModal__body');
+              var lastFocus = null;
+              var COLORS = ['green', 'orange', 'yerrow', 'pink'];
+
+              function openModal(item) {
+                var color = COLORS.filter(function (c) { return item.classList.contains(c); })[0] || '';
+                body.className = 'catModal__body' + (color ? ' ' + color : '');
+                body.innerHTML = item.innerHTML;
+                // 複製した画像のWOWアニメ用クラス/インラインスタイルを除去し、確実に表示する
+                body.querySelectorAll('img').forEach(function (img) {
+                  img.classList.remove('wow');
+                  img.classList.remove('flipInY');
+                  img.removeAttribute('style');
+                  img.removeAttribute('data-wow-delay');
+                });
+                lastFocus = document.activeElement;
+                modal.hidden = false;
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                modal.querySelector('.catModal__close').focus();
+              }
+
+              function closeModal() {
+                modal.hidden = true;
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                body.innerHTML = '';
+                if (lastFocus && lastFocus.focus) lastFocus.focus();
+              }
+
+              // リンク（クリック範囲）は catList__item 全体。
+              // カードのどこをクリック/タップ、または Enter/Space で開く。
+              document.querySelectorAll('.catList__item').forEach(function (item) {
+                item.addEventListener('click', function () { openModal(item); });
+                item.addEventListener('keydown', function (e) {
+                  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(item); }
+                });
               });
-            });
+
+              modal.querySelectorAll('[data-cat-close]').forEach(function (el) {
+                el.addEventListener('click', closeModal);
+              });
+              document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && !modal.hidden) closeModal();
+              });
+            })();
           </script>
 
           <section id="system">

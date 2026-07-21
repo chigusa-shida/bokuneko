@@ -99,7 +99,17 @@
       "Bash(awk '/max-width: 750px/{c++} c==2' assets/css/layout.css)",
       "Bash(node -e 'const s=require\\(\"fs\"\\).readFileSync\\(\"assets/css/layout.css\",\"utf8\"\\);let b=0;for\\(const ch of s\\){if\\(ch===\"{\"\\)b++;if\\(ch===\"}\"\\)b--;}console.log\\(\"brace balance:\",b, \"| mask残り:\", \\(s.match\\(/mask/g\\)||[]\\).length, \"| cat-paw参照:\", \\(s.match\\(/cat-paw-\\\\w+\\\\.svg/g\\)||[]\\).length\\);')",
       "Bash(grep -n -A12 \"細い線の半円\\\\|フォントの（）\\\\|ruleMessageText::before,\\\\|ruleMessageText {\" assets/css/layout.css)",
-      "Bash(awk -F: '$1>2218')"
+      "Bash(awk -F: '$1>2218')",
+      "Bash(node -e \"try{require\\('sharp'\\);console.log\\('sharp: yes'\\)}catch\\(e\\){console.log\\('sharp: no'\\)}\")",
+      "Bash(python -c \"import PIL, PIL.Image; print\\('PIL:', PIL.__version__\\)\")",
+      "Bash(python -c \"import PIL; from PIL import Image; print\\('PIL OK', PIL.__version__\\)\")",
+      "Bash(magick -version)",
+      "Bash(py --version)",
+      "Bash(SCRATCH=\"C:/Users/chigu/AppData/Local/Temp/claude/D--Desktop-test-bokuneko-jp-static-bokuneko-jp-static/b9c1e2cc-77c7-49ce-a1b5-3130b3487e0c/scratchpad\"; mkdir -p \"$SCRATCH/img-work/backup\" && cp \"D:/Desktop/test.bokuneko.jp-static/bokuneko.jp-static/assets/images/cats/\"*.jpg \"$SCRATCH/img-work/backup/\" && ls -la \"$SCRATCH/img-work/backup/\" && echo \"backup done\")",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(node -e \"const s=require\\('sharp'\\); console.log\\('sharp ok', s.versions.sharp\\)\")",
+      "Bash(node resize.js)"
     ]
   }
 }
