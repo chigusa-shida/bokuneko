@@ -70,6 +70,21 @@
 #calendar .titleGraphic__accent { color: var(--accent-calendar); }
 
 /* ============================================================
+   セクションのサブタイトル（全 .sectionTitle__sub 共通ルール）
+   見出しに次ぐ情報という優先順位は保ちつつ、PC/SPともに
+   無理なく読めるサイズへ。clamp()で画面幅に応じて自然にスケールし、
+   小さすぎ・大きすぎを防ぐ。行間もゆとりを持たせて可読性を確保。
+   ※font-size / line-height / 文字色 / 太さはここで一元管理。
+     余白（margin）はPC=横並び／SP=縦積みで異なるため各ブロックで指定。
+   ============================================================ */
+.sectionTitle__sub {
+  color: #383838;
+  font-weight: bold;
+  font-size: clamp(14px, calc(0.6vw + 11.5px), 20px);
+  line-height: 1.7;
+}
+
+/* ============================================================
    猫プロフィール ポップアップ（モーダル）
    - 一覧のカードは「画像＋名前＋"プロフィールを見る"ボタン」のみ表示し、
      写真と名前が主役のシンプルなレイアウトにする
@@ -260,17 +275,22 @@
   font-size: 1.15em;
 }
 
+/* プロフィール本文のタイポグラフィ（type/detailで統一ルール）。
+   sectionTitle__sub と同様、clamp()で全幅を自然にスケールさせ、
+   極端に小さくならないようにする。type（性格）を一段大きく＝優先度上、
+   detail（種類・誕生日）はそれに次ぐサイズ。行間・余白もゆとりを確保 */
 .catModal__body .cat__type {
-  margin-top: 0.7em;
-  font-size: 1.02em;
+  margin-top: 0.8em;
+  font-size: clamp(17px, calc(0.35vw + 14.7px), 21px);
+  line-height: 1.65;
 }
 
 .catModal__body .cat__detail {
   display: block;
   margin-top: 1.1em;
   color: #6b5535;
-  font-size: 0.95em;
-  line-height: 2;
+  font-size: clamp(16px, calc(0.3vw + 13.7px), 19px);
+  line-height: 1.9;
 }
 
 /* モーダル内の色テーマ（枠色・名前ピル）はカードの色クラスをJSで付与 */
@@ -1698,7 +1718,7 @@ img {
 }
 
 .priceGroup__title {
-  font-size: max(11px, calc(16 * var(--p)));
+  font-size: max(13px, calc(18 * var(--p)));
 }
 
 .priceList__name {
@@ -1727,12 +1747,12 @@ img {
 }
 
 .hoursGroup__note {
-  font-size: max(11px, calc(15 * var(--p)));
+  font-size: max(12px, calc(17 * var(--p)));
 }
 
 .hoursGroup__allYear {
-  margin: calc(4 * var(--p)) 0 0;
-  font-size: max(11px, calc(13 * var(--p)));
+  margin: calc(5 * var(--p)) 0 0;
+  font-size: max(12px, calc(15 * var(--p)));
 }
 
 .systemCard__heading--second {
@@ -1741,18 +1761,19 @@ img {
 
 .ageNote {
   margin: 0;
-  font-size: max(11px, calc(14 * var(--p)));
+  font-size: max(12px, calc(16 * var(--p)));
 }
 
 .ageNote__small {
   margin: calc(12 * var(--p)) 0 0;
-  padding: calc(10 * var(--p)) calc(14 * var(--p));
-  font-size: max(11px, calc(13 * var(--p)));
+  padding: calc(11 * var(--p)) calc(15 * var(--p));
+  font-size: max(12px, calc(15 * var(--p)));
+  line-height: 1.7;
 }
 
 .qaLink {
   margin: calc(24 * var(--p)) 0 0;
-  font-size: max(11px, calc(14 * var(--p)));
+  font-size: max(12px, calc(16 * var(--p)));
 }
 
 /* デコ画像 */
@@ -2682,6 +2703,7 @@ img {
 }
 
 .sectionTitle__sub {
+  margin-top: 3vw;
   margin-bottom: min(8vw, 40px);
   text-align: center;
 }
@@ -3265,13 +3287,6 @@ img {
   font-size: min(3vw, 15px);
 }
 
-#system .sectionTitle__sub {
-  margin-top: 2vw;
-  font-size: min(3.4vw, 17px);
-  font-weight: bold;
-  color: #383838;
-}
-
 .systemDetail__main,
 .systemDetail__sub {
   margin-top: 2vw;
@@ -3402,21 +3417,6 @@ img {
   font-size: min(3vw, 15px);
 }
 
-#rule .sectionTitle__sub {
-  margin-top: 2vw;
-  font-size: min(3.4vw, 17px);
-  font-weight: bold;
-  color: #383838;
-}
-
-/* 猫紹介：SPではタイトル下に中央寄せで2行表示（system/ruleと同一スタイル） */
-#cat .sectionTitle__sub {
-  margin-top: 2vw;
-  font-size: min(3.4vw, 17px);
-  font-weight: bold;
-  color: #383838;
-}
-
 .ruleList {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -3469,7 +3469,8 @@ img {
 
 .ruleCaption {
   margin-top: max(-4vw, -19px);
-  font-size: min(3vw, 15px);
+  font-size: clamp(13px, 3.6vw, 16px);
+  line-height: 1.6;
 }
 
 .ruleMessage {
