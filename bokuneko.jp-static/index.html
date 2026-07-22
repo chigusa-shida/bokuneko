@@ -29,21 +29,7 @@
       });
     </script>
 
-    <script>
-      $(function(){
-        $('.navButton').click(function(e) {
-          e.preventDefault();
-
-          $(this).next().slideToggle();// 開閉の指示
-
-          if ($(this).hasClass("open")) {
-            $(this).removeClass("open");
-          } else {
-            $(this).addClass("open");
-          }
-        });
-      });
-    </script>
+    <script src="assets/js/sp-nav.js"></script>
     <link rel="stylesheet" href="assets/css/common/remodal.css?v=dc76fd28">
     <link rel="stylesheet" href="assets/css/common/remodal-default-theme.css?v=8131904d">
     <script src="assets/js/remodal.min.js?v=9dd8df8a"></script>
