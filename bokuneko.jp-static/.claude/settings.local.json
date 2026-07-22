@@ -111,7 +111,9 @@
       "Bash(node -e \"const s=require\\('sharp'\\); console.log\\('sharp ok', s.versions.sharp\\)\")",
       "Bash(node resize.js)",
       "Bash(node .claude/cache-bust.mjs)",
-      "Bash(node .claude/cache-bust.mjs --dev)"
+      "Bash(node .claude/cache-bust.mjs --dev)",
+      "Bash(curl -s \"http://localhost:8843/assets/css/layout.css?v=c69868ae\")",
+      "Bash(grep -n \"navButton__bar\\\\|navButton.open\\\\|linear-gradient\\(180deg, #fbf4e1\\\\|headerSNS {\" assets/css/layout.css)"
     ]
   }
 }

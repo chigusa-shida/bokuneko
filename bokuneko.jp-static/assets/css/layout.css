@@ -65,7 +65,7 @@
 
   /* フッター背景：ナチュラルな明るめグレージュ。ページ全体をやさしくまとめる。
      背景が明るいため文字色は白ではなく濃色(--footer-text)で可読性を確保する。 */
-  --footer-bg: #b5a38d;
+  --footer-bg: #f0e1c4;
   --footer-text: #3a342b;   /* 明るいグレージュ背景で十分なコントラストの濃い温かみブラウン */
 }
 
@@ -140,6 +140,147 @@
   .snsLink,
   .snsLink:hover,
   .snsLink:focus-visible { -webkit-transform: none; transform: none; }
+}
+
+/* ============================================================
+   追従ヘッダー（PCのみ）
+   既存 headerNav が画面外へ出たら、上部にコンパクトな固定ヘッダーを
+   スッと表示する。左：ロゴ／右：ナビ＋SNS の横一列。
+   中身は sticky-header.js が既存要素を複製して生成する。
+   SP（max-width:750px）では display:none のまま影響なし。
+   ============================================================ */
+.stickyHeader {
+  display: none;
+}
+
+@media only screen and (min-width: 750.02px) {
+  .stickyHeader {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9000;
+    /* 温かみのある淡いクリーム＋ぼかしでコンテンツを邪魔しない上品な質感 */
+    background-color: rgba(250, 243, 229, 0.85);
+    -webkit-backdrop-filter: saturate(1.1) blur(10px);
+            backdrop-filter: saturate(1.1) blur(10px);
+    border-bottom: 1px solid rgba(138, 98, 52, 0.12);
+    -webkit-box-shadow: 0 2px 14px rgba(92, 55, 12, 0.14);
+            box-shadow: 0 2px 14px rgba(92, 55, 12, 0.14);
+    /* 非表示：上へスライド＋フェード */
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+    -webkit-transition: opacity 0.32s ease, -webkit-transform 0.32s ease, visibility 0s linear 0.32s;
+            transition: opacity 0.32s ease, transform 0.32s ease, visibility 0s linear 0.32s;
+    will-change: transform, opacity;
+  }
+
+  .stickyHeader.is-visible {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-transition: opacity 0.32s ease, -webkit-transform 0.32s ease;
+            transition: opacity 0.32s ease, transform 0.32s ease;
+  }
+
+  .stickyHeader__inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+       -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+       -ms-flex-pack: justify;
+            justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8px 10px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+
+  /* 左：ロゴ（コンパクト） */
+  .stickyHeader__logo {
+    -webkit-box-flex: 0;
+       -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+       -ms-flex-align: center;
+            align-items: center;
+    line-height: 0;
+  }
+  .stickyHeader__logo img {
+    display: block;
+    height: 20px;
+    width: auto;
+  }
+
+  /* 右：ナビ＋SNS */
+  .stickyHeader__right {
+    -webkit-box-flex: 1;
+       -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+       -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: end;
+       -ms-flex-pack: end;
+            justify-content: flex-end;
+    gap: clamp(12px, 2vw, 26px);
+    min-width: 0;
+  }
+
+  /* ナビ（既存 headerNav__wrap を複製。横並びに調整） */
+  .stickyHeader__nav .headerNav__wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+       -ms-flex-align: center;
+            align-items: center;
+    gap: clamp(2px, 0.8vw, 12px);
+    margin: 0;
+  }
+  .stickyHeader__nav .headerNav__item {
+    float: none;
+    padding: 0;
+  }
+  .stickyHeader__nav .headerNav__item + .headerNav__item {
+    padding-left: 0;
+  }
+  .stickyHeader__nav .headerNav__item a {
+    padding: 8px 6px;
+    font-size: clamp(13px, 1.05vw, 15px);
+    color: #4a3a29;
+    white-space: nowrap;
+  }
+  /* ホバー色は既存の .headerNav__item--x a:hover がそのまま適用される */
+
+  /* SNS（既存 headerSNS__wrap を複製。バー内では一回り小さく） */
+  .stickyHeader__sns .snsList {
+    gap: 2px;
+  }
+  .stickyHeader__sns .snsLink {
+    padding: 3px;
+  }
+  .stickyHeader__sns .snsIcon {
+    width: 30px;
+  }
+  .stickyHeader__sns .snsLink:focus-visible {
+    outline-color: rgba(138, 98, 52, 0.6);
+  }
 }
 
 #cat .titleGraphic__accent { color: var(--accent-cat); }
@@ -1052,8 +1193,10 @@ img {
 }
 
 .headerNav__wrap {
-  display: table;
+  display: flex;
   line-height: 1.0;
+  justify-content: center;
+  gap: calc(17 * var(--p));
 }
 
 /* top専用 */
@@ -1068,21 +1211,13 @@ img {
   margin: 0 auto;
 }
 
-.headerNav__item {
-  float: left;
-}
-
-.headerNav__item + .headerNav__item {
-  padding-left: calc(17 * var(--p));
-}
-
 .headerNav__item a {
   padding: calc(10 * var(--p));
   position: relative;
   display: block;
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   font-weight: 700;
-  font-size: max(11px, calc(15 * var(--p)));
+  font-size: max(15px, calc(15 * var(--p)));
   color: #383838;
   white-space: nowrap;
   -webkit-transition: color 0.3s ease;
@@ -2623,56 +2758,141 @@ img {
 }
 
 /** ------------------------------
- * JS開閉部分
+ * JS開閉部分（ハンバーガーメニュー）
+ * 画像を使わずCSSで実装。木の温もりを感じるナチュラルな配色に統一。
  */
 .panel {
-  position: absolute;
+  position: fixed;          /* ボタンと同じく画面固定。スクロール中に開いても画面内に表示 */
   top: 0;
-  z-index: 100;
+  left: 0;
+  z-index: 9990;
   width: 100%;
-  background: url("../images/sp/common/header/nav/bg.png") repeat 0 0;
+  display: none;
+  /* 淡いクリーム→ベージュのグラデ＋ごく淡い水玉テクスチャ（他セクションと同系） */
+  background-color: #f8efd8;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.55) 2px, transparent 2.5px),
+    radial-gradient(rgba(255, 255, 255, 0.55) 2px, transparent 2.5px),
+    -webkit-gradient(linear, left top, left bottom, from(#fbf4e1), to(#f1e3c8));
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.55) 2px, transparent 2.5px),
+    radial-gradient(rgba(255, 255, 255, 0.55) 2px, transparent 2.5px),
+    linear-gradient(180deg, #fbf4e1 0%, #f1e3c8 100%);
+  background-size: 24px 24px, 24px 24px, 100% 100%;
+  background-position: 0 0, 12px 12px, 0 0;
+  border-radius: 0 0 18px 18px;
+  -webkit-box-shadow: 0 12px 26px rgba(92, 55, 12, 0.2);
+          box-shadow: 0 12px 26px rgba(92, 55, 12, 0.2);
+  overflow: hidden;
+}
+
+/** ------------------------------
+ * navButton（3本線 → × をCSSで描画・アニメーション）
+ */
+.navButton {
+  margin: 0;
+  padding: 8px;             /* 円チップ(46px)＋余白で全体タップ領域を約62px角に */
+  position: fixed;          /* スクロールしても常に画面上に固定表示 */
+  top: 8px;
+  right: 8px;
+  z-index: 9991;            /* パネル(9990)より上。× を常に前面に */
+}
+
+/* 三本線の背面に置く円形の背景（チップ）。淡いクリーム＋やわらかい影で、
+   どの背景色・写真の上でも三本線が見やすく、かつ主張しすぎない */
+.navButton a {
+  display: block;
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: rgba(250, 243, 229, 0.9);
+  border: 1px solid rgba(138, 98, 52, 0.12);
+  -webkit-box-shadow: 0 2px 8px rgba(92, 55, 12, 0.22);
+          box-shadow: 0 2px 8px rgba(92, 55, 12, 0.22);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 旧画像は使用しない（HTMLに残っていても非表示） */
+.navButton img {
   display: none;
 }
 
-/** ------------------------------
- * navButton
- */
-.navButton {
-  padding: 10px 10px 10px 0;
+.navButton__bar,
+.navButton__bar::before,
+.navButton__bar::after {
+  content: "";
   position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 101;
-  text-align: right;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 3px;
+  margin: -1.5px 0 0 -11px;   /* チップ中央に配置（縦・横センター） */
+  border-radius: 3px;
+  background-color: #6b4f2a;   /* 木のブラウン。淡いチップ上で高コントラスト */
+  -webkit-transition: -webkit-transform 0.28s ease, opacity 0.2s ease, background-color 0.2s ease;
+          transition: transform 0.28s ease, opacity 0.2s ease, background-color 0.2s ease;
 }
 
-.navButton img {
-  width: 45px;
+.navButton__bar::before { -webkit-transform: translateY(-7px); transform: translateY(-7px); }
+.navButton__bar::after  { -webkit-transform: translateY(7px);  transform: translateY(7px); }
+
+/* 開：中央線を消し、上下線を回転させて × に */
+.navButton.open .navButton__bar {
+  background-color: transparent;
+}
+.navButton.open .navButton__bar::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.navButton.open .navButton__bar::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 
 /** ------------------------------
- * nav
+ * SNS：メニュー上部の帯。navと調和させつつ一段濃いベージュでメリハリ
+ */
+.headerSNS {
+  padding: 56px 16px 18px;   /* 上端は navButton(×) と重ならない余白 */
+  background-color: #f0e1c4;
+  border-bottom: 1px solid rgba(138, 98, 52, 0.18);
+}
+
+/** ------------------------------
+ * nav：クリーム地。項目の可読性を最優先
  */
 .headerNav {
-  background: url("../images/sp/common/header/nav/bg2.png") repeat 0 0;
-  -webkit-background-size: 50% auto;
-     -moz-background-size: 50% auto;
-          background-size: 50% auto;
+  background: transparent;
   text-align: center;
 }
 
+.headerNav__wrap {
+  padding: 4px 0 10px;
+}
+
 .headerNav__item + .headerNav__item {
-  border-top: 3px solid #f5e0a2;
+  border-top: 1px solid rgba(138, 98, 52, 0.14);
 }
 
 .headerNav__item a {
   display: block;
-  padding: 3.5vw 0;
+  padding: 3.6vw 0;
   font-family: 'Fredoka', 'Zen Maru Gothic', "メイリオ", sans-serif;
   font-weight: 700;
   font-size: min(4vw, 20px);
-  color: #fff;
+  color: #5c3f1a;            /* 濃い木のブラウン。クリーム地で高コントラスト */
   text-align: center;
+  -webkit-transition: background-color 0.2s ease, color 0.2s ease;
+          transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.headerNav__item a:hover,
+.headerNav__item a:active {
+  background-color: rgba(138, 98, 52, 0.09);
+  color: #8a6234;
 }
 
 .headerNav__item img {
