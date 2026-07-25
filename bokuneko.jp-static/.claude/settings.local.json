@@ -113,7 +113,8 @@
       "Bash(node .claude/cache-bust.mjs)",
       "Bash(node .claude/cache-bust.mjs --dev)",
       "Bash(curl -s \"http://localhost:8843/assets/css/layout.css?v=c69868ae\")",
-      "Bash(grep -n \"navButton__bar\\\\|navButton.open\\\\|linear-gradient\\(180deg, #fbf4e1\\\\|headerSNS {\" assets/css/layout.css)"
+      "Bash(grep -n \"navButton__bar\\\\|navButton.open\\\\|linear-gradient\\(180deg, #fbf4e1\\\\|headerSNS {\" assets/css/layout.css)",
+      "Bash(awk '/^\\\\.frame \\\\{/{p=1} p{print NR\": \"$0} /^\\\\}/{if\\(p\\){p=0}}' assets/css/layout.css)"
     ]
   }
 }

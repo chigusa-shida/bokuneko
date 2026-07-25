@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- テストサーバー用：検索エンジンにインデックスさせない。本番公開時に削除すること -->
+    <meta name="robots" content="noindex, nofollow" />
+    <title>よくある質問｜秋葉原の猫カフェ「僕と猫。」</title>
+    <meta name="description" content="秋葉原の猫カフェ「僕と猫。」に寄せられるよくある質問と回答をまとめています。" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Imagetoolbar" content="no" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link type="text/css" rel="stylesheet" href="../assets/css/common/default.css?v=d5689750" />
+    <link type="text/css" rel="stylesheet" href="../assets/css/layout.css?v=066f62a0" />
+    <script src="../assets/js/jquery-1.11.3.min.js?v=13c0a505"></script>
+    <script>
+      $(function() {
+        var topBtn = $('.pageTop a');
+        //ページトップへスクロール
+        topBtn.click(function () {
+          $('body,html').animate({
+              scrollTop: 0
+          }, 500);
+          return false;
+        });
+      });
+    </script>
+
+    <script src="../assets/js/sp-nav.js?v=820c6216"></script>
+    <link rel="stylesheet" href="../assets/css/common/remodal.css?v=dc76fd28">
+    <link rel="stylesheet" href="../assets/css/common/remodal-default-theme.css?v=8131904d">
+    <script src="../assets/js/remodal.min.js?v=9dd8df8a"></script>
+
+    <link rel="stylesheet" href="../assets/css/common/animate.css?v=73bcf41f">
+    <script src="../assets/js/wow.min.js?v=e1f1ff68"></script>
+
+    <!-- PC用 追従ヘッダー（既存ヘッダーが画面外に出たら上部に固定表示） -->
+    <script src="../assets/js/sticky-header.js?v=3dbb94da"></script>
+
+    <!-- ページ内アンカーのスムーススクロール＋スクロール後に # を消す -->
+    <script src="../assets/js/smooth-scroll.js?v=5f3fe388"></script>
+
+    <!-- FAQアコーディオン -->
+    <script src="../assets/js/faq.js?v=d4c87f3b"></script>
+
+    <!-- FAQページ専用スタイル（このページ限定・他ページへ波及しない） -->
+    <style>
+      /* ヘッダーと主見出し（よくある質問）の間に、冒頭として自然な余白を確保 */
+      .page-faq main {
+        padding-top: clamp(28px, 5vw, 56px);
+      }
+      /* PCのbodyはoverflow:hiddenのためカテゴリ見出しのstickyが効かない。
+         FAQページははみ出す要素が無いので、このページ限定でvisibleに戻す */
+      body.page-faq {
+        overflow: visible;
+      }
+    </style>
+  </head>
+
+  <body id="pageTop" class="under page-faq">
+    <header class="header">
+      <div class="header__wrap">
+        <p class="headerLogo">
+          <a href="../">
+            <img class="logo" src="../assets/images/bokuneko-logo.webp" alt="猫カフェ【僕と猫。】" />
+          </a>
+        </p>
+
+        <p class="navButton">
+          <a href="#" aria-label="メニュー">
+            <span class="navButton__bar" aria-hidden="true"></span>
+          </a>
+        </p>
+
+        <div class="panel">
+          <aside class="headerSNS">
+            <ul class="headerSNS__wrap snsList">
+              <li class="headerSNS__item snsList__item">
+                <a class="snsLink" href="https://x.com/bokunekoakb" target="_blank" rel="noopener" aria-label="X（旧Twitter）">
+                  <img class="snsIcon" src="../assets/images/sns/x_logo.svg" alt="X" />
+                </a>
+              </li>
+              <li class="headerSNS__item snsList__item">
+                <a class="snsLink" href="https://www.instagram.com/bokunekoakb?igsh=MWY0cGlvM29mZjNuZg==" target="_blank" rel="noopener" aria-label="Instagram">
+                  <img class="snsIcon" src="../assets/images/sns/instagram_logo.svg" alt="Instagram" />
+                </a>
+              </li>
+              <li class="headerSNS__item snsList__item">
+                <a class="snsLink" href="https://lin.ee/tn2yxq5" target="_blank" rel="noopener" aria-label="LINE">
+                  <img class="snsIcon" src="../assets/images/sns/line.svg" alt="LINE" />
+                </a>
+              </li>
+            </ul>
+          </aside>
+
+          <div class="headerNav">
+            <ul class="headerNav__wrap">
+              <li class="headerNav__item headerNav__item--concept">
+                <a href="../#concept">過ごし方</a>
+              </li>
+              <li class="headerNav__item headerNav__item--cat">
+                <a href="../#cat">猫紹介</a>
+              </li>
+              <li class="headerNav__item headerNav__item--system">
+                <a href="../#system">システム</a>
+              </li>
+              <li class="headerNav__item headerNav__item--rule">
+                <a href="../#rule">ルール</a>
+              </li>
+              <li class="headerNav__item headerNav__item--access">
+                <a href="../#access">アクセス</a>
+              </li>
+              <li class="headerNav__item headerNav__item--faq">
+                <a href="../faq/" aria-current="page">よくある質問</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div id="container">
+      <div id="contents">
+        <main>
+          <h1 class="frameTitle">
+            よくある質問
+          </h1>
+          <div class="frame">
+            <!--
+              ■構造（拡張方法）
+                .faq
+                  section.faqCategory（カテゴリ）
+                    h2.faqCategory__title（カテゴリ名）
+                    ul.faqList
+                      li.faqList__item（Q&A 1件）… ← これを増やすだけで項目追加
+              ・カテゴリを増やす場合は section.faqCategory ごと追加。
+              ・Qは .faqList__qtext、Aは .faqList__atext にテキストを入れる。
+
+              ※「ご利用について」の最初の2件は既存FAQ。
+                それ以外は【サンプル】です。実際の内容に差し替えてください。
+            -->
+            <div class="faq">
+
+              <section class="faqCategory">
+                <h2 class="faqCategory__title">ご利用について</h2>
+                <ul class="faqList">
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">猫カフェってなんですか？</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">猫がいるお店です。店内には15～20匹程度の猫が自由に過ごしています。猫をなでたり、一緒に遊んだり癒しの時間をお過ごしください。</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">どんな人が猫カフェに行きますか？</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">老若男女、様々な方がご来店されます。女性はもちろんですが、男性のお客様が多く来店されることが「僕と猫。」の特徴です。もちろんお一人様もたくさんいらっしゃいます。どなた様でもお気軽にお越しください。</p>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- ▼サンプル（要差し替え） -->
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">予約は必要ですか？</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">ご予約なしでもご利用いただけます。混雑時はお待ちいただく場合がございます。</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">何分から利用できますか？</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">最短10分からご利用いただけます。ご予定に合わせてお気軽にお立ち寄りください。</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </section>
+
+              <!-- ▼以下すべてサンプル（要差し替え） -->
+              <section class="faqCategory">
+                <h2 class="faqCategory__title">店内設備について</h2>
+                <ul class="faqList">
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">荷物を預ける場所はありますか？</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">店内にロッカーをご用意しております。貴重品はお手元での管理をお願いいたします。</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">Wi-Fiやコンセントは使えますか？</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">フリーWi-Fiをご用意しております。ごゆっくりお過ごしください。</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">飲み物はありますか？</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">フリードリンクをご用意しております。</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="faqCategory">
+                <h2 class="faqCategory__title">お支払いについて</h2>
+                <ul class="faqList">
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">利用できる支払い方法を教えてください。</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">現金のほか、各種クレジットカード・電子マネーがご利用いただけます。</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">料金はいつ支払いますか？</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">ご退店時に、ご利用時間に応じてお支払いいただきます。</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="faqCategory">
+                <h2 class="faqCategory__title">猫ちゃんについて</h2>
+                <ul class="faqList">
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">猫は何匹いますか？</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">15～20匹程度の猫たちが暮らしています。個性豊かな猫たちに会いにきてください。</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">猫を抱っこできますか？</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">猫ちゃんの負担になるため、抱っこはご遠慮いただいております。やさしく見守ってあげてください。</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">猫におやつはあげられますか？</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">猫たちの健康管理のため、お客様からの飲食物はお控えください。</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="faqCategory">
+                <h2 class="faqCategory__title">安全について</h2>
+                <ul class="faqList">
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">子どもも入店できますか？</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">保護者同伴でご入店いただけます。猫ちゃんとお子様の安全のため、目を離さないようお願いいたします。</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">猫アレルギーが心配です。</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">店内には多数の猫がおります。アレルギーをお持ちの方はご来店前に体調をご確認ください。</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">衛生管理はしていますか？</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">定期的な清掃と、猫たちの健康管理を行っております。安心してお過ごしください。</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="faqCategory">
+                <h2 class="faqCategory__title">その他のお問い合わせ</h2>
+                <ul class="faqList">
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">取材・撮影の依頼はできますか？</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">お問い合わせフォームよりご連絡ください。内容を確認のうえご返答いたします。</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="faqList__item">
+                    <button class="faqList__q" type="button" aria-expanded="false">
+                      <span class="faqList__mark" aria-hidden="true">Q</span>
+                      <span class="faqList__qtext">貸し切りはできますか？</span>
+                      <span class="faqList__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faqList__a">
+                      <div class="faqList__aInner">
+                        <span class="faqList__mark faqList__mark--a" aria-hidden="true">A</span>
+                        <p class="faqList__atext">内容により対応可能な場合がございます。お問い合わせフォームよりご相談ください。</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </section>
+
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footerInner wow fadeIn" data-wow-duration="2.5s">
+        <aside class="footerSNSWrap">
+          <ul class="footerSNS snsList">
+            <li class="footerSNS__item snsList__item">
+              <a class="snsLink" href="https://x.com/bokunekoakb" target="_blank" rel="noopener" aria-label="X（旧Twitter）">
+                <img class="snsIcon" src="../assets/images/sns/x_logo.svg" alt="X" />
+              </a>
+            </li>
+            <li class="footerSNS__item snsList__item">
+              <a class="snsLink" href="https://www.instagram.com/bokunekoakb?igsh=MWY0cGlvM29mZjNuZg==" target="_blank" rel="noopener" aria-label="Instagram">
+                <img class="snsIcon" src="../assets/images/sns/instagram_logo.svg" alt="Instagram" />
+              </a>
+            </li>
+            <li class="footerSNS__item snsList__item">
+              <a class="snsLink" href="https://lin.ee/tn2yxq5" target="_blank" rel="noopener" aria-label="LINE">
+                <img class="snsIcon" src="../assets/images/sns/line.svg" alt="LINE" />
+              </a>
+            </li>
+          </ul>
+        </aside>
+
+        <ul class="footerNav">
+          <li class="footerNav__item">
+            <a href="#law">
+              第１種動物取扱業者標識
+            </a>
+          </li>
+          <li class="footerNav__item">
+            <a href="../recruit/">
+              採用情報
+            </a>
+          </li>
+          <li class="footerNav__item">
+            <a href="../contact/">
+              お問い合わせ
+            </a>
+          </li>
+        </ul>
+
+        <p class="copy">
+          <small class="footerCopyText">© 2016 Boku to neko. All Rights Reserved.</small>
+        </p>
+      </div>
+    </footer>
+
+    <div class="remodal" data-remodal-id="law" data-remodal-options="hashTracking:false">
+      <section class="window">
+        <h3 class="windowTitle">
+          第１種動物取扱業者標識
+        </h3>
+        <dl class="lawList">
+          <dt>事業所の名称</dt>
+          <dd>僕と猫。秋葉原店</dd>
+          <dt>事業所の所在地</dt>
+          <dd>東京都千代田区外神田四丁目4番3号<br>小木曽ビル5階</dd>
+          <dt>第一種動物取扱業の種別</dt>
+          <dd>展示</dd>
+          <dt>登録番号</dt>
+          <dd>18東京都展第005975号</dd>
+          <dt>登録年月日</dt>
+          <dd>平成30年 7月26日</dd>
+          <dt>有効期間の末日</dt>
+          <dd>平成35年 7月25日</dd>
+          <dt>動物取扱責任者</dt>
+          <dd>池川航一</dd>
+        </dl>
+
+        <button data-remodal-action="close" class="remodalClose">
+          <img src="../assets/images/common/close.png" alt="閉じる" />
+        </button>
+      </section>
+    </div>
+  </body>
+</html>
+
+<script>
+  $('[data-remodal-id=law]').remodal({
+    modifier: 'modalBg'
+  });
+
+  new WOW().init();
+</script>
