@@ -1262,6 +1262,127 @@ img {
 
 /* 内側のレイアウト・サイズ・ホバーは共通の .snsList / .snsIcon に統一 */
 
+/* ============================================================
+   下層ページ（.under）のPCヘッダー
+   絶対配置だと狭幅でナビとSNSが重なるため、フレックスの横一列
+   （左：ロゴ ／ 右：ナビ＋SNS）に変更。750pxのハンバーガー切替まで
+   要素が重ならず、余白・文字サイズが自然に追従する。
+   ※ index（.header--index）やSP表示には影響しない。
+   ============================================================ */
+.under .header {
+  min-width: 0;
+}
+
+.under .header__wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+     -ms-flex-align: center;
+        align-items: center;
+  -webkit-box-pack: justify;
+     -ms-flex-pack: justify;
+        justify-content: space-between;
+  gap: clamp(16px, 2.5vw, 40px);
+  width: min(1000px, 92vw);
+  height: auto;
+  padding: 16px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.under .header__wrap > h1,
+.under .header__wrap > .headerLogo {
+  margin: 0;
+  -webkit-box-flex: 0;
+     -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+  line-height: 0;
+}
+
+.under .logo {
+  margin: 0;
+  width: clamp(140px, 19vw, 230px);
+}
+
+/* SPメニュー(panel)は下層PCでは横並びのナビバーとして使う */
+.under .panel {
+  position: static;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+     -ms-flex-align: center;
+        align-items: center;
+  -webkit-box-pack: end;
+     -ms-flex-pack: end;
+        justify-content: flex-end;
+  gap: clamp(12px, 2vw, 28px);
+  -webkit-box-flex: 1;
+     -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+  min-width: 0;
+  width: auto;
+  background: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.under .headerNav {
+  position: static;
+  right: auto;
+  bottom: auto;
+  -webkit-box-ordinal-group: 2;
+     -ms-flex-order: 1;
+        order: 1;
+}
+
+.under .headerSNS {
+  position: static;
+  top: auto;
+  right: auto;
+  -webkit-box-ordinal-group: 3;
+     -ms-flex-order: 2;
+        order: 2;
+}
+
+.under .headerNav__wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+     -ms-flex-align: center;
+        align-items: center;
+  gap: clamp(2px, 0.8vw, 12px);
+}
+
+.under .headerNav__item {
+  float: none;
+  padding: 0;
+}
+
+.under .headerNav__item + .headerNav__item {
+  padding-left: 0;
+}
+
+.under .headerNav__item a {
+  padding: 8px 4px;
+  font-size: clamp(12px, 1.15vw, 15px);
+  white-space: nowrap;
+}
+
+.under .headerSNS .snsList {
+  gap: clamp(6px, 1vw, 12px);
+}
+
+.under .headerSNS .snsLink {
+  padding: 3px;
+}
+
+.under .headerSNS .snsIcon {
+  width: clamp(26px, 3vw, 34px);
+}
+
 /** ------------------------------------------------------------
  * section
  */
@@ -2311,34 +2432,13 @@ address {
 .frame {
   margin: 0 auto calc(100 * var(--p));
   padding: calc(70 * var(--p)) calc(56 * var(--p)) calc(100 * var(--p));
-  border: solid #5c370c;
-  border-width: calc(34 * var(--p)) calc(20 * var(--p)) calc(20 * var(--p));
-  -webkit-border-radius: calc(10 * var(--p));
-     -moz-border-radius: calc(10 * var(--p));
-          border-radius: calc(10 * var(--p));
-  position: relative;
   max-width: calc(900 * var(--p));
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
   background-color: #fff;
   line-height: 1.8;
-}
-
-.frame::after {
-  content: "";
-  margin: 0 auto;
-  position: absolute;
-  top: calc(-34 * var(--p));
-  right: 0;
-  left: 0;
-  display: block;
-  width: 56.22%;
-  height: calc(65 * var(--p));
-  background: url("../images/clipboard.png") no-repeat 50% 0;
-  -webkit-background-size: 100% 100%;
-     -moz-background-size: 100% 100%;
-          background-size: 100% 100%;
+  border-radius: 25px;
 }
 
 .frame > .table:last-of-type {
@@ -2377,6 +2477,8 @@ address {
   border-top: 2px dotted #736357;
   border-bottom: 2px dotted #736357;
   vertical-align: middle;
+  /* 狭幅PCでも読みやすいよう最小14pxを確保（上限は本文と同じ16px） */
+  font-size: max(14px, calc(16 * var(--p)));
 }
 
 .table th {
@@ -4045,44 +4147,14 @@ address {
 .frame {
   margin: 0 10px 50px;
   padding: 53px 20px 50px;
-  border: solid #5c370c;
-  border-width: 20px 10px 10px;
-  -webkit-border-radius: 10px;
-     -moz-border-radius: 10px;
-          border-radius: 10px;
-  position: relative;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
   background-color: #fff;
   line-height: 1.8;
-}
-
-.frame::after {
-  content: "";
-  margin: 0 auto;
-  position: absolute;
-  top: -20px;
-  right: 40px;
-  left: 40px;
-  display: block;
-  height: 60px;
-  background: url("../images/clipboard.png") no-repeat 50% 0;
-  -webkit-background-size: 100% 100%;
-     -moz-background-size: 100% 100%;
-          background-size: 100% 100%;
+  border-radius: 15px;
 }
 
 @media only screen and (min-width: 660px) {
   .frame {
     font-size: 16px;
-  }
-
-  .frame::after {
-    right: 0;
-    left: 0;
-    width: 580px;
-    height: 76px;
   }
 }
 
@@ -4136,6 +4208,8 @@ address {
   border-top: 2px dotted #736357;
   border-bottom: 2px dotted #736357;
   vertical-align: middle;
+  /* SPでも読みやすいよう最小14pxを確保（画面幅に応じて最大16pxまで） */
+  font-size: clamp(14px, 3.8vw, 16px);
 }
 
 .table th {
