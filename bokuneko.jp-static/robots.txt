@@ -1,0 +1,6 @@
+# 本番用（bokuneko.jp）：全ページのクロールを許可
+User-agent: *
+Allow: /
+
+# サイトマップを用意したら下記を有効化してください
+# Sitemap: https://bokuneko.jp/sitemap.xml

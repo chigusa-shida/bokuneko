@@ -1,0 +1,34 @@
+# ------------------------------------------------------------
+# 本番用（bokuneko.jp） .htaccess
+#
+# ・当サイトはCSSでレスポンシブ対応済みのため、旧サイトのような
+#   PC/SP のUA振り分け（Rewrite）は不要。
+# ・キャッシュは各アセットの ?v=（内容ハッシュ）で更新されるため、
+#   静的ファイルは長期キャッシュ、HTMLは毎回再検証にする。
+#
+# ※もし本番の公開ディレクトリが親の .htaccess（旧PC/SP振り分け）を
+#   継承してしまう構成の場合は、下の RewriteEngine Off のコメントを外す。
+# ------------------------------------------------------------
+
+# <IfModule mod_rewrite.c>
+#   RewriteEngine Off
+# </IfModule>
+
+DirectoryIndex index.html
+
+<IfModule mod_headers.c>
+  # HTML：常に最新を取得（保存はするが毎回サーバへ再検証）
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # バージョン付き静的ファイル：長期キャッシュ（更新時は ?v= が変わり自動切替）
+  <FilesMatch "\.(css|js|jpe?g|png|webp|gif|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# gzip圧縮（対応環境のみ）
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript image/svg+xml
+</IfModule>
