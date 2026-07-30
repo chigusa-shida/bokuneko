@@ -1,0 +1,7 @@
+# develop（テスト）→ main（本番）へマージする際、環境ごとに内容が異なる
+# 下記ファイルは「マージ先（＝現在のブランチ）の内容を維持」する。
+# これにより main では本番用、develop ではテスト用が保たれ、競合しない。
+# ※このドライバを使うには一度だけ: git config merge.ours.driver true
+#   （deploy/release.sh が自動設定します）
+.htaccess   merge=ours
+robots.txt  merge=ours
