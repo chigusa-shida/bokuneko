@@ -1,28 +1,64 @@
-# デプロイ / ブランチ運用
+# デプロイ / ブランチ運用ガイド
 
-## ブランチ
-| ブランチ | 用途 | アップ先 | .htaccess / robots.txt / noindex |
-|---|---|---|---|
-| `develop` | 開発・テスト | `test.bokuneko.jp` | テスト用（クロール拒否・noindexあり） |
-| `main` | 本番 | `bokuneko.jp` | 本番用（クロール許可・noindexなし） |
+このサイトは **2つのブランチ**を使い分けます。
 
-## 日常の開発
-1. `develop` で作業・コミット。
-2. アップロード前に `node .claude/cache-bust.mjs` を実行（`?v=` を更新）。
-3. `develop` の内容を `test.bokuneko.jp` へアップして確認。
+| ブランチ | 何用？ | アップ先 |
+|---|---|---|
+| **develop** | ふだんの作業・テスト（下書き） | `test.bokuneko.jp`（テスト） |
+| **main** | 完成版・本番（清書） | `bokuneko.jp`（本番） |
 
-## 本番リリース
+ざっくり言うと **develop＝下書き（検索に出ない）／ main＝本番（検索に出る）** です。
+
+---
+
+## ① ふだんの作業（develop で行う）
+
+1. `develop` ブランチで編集してコミット。
+2. アップロードする前に、これを1回実行（キャッシュ対策：ファイルのバージョンを更新）。
+   **必ず `bokuneko.jp-static` フォルダの中で**実行してください。
+   ```bash
+   cd bokuneko.jp-static           # まだ入っていなければ
+   node .claude/cache-bust.mjs
+   ```
+3. `develop` の中身を **test.bokuneko.jp** にアップして表示を確認。
+
+---
+
+## ② 本番に出す（テストでOKになったら）
+
 ```bash
-bash deploy/release.sh      # develop を main へ反映（テスト設定を自動除去）
+bash deploy/release.sh     # develop の内容を main に反映（テスト用の設定は自動で外れる）
 git push origin main
 ```
-その後、`main` の内容を `bokuneko.jp`（本番）へアップロード。
 
-## 仕組みのポイント
-- `.htaccess` と `robots.txt` は環境ごとに内容が異なるが、`.gitattributes`
-  の `merge=ours` により **マージしてもブランチごとの内容が維持**される
-  （main＝本番用、develop＝テスト用）。競合しない。
-- `noindex` メタは main では除去済み。`release.sh` が念のため毎回除去するため、
-  develop で新規ページを追加しても本番に noindex が残らない。
-- キャッシュ対策は各アセットの `?v=`（内容ハッシュ）が主。`.htaccess` の
-  Cache-Control ヘッダは補助。
+そのあと、`main` の中身を **bokuneko.jp** にアップロード。
+
+---
+
+## 覚えておくと安心なこと
+
+- **noindex（検索よけ）**
+  develop には「検索に出さない」設定が付いています。`release.sh` を通すと**自動で外れる**ので、本番（main）に残る心配はありません。
+
+- **.htaccess / robots.txt（環境で中身が違うファイル）**
+  develop はテスト用、main は本番用。マージしても**混ざりません**（`.gitattributes` で保護済み）。
+  - ※ 本番の `.htaccess` は **Xサーバー側で直接管理**しています。
+    FTPでサイトを上げるときは **`.htaccess` を上書きしない**でください（サーバーの設定が消えてしまうため）。
+
+- **キャッシュ対策**
+  ブラウザに古いCSS/JSが残らないよう、各ファイルに `?v=…` を付けています。
+  更新したら **アップ前に `node .claude/cache-bust.mjs`** を忘れずに。
+
+---
+
+## まとめ（最短フロー）
+
+```
+develop で作業
+   ↓  node .claude/cache-bust.mjs
+test.bokuneko.jp にアップして確認
+   ↓  OKなら
+bash deploy/release.sh → git push origin main
+   ↓
+bokuneko.jp にアップ（.htaccess は上書きしない）
+```
